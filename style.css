@@ -43,6 +43,7 @@ Template: x
 .desktop-menus {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 600;
+	text-align: center;
 }
 
 .desktop-menus > ul {
@@ -59,7 +60,8 @@ Template: x
 }
 
 .desktop-menus .header-menu {
-	float: left;
+	/*float: left;*/
+	display: inline-block;
 	margin-bottom: 0;
 }
 
