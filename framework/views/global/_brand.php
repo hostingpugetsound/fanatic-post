@@ -8,11 +8,11 @@
 
 $site_name        = get_bloginfo( 'name' );
 $site_description = get_bloginfo( 'description' );
-//$logo             = x_make_protocol_relative( x_get_option( 'x_logo' ) );
+$logo             = x_make_protocol_relative( x_get_option( 'x_logo' ) );
 $sheetdir =            get_stylesheet_directory_uri();
-$logo =					$sheetdir . "/framework/img/global/fanaticPostLogo.png";
+//$logo =					$sheetdir . "/framework/img/global/fanaticPostLogo.png";
 
-$site_logo        = '<img src="' . $logo . '" alt="' . $site_description . '" style="width:253px !important; ">';
+$site_logo        = '<img src="' . $logo . '" alt="' . $site_description . '" />';
 
 ?>
 
