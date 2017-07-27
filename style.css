@@ -29,6 +29,10 @@ Template: x
 	# Header Menu
 ========================================================================== */
 
+/* Shared styles */
+.x-navbar-inner {
+	background-color: #4d5357;
+}
 
 /* Desktop */
 
@@ -37,8 +41,8 @@ Template: x
 }
 
 .desktop-menus {
-	font-family: 'Droid Sans', sans-serif;
-	font-weight: 700;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 600;
 }
 
 .desktop-menus > ul {
@@ -87,8 +91,8 @@ Template: x
 .desktop-menus .header-menu a {
 	font-style: normal;
 	font-weight: 700;
-	color: #272727;
-	font-size: 19px;
+	color: #a2acb5;
+	font-size: 24px;
 }
 
 .main-dropdown-menu {
@@ -1062,7 +1066,7 @@ body {
 	width: 340px;
 }
 
-.sliderText h1, 
+.sliderText h1,
 .sliderText h2,
 .sliderText p {
 	text-align: center;
@@ -2074,7 +2078,7 @@ footer.x-colophon {
     text-align:center;
     padding:20px;
     margin-bottom:20px;
-    
+
 }
 
 .favBtns a {
@@ -2099,7 +2103,7 @@ footer.x-colophon {
     padding:8px;
     border:1px solid #3b5998;
     text-align:center;
-    border-radius:4px;    
+    border-radius:4px;
 }
 
 .teamHeading a.pull-right:hover {
