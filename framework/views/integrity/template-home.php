@@ -13,23 +13,6 @@ $disable_page_title = get_post_meta( get_the_ID(), '_x_entry_disable_page_title'
 	<?php get_header(); ?>
 
 
-		<div class="homeSlider">
-			<div class="sliderContainer">
-				<div class="fanBox animated fadeInLeft">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/framework/img/global/fan.jpg" style="height:200px;">
-				</div>
-
-				<div class="sliderText">
-					<h1>BE THE BEAT</h1>
-                    <h2>RAISE YOUR VOICE, report on the game, <br />represent your team.</h2>
-                    <a href="#" class="btn btn-primary">Find Games Now</a>
-					
-				</div>
-				<div class="foeBox animated fadeInRight">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/framework/img/global/foe.jpg" style="height:200px; ">
-				</div>
-			</div>
-		</div>
 		
 		<div class="container" style="margin-top:20px;">
 			<div class='all-posts-sidebar'>

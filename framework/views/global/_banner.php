@@ -17,26 +17,31 @@ global $current_user;
 
 
 <?php if ( is_front_page() ) { ?>
-    <section class="x-navbar-wrap banner home">
-        <div class="<?php x_navbar_class(); ?>">
-            <div class="x-navbar-inner">
-                <div class="x-container max width">
-                    <div id="loginControls">
-                        <a href="<?php get_site_url(); ?>/search/" style="margin-right:8px;"><i class="fa fa-search fa-lg"></i></a>
-                        <?php if ( $current_user->ID && get_option( 'articleprepayment' . $current_user->ID ) ): ?>
-                            <br/>Article Credit (1)
-                        <?php endif; ?>
-                    </div>
-                    <?php x_get_view( 'global', '_nav', 'primary' ); ?>
-                    <div style="clear:both;"></div>
-                </div>
+    <section class="homeSlider">
+        <div class="sliderContainer">
+            <div class="fanBox animated fadeInLeft">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/framework/img/global/fan.jpg" style="height:200px;">
+            </div>
+
+            <div class="sliderText">
+                <h1>BE THE BEAT</h1>
+                <h2>RAISE YOUR VOICE, report on the game, <br />represent your team.</h2>
+                <a href="#" class="btn btn-primary">Find Games Now</a>
+
+            </div>
+            <div class="foeBox animated fadeInRight">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/framework/img/global/foe.jpg" style="height:200px; ">
             </div>
         </div>
     </section>
 
-<?php } else if ( ! is_front_page() ) { ?>
-    <section class="x-navbar-wrap banner">
-        <div class="<?php x_navbar_class(); ?> bluebg">
+
+<?php } else if ( is_page() || is_archive() ) { ?>
+    <section class="x-main full banner">
+        <div class="x-content-band man">
+            <div class="x-container max width">
+                <h1><?php the_title(); ?></h1>
+            </div>
         </div>
     </section>
 
