@@ -33,6 +33,17 @@ Template: x
 .x-navbar-inner { background-color: #4d5357; }
 .x-navbar-inner.whitebg { background-color: #eaedf0; }
 
+
+.x-main.banner { background-color: #1f3a71; color: white; }
+
+.x-main.banner { background-color: #1f3a71; min-height: 215px; padding: 35px 0; }
+.x-main.banner h1 { color: white; font-size: 90px; text-align: center; margin: 0; }
+
+
+/* headers */
+h1, h2 { font-family: freight-sans-pro, sans-serif !important; font-weight: 900; text-transform: uppercase; }
+
+
 /* Desktop */
 
 .x-nav-wrap.desktop { min-height: 100px; }
@@ -563,7 +574,7 @@ article.comment {
 }
 
 .x-main {
-	max-width: 960px;
+	/*max-width: 960px;*/
 	margin: 0 auto;
 }
 
@@ -694,7 +705,7 @@ a.toggle {
 
 body {
 	overflow-x: visible;
-	background: url("framework/img/global/bg-crossword.png") repeat fixed center !important;
+	/*background: #url("framework/img/global/bg-crossword.png") repeat fixed center !important;*/
 }
 
 .teamHeading {
@@ -1614,10 +1625,10 @@ ul.tabs li.current {
 	background-color: none;
 }
 
-footer {
-	margin-top: 40px;
-}
-
+footer { color: white; }
+footer a { color: white; }
+footer.x-colophon.bottom { background-color: #4d5357 !important; color: white; font-size: 18px; padding: 80px 0; }
+footer .footer-links { font-size: 24px; margin: 40px 0; }
 @media (min-width:750px) {
 	.home footer {
 		margin-top: 500px;
@@ -1845,10 +1856,6 @@ footer.x-colophon {
 	.sliderText h1 {
 		margin: 15px 0 !important;
 	}
-}
-
-.profilenav_link {
-	color: #848484 !important;
 }
 
 .pop-over {
