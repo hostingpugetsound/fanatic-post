@@ -15,6 +15,8 @@
   <header class="<?php x_masthead_class(); ?>" role="banner">
     <?php x_get_view( 'global', '_topbar' ); ?>
     <?php x_get_view( 'global', '_navbar' ); ?>
+    <?php x_get_view( 'global', '_banner' ); ?>
+    <?php x_get_view( 'global', '_ads' ); ?>
     <?php x_get_view( 'integrity', '_breadcrumbs' ); ?>
   </header>
 
