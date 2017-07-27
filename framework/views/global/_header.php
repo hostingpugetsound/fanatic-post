@@ -28,17 +28,15 @@
 
 			<?php wp_head(); ?>
 
-				<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/css/tooltipster.css" />
-				<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri(); ?>/js/jquery.tooltipster.min.js"></script>
-				<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri(); ?>/js/date.js"></script>
-
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+            <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/css/tooltipster.css" />
+            <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri(); ?>/js/jquery.tooltipster.min.js"></script>
+            <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri(); ?>/js/date.js"></script>
 
 	</head>
 
 	<body <?php body_class(); ?>>
-
 		<?php do_action( 'x_before_site_begin' ); ?>
-
 			<div id="top" class="site">
-
 				<?php do_action( 'x_after_site_begin' ); ?>
+

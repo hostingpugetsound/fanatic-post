@@ -11,14 +11,24 @@
 
 
 <nav class="desktop-secondary x-nav-wrap" role="navigation">
-    <ul class="inline column left">
-        <li><a href="<?php echo home_url(); ?>/be-the-beat/">Be The Beat</a></li>
-        <li><a href="<?php echo home_url(); ?>/about/">About</a></li>
-    </ul>
+    <div class="column left">
+        <ul class="inline hidden-sm-down">
+            <li><a href="<?php echo home_url(); ?>/be-the-beat/">Be The Beat</a></li>
+            <li><a href="<?php echo home_url(); ?>/about/">About</a></li>
+        </ul>
+
+        <div class="burger hidden">
+            <span class="slice"></span>
+            <span class="slice"></span>
+            <span class="slice"></span>
+        </div>
+
+    </div>
     <div class="column center">
         <?php x_get_view( 'global', '_brand' ); ?>
     </div>
-    <ul class="inline column right">
+    <div class="column right">
+        <ul class="inline hidden-sm-down">
         <li><a href="<?php echo home_url(); ?>/my-teams/">My Teams</a></li>
         <li>
             <?php
@@ -44,11 +54,31 @@
                         });
                     });
                 </script>
+                <div id="profilenav_con" class="pop-over">
+
+                    <div class="pop-over-header">
+                        <span class="pop-over-header-title"><?php echo ( ! empty( $first_name ) ) ? $first_name . ' ' . $last_name : $current_user->display_name; ?></span>
+                        <a href="#" class="pop-over-header-close-btn">x</a>
+                    </div>
+
+                    <div class="pop-over-content" style="max-height: 301px;">
+                        <div>
+                            <ul class="pop-over-list">
+                                <li><a href="<?php echo get_site_url(); ?>/profile/">My Profile</a></li>
+                                <li><a href="/favorites">My Favorites</a></li>
+                                <li>
+                                    <a href="<?php echo wp_logout_url( apply_filters( 'the_permalink', get_permalink() ) ); ?>">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             <?php else: ?>
                 <a class="profilenav_link" href="<?php echo get_site_url(); ?>/profile/" style="margin-right:8px;">Log In</a>
             <?php endif; ?>
         </li>
+        </ul>
 
 
-    </ul>
+    </div>
 </nav>
