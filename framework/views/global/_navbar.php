@@ -28,7 +28,6 @@ global $current_user;
         <div class="x-container max width">
 
 
-          <?php x_get_view( 'global', '_brand' ); ?>
 			<div id="loginControls">
 
                         <?php
@@ -89,7 +88,8 @@ global $current_user;
 
                         <?php endif;?>
 		  </div>
-		  <?php x_get_view( 'global', '_nav', 'primary' ); ?>
+            <?php x_get_view( 'global', '_nav', 'primary' ); ?>
+            <?php x_get_view( 'global', '_nav', 'secondary' ); ?>
 
 
 
