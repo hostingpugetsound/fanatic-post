@@ -16,15 +16,17 @@ $disable_page_title = get_post_meta( get_the_ID(), '_x_entry_disable_page_title'
 		<div class="homeSlider">
 			<div class="sliderContainer">
 				<div class="fanBox animated fadeInLeft">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/framework/img/global/fan.png" style="height:200px;">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/framework/img/global/fan.jpg" style="height:200px;">
 				</div>
 
 				<div class="sliderText">
-					<h1> Fan, Meet Foe</h1>
+					<h1>BE THE BEAT</h1>
+                    <h2>RAISE YOUR VOICE, report on the game, <br />represent your team.</h2>
+                    <a href="#" class="btn btn-primary">Find Games Now</a>
 					
 				</div>
 				<div class="foeBox animated fadeInRight">
-					<img src="<?php echo get_stylesheet_directory_uri(); ?>/framework/img/global/foe.png" style="height:200px; ">
+					<img src="<?php echo get_stylesheet_directory_uri(); ?>/framework/img/global/foe.jpg" style="height:200px; ">
 				</div>
 			</div>
 		</div>

@@ -995,21 +995,21 @@ div.userpro {
 
 .homeSlider {
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0465ce+0,6d0019+100 */
-	background: #0373d3;
+	background: black;
 	/* Old browsers */
-	background: -moz-linear-gradient(-45deg, #11274c 20%, #4f0b0b 80%);
+	/*background: -moz-linear-gradient(-45deg, #11274c 20%, #4f0b0b 80%);*/
 	/* FF3.6+ */
-	background: -webkit-gradient(linear, left top, right bottom, color-stop(20%, #0373d3), color-stop(80%, #4f0b0b));
+	/*background: -webkit-gradient(linear, left top, right bottom, color-stop(20%, #0373d3), color-stop(80%, #4f0b0b));*/
 	/* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(-45deg, #11274c 20%, #4f0b0b 80%);
+	/*background: -webkit-linear-gradient(-45deg, #11274c 20%, #4f0b0b 80%);*/
 	/* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(-45deg, #11274c 20%, #4f0b0b 80%);
+	/*background: -o-linear-gradient(-45deg, #11274c 20%, #4f0b0b 80%);*/
 	/* Opera 11.10+ */
-	background: -ms-linear-gradient(-45deg, #11274c 20%, #4f0b0b 80%);
+	/*background: -ms-linear-gradient(-45deg, #11274c 20%, #4f0b0b 80%);*/
 	/* IE10+ */
-	background: linear-gradient(135deg, #11274c 20%, #4f0b0b 80%);
+	/*background: linear-gradient(135deg, #11274c 20%, #4f0b0b 80%);*/
 	/* W3C */
-	filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#11274c', endColorstr='#4f0b0b', GradientType=1);
+	/*filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#11274c', endColorstr='#4f0b0b', GradientType=1);*/
 	/* IE6-9 fallback on horizontal gradient */
 	height: 200px;
 	border-bottom: 2px black solid;
@@ -2141,5 +2141,5 @@ footer.x-colophon {
 
 
 textarea {
-  font-size: 16px !imporatnt;
+  font-size: 16px !important;
 }
