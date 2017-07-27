@@ -89,7 +89,6 @@ global $current_user;
                         <?php endif;?>
 		  </div>
             <?php x_get_view( 'global', '_nav', 'primary' ); ?>
-            <?php x_get_view( 'global', '_nav', 'secondary' ); ?>
 
 
 
@@ -97,6 +96,11 @@ global $current_user;
 
         </div>
       </div>
+        <div class="x-navbar-inner whitebg">
+            <div class="x-container max width">
+                <?php x_get_view( 'global', '_nav', 'secondary' ); ?>
+            </div>
+        </div>
     </div>
   </div>
 <?php if (!is_front_page() && !is_page('home') && !is_page('profile')  && !is_page('search') && !is_search() && !is_404()) { ?>

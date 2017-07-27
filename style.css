@@ -30,11 +30,14 @@ Template: x
 ========================================================================== */
 
 /* Shared styles */
-.x-navbar-inner {
-	background-color: #4d5357;
-}
+.x-navbar-inner { background-color: #4d5357; }
+.x-navbar-inner.whitebg { background-color: #eaedf0; }
 
 /* Desktop */
+
+.x-nav-wrap.desktop { min-height: 100px; }
+.desktop-secondary { min-height: 215px; }
+
 
 .x-navbar-inner > div {
 	position: relative;
@@ -195,6 +198,16 @@ Template: x
 .desktop-menus .header-menu .dropdown-menu-lvl2 > li > ul a:hover {
 	font-weight: 700;
 }
+
+
+/* The secondary nav menu */
+
+.desktop-secondary { background-color: #eaedf0; }
+.desktop-secondary > .column { display: inline-block; width: 33.33%; }
+.desktop-secondary > .column a { color: #4d5357; font-size: 24px; text-transform: uppercase; }
+.desktop-secondary .left { float: left; }
+.desktop-secondary .center { color: #1f3a71; text-align: center; margin: 0 auto; }
+.desktop-secondary .right { float: right; }
 
 .burger {
 	width: 50px;

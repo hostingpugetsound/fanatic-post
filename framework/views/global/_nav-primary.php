@@ -8,5 +8,5 @@
 
 ?>
 <nav class="desktop x-nav-wrap" role="navigation">
-<?php x_output_primary_navigation( 'desktop' ); ?>
+    <?php x_output_primary_navigation( 'desktop' ); ?>
 </nav>
