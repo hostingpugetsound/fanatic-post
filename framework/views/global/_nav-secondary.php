@@ -14,7 +14,7 @@
     <div class="column left">
         <ul class="inline hidden-sm-down">
             <li><a href="<?php echo home_url(); ?>/be-the-beat/">Be The Beat</a></li>
-            <li><a href="<?php echo home_url(); ?>/about/">About</a></li>
+            <li><a href="<?php echo home_url(); ?>/about-us/">About</a></li>
         </ul>
 
         <div class="burger hidden">
