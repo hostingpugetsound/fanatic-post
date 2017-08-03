@@ -12,6 +12,25 @@ $disable_page_title = get_post_meta( get_the_ID(), '_x_entry_disable_page_title'
 
 	<?php get_header(); ?>
 
+    <div class="<?php x_main_content_class(); ?>" role="main">
+        <div class="x-container max width">
+
+
+            <?php x_get_view( 'global', '_sidebar-news' ); ?>
+
+            <div class="x-column x-sm x-2-4 content">
+                <?php while ( have_posts() ) : the_post(); ?>
+                    <?php x_get_view( 'integrity', 'content', 'page' ); ?>
+                    <?php x_get_view( 'global', '_comments-template' ); ?>
+                <?php endwhile; ?>
+            </div>
+
+            <?php x_get_view( 'global', '_sidebar-be-the-beat' ); ?>
+
+        </div>
+
+    </div>
+
 
 		
 		<div class="container" style="margin-top:20px;">

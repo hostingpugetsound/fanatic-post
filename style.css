@@ -30,6 +30,8 @@ Template: x
 ========================================================================== */
 
 /* Shared styles */
+
+.x-column.x-2-4 { width: 48%; }
 .x-navbar-inner { background-color: #4d5357; }
 .x-navbar-inner.whitebg { background-color: #eaedf0; }
 
@@ -1090,12 +1092,14 @@ body {
 	}
 }
 
+/*
 .sliderContainer {
 	width: 800px;
 	position: absolute;
 	left: 50%;
 	margin-left: -400px;
 }
+*/
 
 .sliderContainer div {
 	float: left;
