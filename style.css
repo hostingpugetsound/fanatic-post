@@ -1036,7 +1036,7 @@ div.userpro {
 	/* W3C */
 	/*filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#11274c', endColorstr='#4f0b0b', GradientType=1);*/
 	/* IE6-9 fallback on horizontal gradient */
-	height: 200px;
+	/*height: 200px;*/
 	border-bottom: 2px black solid;
 	margin-bottom: 10px;
 	padding-bottom: 40px;
