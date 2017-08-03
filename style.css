@@ -374,6 +374,20 @@ h1, h2 { font-family: freight-sans-pro, sans-serif !important; font-weight: 900;
 
 
 /* ==========================================================================
+	# Sidebars
+========================================================================== */
+
+.page-sidebar {}
+.page-sidebar li { list-style-type: none; }
+.page-sidebar li a {
+	font-weight: 700;
+	color: #4d5357;
+	font-size: 40px;
+	line-height: 2;
+}
+.page-sidebar .active { font-style: italic; }
+
+/* ==========================================================================
 	# Media
 ========================================================================== */
 

@@ -13,7 +13,7 @@
     <div class="<?php x_main_content_class(); ?>" role="main">
         <div class="x-container max width offset">
 
-            <ul class="x-column x-sm x-1-3 single-sidebar">
+            <ul class="x-column x-sm x-1-3 page-sidebar">
                 <li><a href="<?php echo home_url(); ?>/about-us/">About</a></li>
                 <li><a href="<?php echo home_url(); ?>/#">How It Works</a></li>
                 <li><a href="<?php echo home_url(); ?>/terms-2">Terms & Conditions</a></li>
