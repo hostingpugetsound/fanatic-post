@@ -10,11 +10,10 @@ $disable_page_title = get_post_meta( get_the_ID(), '_x_entry_disable_page_title'
   
 ?>  
 
-	<?php get_header(); ?>
+<?php get_header(); ?>
 
     <div class="<?php x_main_content_class(); ?>" role="main">
         <div class="x-container max width">
-
 
             <?php x_get_view( 'global', '_sidebar-news' ); ?>
 
@@ -30,8 +29,6 @@ $disable_page_title = get_post_meta( get_the_ID(), '_x_entry_disable_page_title'
             <?php x_get_view( 'global', '_sidebar-be-the-beat' ); ?>
 
         </div>
-
     </div>
 
-
-    <?php get_footer(); ?>
+<?php get_footer(); ?>
