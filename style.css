@@ -115,7 +115,7 @@ h1, h2 { font-family: freight-sans-pro, sans-serif !important; font-weight: 900;
 
 .main-dropdown-menu {
 	position: absolute;
-	top: 126%;
+	top: 95%;
 	left: 0;
 	overflow: hidden;
 	visibility: hidden;
@@ -125,6 +125,7 @@ h1, h2 { font-family: freight-sans-pro, sans-serif !important; font-weight: 900;
 	border-radius: 5px;
 	background: #2f2f2f;
 	box-shadow: 0 0 13px rgba(0, 0, 0, .59);
+	z-index: 100;
 }
 
 .desktop-menus .menu-item:hover .main-dropdown-menu {
@@ -1846,6 +1847,7 @@ footer.x-colophon {
 }
 
 @media(max-width: 767px) {
+	.x-column.x-sm.x-2-4 { width: 100%; }
 	#top .x-container.width {
 		width: auto;
 		padding-right: 34px;

@@ -19,9 +19,11 @@ $disable_page_title = get_post_meta( get_the_ID(), '_x_entry_disable_page_title'
             <?php x_get_view( 'global', '_sidebar-news' ); ?>
 
             <div class="x-column x-sm x-2-4 content">
+                <h2>The Beat</h2>
+                <?php x_get_view( 'integrity', 'content', 'the-beat' ); ?>
+
                 <?php while ( have_posts() ) : the_post(); ?>
                     <?php x_get_view( 'integrity', 'content', 'page' ); ?>
-                    <?php x_get_view( 'global', '_comments-template' ); ?>
                 <?php endwhile; ?>
             </div>
 
