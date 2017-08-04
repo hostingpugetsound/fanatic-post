@@ -9,53 +9,31 @@
 ?>
 
 <?php get_header(); ?>
+
 <script>
-var pageType = 'team';
+    var pageType = '<?php echo get_post_type();?>';
 </script>
-  <div class="x-container max width offset">
-    <div class="x-main left" role="main">
 
-      <?php while ( have_posts() ) : the_post(); ?>
-<?php  x_get_view( x_get_stack(), 'template', 'team-landing' ); ?>
-<?php  x_get_view( 'global', '_comments-template' ); ?>
+<div class="<?php x_main_content_class(); ?>" role="main">
+    <div class="x-container max width">
 
+        <?php x_get_view( 'global', '_sidebar-news' ); ?>
 
+        <div class="x-column x-sm x-2-4 content">
+            <h2>The Beat</h2>
+            <?php x_get_view( 'global', '_content', 'the-beat' ); ?>
 
-      <?php endwhile; ?>
+            <?php while( have_posts() ) : the_post(); ?>
+                <?php x_get_view( x_get_stack(), 'template', 'team-landing' ); ?>
+            <?php endwhile; ?>
+        </div>
+
+        <?php x_get_view( 'global', '_sidebar-be-the-beat' ); ?>
 
     </div>
+    <div class="x-container max width">
+        <?php x_get_view( 'global', '_comments-template' ); ?>
+    </div>
+</div>
 
-      <?php   
-        
-          $adClient       = "ca-pub-6614460239177654";
-          $adSlot         = "9635782928";
-          $sidebarAdSlot  = "9635782928";
-          
-      ?>
-      
-    <aside class="x-sidebar right" role="complementary">
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- TDF sidebar -->
-      <ins class="adsbygoogle" style="display:inline-block;width:100%;height:280px;" data-ad-client="<?php echo $adClient;?>" data-ad-slot="<?php echo $adSlot;?>"></ins>
-      <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-
-
-      <?php  x_get_view( x_get_stack(), 'sidebar', 'articles' ); ?>
-
-    </aside>
-
-
-  </div></div>
-
-  <style>
-      
-    @media (max-width: 522px) {
-      .x-container .x-main {
-        min-height: 600px;
-      }
-    }
-      
-  </style>
 <?php get_footer(); ?>
