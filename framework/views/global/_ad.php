@@ -13,7 +13,7 @@ $sidebarAdSlot = "9635782928";
 
 ?>
 
-<?php if ( is_front_page() ) { ?>adzzzzzzzzzzzzz
+
     <section class="x-navbar-wrap ads">
         <div class="adWrapper">
             <div class="adContainer">
@@ -30,4 +30,4 @@ $sidebarAdSlot = "9635782928";
             </div>
         </div>
     </section>
-<?php } ?>
+

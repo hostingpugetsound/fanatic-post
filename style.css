@@ -42,6 +42,9 @@ Template: x
 .x-main.banner h1 { color: white; font-size: 90px; text-align: center; margin: 0; }
 
 
+/* @todo: remove later */
+.ads { background-color: #868d93; color: #ebf1f5; font-size: 30px; font-weight: 600; display: inline-block; height: 100px; width: 100%; text-transform: uppercase; }
+
 /* headers */
 h1, h2 { font-family: freight-sans-pro, sans-serif !important; font-weight: 900; text-transform: uppercase; }
 

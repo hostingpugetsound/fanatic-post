@@ -8,7 +8,7 @@
 
 $args = array(
     'post_type' => 'game',
-    'posts_per_page' => 10
+    'posts_per_page' => 6
 );
 
 
@@ -61,7 +61,11 @@ if ( $query->have_posts() ) :
             </div>
         </article>
 
-    <?php endwhile; ?>
+    <?php
+        if( $i == 3 )
+            x_get_view( 'global', '_ad' );
+    endwhile;
+    ?>
     <?php wp_reset_postdata(); ?>
 
 <?php endif; ?>
