@@ -27,10 +27,12 @@
 			<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
 			<?php wp_head(); ?>
-
             <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/style-andy.css" />
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
             <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/css/tooltipster.css" />
+
+            <script src="https://use.typekit.net/cqk3esy.js"></script>
+            <script>try{Typekit.load({ async: true });}catch(e){}</script>
             <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri(); ?>/js/jquery.tooltipster.min.js"></script>
             <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri(); ?>/js/date.js"></script>
 
