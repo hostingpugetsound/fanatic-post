@@ -30,7 +30,7 @@ if ( $query->have_posts() ) :
         # adds the 1/2 columns and 'last' class
         if( $i > 1 ) {
             $class = 'x-column x-sm x-1-2';
-            if( $i % 2 == 0 )
+            if( $i % 2 != 0 )
                 $class .= ' last';
         } else {
             $class = '';
@@ -64,6 +64,13 @@ if ( $query->have_posts() ) :
     <?php
         if( $i == 3 )
             x_get_view( 'global', '_ad' );
+
+        if( $i == 4 ) {
+            echo '<article class="x-column x-sm x-1-2 last">';
+            x_get_view( 'global', '_ad' );
+            echo '</article>';
+            $i++;
+        }
     endwhile;
     ?>
     <?php wp_reset_postdata(); ?>
