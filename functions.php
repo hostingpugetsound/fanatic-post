@@ -996,3 +996,18 @@ if(isset($_REQUEST['direction'], $_REQUEST['p2p_type'], $_REQUEST['action'], $_R
 {
     add_filter( 'p2p_candidate_title', 'fsu_admin_search_connected_teams', 10, 3 );
 }
+
+
+
+/*
+ * Gets the first letter of each word to create an acronym
+ */
+// http://stackoverflow.com/a/16165234/889949
+function fsu_get_acronym( $string ) {
+    $expr = '/(?<=\s|^)[a-z]/i';
+    preg_match_all($expr, $string, $matches);
+    $result = implode('', $matches[0]);
+    $result = strtoupper($result);
+    return $result;
+}
+

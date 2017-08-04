@@ -33,7 +33,7 @@ if ( is_singular('league') ) {
 
         foreach( $teams->get_posts() as $team ) {
             ?>
-            <span><a href="<?php echo get_the_permalink( $team->ID ); ?>"><?php echo get_the_title( $team->ID ); ?></a></span>
+            <span><a href="<?php echo get_the_permalink( $team->ID ); ?>"><?php echo fsu_get_acronym( get_the_title( $team->ID ) ); ?></a></span>
         <?php } ?>
         </div>
     </div>
