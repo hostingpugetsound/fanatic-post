@@ -25,12 +25,14 @@
 
             <?php while( have_posts() ) : the_post(); ?>
                 <?php x_get_view( x_get_stack(), 'template', 'common' ); ?>
-                <?php x_get_view( 'global', '_comments-template' ); ?>
             <?php endwhile; ?>
         </div>
 
         <?php x_get_view( 'global', '_sidebar-be-the-beat' ); ?>
 
+    </div>
+    <div class="x-container max width">
+        <?php x_get_view( 'global', '_comments-template' ); ?>
     </div>
 </div>
 
