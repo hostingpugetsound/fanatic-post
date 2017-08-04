@@ -13,8 +13,32 @@ $is_one_page_nav = x_is_one_page_navigation();
 global $current_user;
 //wp_get_current_user();
 
-?>
 
+# show banner of all teams if on league page
+if ( is_singular('league') ) {
+?>
+<section class="x-main full banner-teams">
+    <div class="x-content-band man">
+        <div class="x-container max width">
+        <?php
+
+        $teams = new WP_Query( array(
+            'connected_type' => 'team_to_league',
+            'connected_items' => get_the_ID(),
+            'order' => 'DESC',
+            'orderby' => 'post_title',
+            #'post_type' => 'team',
+            'nopaging' => true,
+        ) );
+
+        foreach( $teams->get_posts() as $team ) {
+            ?>
+            <span><a href="<?php echo get_the_permalink( $team->ID ); ?>"><?php echo get_the_title( $team->ID ); ?></a></span>
+        <?php } ?>
+        </div>
+    </div>
+</section>
+<?php } ?>
 
 <?php if ( is_front_page() ) { ?>
     <section class="homeSlider">
