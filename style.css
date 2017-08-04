@@ -1648,11 +1648,6 @@ footer { color: white; }
 footer a { color: white; }
 footer.x-colophon.bottom { background-color: #4d5357 !important; color: white; font-size: 18px; padding: 80px 0; }
 footer .footer-links { font-size: 24px; margin: 40px 0; }
-@media (min-width:750px) {
-	.home footer {
-		margin-top: 500px;
-	}
-}
 
 .x-navbar .x-brand {
 	margin-right: 20px;
