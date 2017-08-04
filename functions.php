@@ -1011,3 +1011,11 @@ function fsu_get_acronym( $string ) {
     return $result;
 }
 
+
+
+function vard( $d ) {
+
+    echo '<pre>';
+    var_dump($d);
+    echo '</pre>';
+}
