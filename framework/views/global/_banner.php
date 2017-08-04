@@ -36,7 +36,7 @@ global $current_user;
     </section>
 
 
-<?php } else if ( is_page() || is_archive() ) { ?>
+<?php } else if ( is_page() || is_archive() || is_singular('league') || is_singular('team') ) { ?>
     <section class="x-main full banner">
         <div class="x-content-band man">
             <div class="x-container max width">
