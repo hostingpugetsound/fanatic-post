@@ -1,7 +1,7 @@
 <?php
 $date_format = 'Y-m-d';
 $game_date_key = 'wpcf-game-date';
-$game_time_key = 'wpcf-game-time';
+$game_time_key = 'wpcf-game-type';
 
 $args = array(
     'post_type' => 'game',
@@ -77,7 +77,7 @@ if( is_front_page() ) {
                 echo sprintf( '<h3>%s</h3>', date('M j Y', $game_date) );
             }
 
-            echo sprintf( '<div class="game">%s <time>%s</time></div>', get_the_title(), $game_time );
+            echo sprintf( '<div class="game"><a href="%s">%s</a><br /> <time>%s</time></div>', get_the_permalink(), get_the_title(), $game_time );
             ?>
 
             <?php endwhile; ?>
