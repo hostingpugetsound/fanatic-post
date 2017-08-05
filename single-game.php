@@ -1,43 +1,36 @@
 <?php
 
 // =============================================================================
-// sing-team.PHP
+// single-game.PHP
 // -----------------------------------------------------------------------------
-// Handles output of teams landing pages
+// Handles output of a single game/beat
 // =============================================================================
 
 ?>
 
+
 <?php get_header(); ?>
 <script>
-var pageType = 'team';
+    var pageType = 'team';
 </script>
-  <div class="x-container max width offset">
-    <div class="x-main left" role="main">
 
-      <?php while ( have_posts() ) : the_post(); ?>
-<?php  x_get_view( x_get_stack(), 'template', 'game' ); ?>
+<div class="<?php x_main_content_class(); ?>" role="main">
+    <div class="x-container max width offset">
 
+        <div class="x-column x-sm x-1-2 content">
+            <?php while ( have_posts() ) : the_post(); ?>
+                <?php x_get_view( x_get_stack(), 'template', 'game' ); ?>
+                <?php #x_get_view( 'integrity', 'content', 'page' ); ?>
+            <?php endwhile; ?>
+        </div>
 
-
-      <?php endwhile; ?>
+        <div class="x-column x-sm x-1-2 last comments">
+            <?php while ( have_posts() ) : the_post(); ?>
+                <?php x_get_view( 'global', '_comments-template' ); ?>
+            <?php endwhile; ?>
+        </div>
 
     </div>
-
-    <aside class="x-sidebar right" role="complementary">
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- TDF sidebar -->
-      <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-6614460239177654" data-ad-slot="9635782928"></ins>
-      <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-
-
-      <?php  x_get_view( x_get_stack(), 'sidebar', 'articles' ); ?>
-
-    </aside>
-
-
-  </div>
+</div>
 
 <?php get_footer(); ?>
