@@ -69,6 +69,9 @@ if ( is_singular('league') ) {
     <section class="x-main full banner">
         <div class="x-content-band man">
             <div class="x-container max width">
+                <?php if( is_singular('team') ) : ?>
+                    <a class="pull-right" id="favThis" data-id="<?php the_ID(); ?>"><i class="fa fa-plus"></i> Add to Favorites</a>
+                <?php endif; ?>
                 <h1><?php the_title(); ?></h1>
             </div>
         </div>

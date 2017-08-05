@@ -36,6 +36,11 @@
             <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri(); ?>/js/jquery.tooltipster.min.js"></script>
             <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri(); ?>/js/date.js"></script>
 
+        <?php if( is_singular('team') ) { # for favorites ?>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+        <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/favorites.js"></script>
+        <?php } ?>
 	</head>
 
 	<body <?php body_class(); ?>>
