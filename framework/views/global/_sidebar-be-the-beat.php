@@ -44,11 +44,15 @@ if( is_front_page() ) {
 
     $args['connected_type'] = 'games_to_teams';
     $args['connected_items'] = $team_ids;
-    $args['nopaging'] = true;
 
 
     $query = new WP_Query( $args );
+
 } elseif( is_singular('team') ) {
+    $args['connected_type'] = 'games_to_teams';
+    $args['connected_items'] = get_the_ID();
+    $query = new WP_Query( $args );
+
 } else {
     $query = $wp_query;
 }
