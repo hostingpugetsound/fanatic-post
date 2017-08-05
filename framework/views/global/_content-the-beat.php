@@ -10,16 +10,24 @@ $args = array(
     'post_type' => 'game',
     'posts_per_page' => 6
 );
+$teams = fagf_get_teams(get_the_ID());
 
 
-
-if( is_front_page() )
+if( is_front_page() ) {
     $query = new WP_Query( $args );
-else
-    $query = $wp_query;
-#vard($query);
+} elseif( is_singular('league') ) {
+    $args['connected_type'] = 'games_to_teams';
+    $args['connected_items'] = get_the_ID();
+    $args['nopaging'] = true;
+    $query = new WP_Query( $args );
+} elseif( is_singular('team') ) {
 
-if ( $query->have_posts() ) :
+} else {
+    $query = $wp_query;
+}
+
+#vard($query);
+if ( isset($query) && $query->have_posts() ) :
     $i = 0;
 ?>
 
@@ -75,4 +83,28 @@ if ( $query->have_posts() ) :
     ?>
     <?php wp_reset_postdata(); ?>
 
+
+<?php elseif ( is_singular('team') ) : ?>
+    <div class="team-banner">
+        <h2>BE THE BEAT</h2>
+        <h3>RAISE YOUR VOICE, report on the game, <br />represent your team.</h3>
+        <a href="#" class="btn btn-primary">Find Games Now</a>
+    </div>
+    <div class="x-column x-sm x-1-2 fanBox animated fadeInLeft">
+        <img src="<?php echo get_stylesheet_directory_uri(); ?>/framework/img/global/fan.jpg" />
+    </div>
+
+    <div class="x-column x-sm x-1-2 last foeBox animated fadeInRight">
+        <img src="<?php echo get_stylesheet_directory_uri(); ?>/framework/img/global/foe.jpg" />
+    </div>
+
+    <div class="ad full">
+        <?php x_get_view( 'global', '_ad' ); ?>
+    </div>
+    <div class="x-column x-sm x-1-2 ad">
+        <?php x_get_view( 'global', '_ad' ); ?>
+    </div>
+    <div class="x-column x-sm x-1-2 last ad">
+        <?php x_get_view( 'global', '_ad' ); ?>
+    </div>
 <?php endif; ?>

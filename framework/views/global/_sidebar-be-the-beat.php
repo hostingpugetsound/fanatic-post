@@ -51,6 +51,7 @@ if( is_front_page() ) {
 } elseif( is_singular('team') ) {
     $args['connected_type'] = 'games_to_teams';
     $args['connected_items'] = get_the_ID();
+    $args['posts_per_page'] = 10;
     $query = new WP_Query( $args );
 
 } else {
