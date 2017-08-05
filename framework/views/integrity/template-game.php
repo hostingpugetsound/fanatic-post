@@ -505,6 +505,7 @@ $awayTeamNameLink = '<a href="'.$awayTeamLink.'">'. $awayTeamName .'</a>';
         ?>
 
         <div style="clear:both;"></div>
+        <!--
         <div class="share_custom_class">
             <?php //echo do_shortcode('[ssba url="'.$actual_link.'" title="'.$homeTeamName . ' vs ' . $awayTeamName.' Beat Article"]'); ?>
             <div class="ssba ssba-wrap">
@@ -524,6 +525,7 @@ $awayTeamNameLink = '<a href="'.$awayTeamLink.'">'. $awayTeamName .'</a>';
               </div>
             </div>
         </div>
+        -->
 
   	<ul class="tabs">
                 <li class="tab-link <?php echo get_active_class(($reverse_teams)? $awayTeamID : $homeTeamID, 'preview'); ?>" data-tab="<?php echo ($reverse_teams)? 'awaypregame':'homepregame';?>">
