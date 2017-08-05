@@ -88,14 +88,15 @@ if ( isset($query) && $query->have_posts() ) :
     <div class="team-banner">
         <h2>BE THE BEAT</h2>
         <h3>RAISE YOUR VOICE, report on the game, <br />represent your team.</h3>
-        <a href="#" class="btn btn-primary">Find Games Now</a>
-    </div>
-    <div class="x-column x-sm x-1-2 fanBox animated fadeInLeft">
-        <img src="<?php echo get_stylesheet_directory_uri(); ?>/framework/img/global/fan.jpg" />
-    </div>
+        <a href="#" class="btn btn-primary">Find Games Now</a><br />
 
-    <div class="x-column x-sm x-1-2 last foeBox animated fadeInRight">
-        <img src="<?php echo get_stylesheet_directory_uri(); ?>/framework/img/global/foe.jpg" />
+        <div class="x-column x-sm x-1-2 fanBox">
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/framework/img/global/fan.jpg" />
+        </div>
+        <div class="x-column x-sm x-1-2 last foeBox">
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/framework/img/global/foe.jpg" />
+        </div>
+        <div class="clearfix"></div>
     </div>
 
     <div class="ad full">
