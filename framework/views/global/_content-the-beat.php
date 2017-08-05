@@ -44,6 +44,7 @@ if ( isset($query) && $query->have_posts() ) :
             $class = '';
         }
     ?>
+        <h2 class="red-header">The Beat</h2>
         <article id="post-<?php the_ID(); ?>" <?php post_class( $class ); ?>>
             <div class="entry-featured">
 

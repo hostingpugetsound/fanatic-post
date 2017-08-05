@@ -20,7 +20,6 @@
         <?php x_get_view( 'global', '_sidebar-news' ); ?>
 
         <div class="x-column x-sm x-2-4 content">
-            <h2>The Beat</h2>
             <?php x_get_view( 'global', '_content', 'the-beat' ); ?>
 
             <?php #while( have_posts() ) : the_post(); ?>
