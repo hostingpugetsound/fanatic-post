@@ -65,7 +65,6 @@
                         <div>
                             <ul class="pop-over-list">
                                 <li><a href="<?php echo get_site_url(); ?>/profile/">My Profile</a></li>
-                                <li><a href="/favorites">My Favorites</a></li>
                                 <li>
                                     <a href="<?php echo wp_logout_url( apply_filters( 'the_permalink', get_permalink() ) ); ?>">Logout</a>
                                 </li>

@@ -14,7 +14,7 @@ get_header(); ?>
 
   <div class="x-container max width mt20 inner-page-container">
     <div class="x-main full p40" role="main">
-		<h3>Your Favorites</h3>
+		<h3>My Teams</h3>
 		
 		<div class="favBtns">
 		<?php 
