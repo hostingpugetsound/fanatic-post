@@ -253,7 +253,7 @@ function tab_content($tab_id, $tab_v_type, $game_beat, $beat_team_name, $beat_te
 
                 <?php
                 
-                x_get_view( 'global', '_comments-template' );
+                #x_get_view( 'global', '_comments-template' );
                 ?>
   	</div>
     <?php
