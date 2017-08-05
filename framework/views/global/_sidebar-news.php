@@ -4,7 +4,7 @@
 <div class="x-column x-sm x-1-4">
 
     <div class="news-sidebar">
-        <h2>News</h2>
+        <h2 class="red-header">News</h2>
         <ul class="x-nav news-widget">
             <li class="news-single">
                 <a href="<?php echo home_url(); ?>/about-us/"><img src="//lorempixel.com/293/293" /></a>
@@ -38,7 +38,7 @@
 
     <?php if( !is_front_page() ) : ?>
     <div class="standings-sidebar">
-        <h2>Standings</h2>
+        <h2 class="red-header">Standings</h2>
         <ul class="x-nav standings-nav">
             <li><a href="#">American</a></li>
             <li><a href="#">National</a></li>
