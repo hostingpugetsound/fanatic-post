@@ -8,4 +8,4 @@
 
 ?>
 
-<?php x_get_view( x_get_stack(), 'template', 'favorites' ); ?> 
+<?php x_get_view( x_get_stack(), 'template', 'my-teams' ); ?>
