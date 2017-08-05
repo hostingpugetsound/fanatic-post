@@ -1,4 +1,6 @@
 <?php
+global $teams;
+
 $date_format = 'Y-m-d';
 $game_date_key = 'wpcf-game-date';
 $game_time_key = 'wpcf-game-time';
@@ -19,7 +21,37 @@ $args = array(
     ),
 );
 
-$query = new WP_Query( $args );
+
+
+if( is_front_page() ) {
+    $query = new WP_Query( $args );
+} elseif( is_singular('league') ) {
+
+    if( !isset($teams) ) {
+        $teams = new WP_Query( array(
+            'connected_type' => 'team_to_league',
+            'connected_items' => get_the_ID(),
+            'order' => 'DESC',
+            'orderby' => 'post_title',
+            'nopaging' => true,
+        ) );
+    }
+
+    $team_ids = [];
+    foreach( $teams->get_posts() as $team )
+        $team_ids[] = $team->ID;
+
+
+    $args['connected_type'] = 'games_to_teams';
+    $args['connected_items'] = $team_ids;
+    $args['nopaging'] = true;
+
+
+    $query = new WP_Query( $args );
+} elseif( is_singular('team') ) {
+} else {
+    $query = $wp_query;
+}
 
 ?>
 
