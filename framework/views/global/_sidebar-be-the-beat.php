@@ -1,6 +1,4 @@
 <?php
-global $teams;
-
 $date_format = 'Y-m-d';
 $game_date_key = 'wpcf-game-date';
 $game_time_key = 'wpcf-game-time';
@@ -27,7 +25,7 @@ if( is_front_page() ) {
     $query = new WP_Query( $args );
 } elseif( is_singular('league') ) {
 
-    if( !isset($teams) ) {
+    /*
         $teams = new WP_Query( array(
             'connected_type' => 'team_to_league',
             'connected_items' => get_the_ID(),
@@ -35,10 +33,12 @@ if( is_front_page() ) {
             'orderby' => 'post_title',
             'nopaging' => true,
         ) );
-    }
+    */
+
+    $teams = fagf_get_teams(get_the_ID());
 
     $team_ids = [];
-    foreach( $teams->get_posts() as $team )
+    foreach( $teams as $team )
         $team_ids[] = $team->ID;
 
 

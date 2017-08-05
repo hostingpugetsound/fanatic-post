@@ -22,16 +22,21 @@ if ( is_singular('league') ) {
         <div class="x-container max width">
         <?php
 
+        /*
         $teams = new WP_Query( array(
             'connected_type' => 'team_to_league',
             'connected_items' => get_the_ID(),
-            'order' => 'DESC',
+            'order' => 'ASC',
             'orderby' => 'post_title',
             #'post_type' => 'team',
             'nopaging' => true,
         ) );
+        */
 
-        foreach( $teams->get_posts() as $team ) {
+
+        $teams = fagf_get_teams(get_the_ID());
+
+        foreach( $teams as $team ) {
             ?>
             <span><a href="<?php echo get_the_permalink( $team->ID ); ?>"><?php echo fsu_get_acronym( get_the_title( $team->ID ) ); ?></a></span>
         <?php } ?>
