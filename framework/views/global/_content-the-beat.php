@@ -25,13 +25,13 @@ if( is_front_page() ) {
 } else {
     $query = $wp_query;
 }
+?>
 
+    <h2 class="red-header">The Beat</h2>
+<?php
 #vard($query);
 if ( isset($query) && $query->have_posts() ) :
     $i = 0;
-?>
-
-    <?php
     while ( $query->have_posts() ) :
         $query->the_post();
         $i++;
@@ -44,7 +44,6 @@ if ( isset($query) && $query->have_posts() ) :
             $class = '';
         }
     ?>
-        <h2 class="red-header">The Beat</h2>
         <article id="post-<?php the_ID(); ?>" <?php post_class( $class ); ?>>
             <div class="entry-featured">
 
