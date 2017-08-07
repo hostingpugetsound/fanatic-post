@@ -9,7 +9,11 @@
 		</div>
 		
 		<div class="userpro-card-info">
-			<div class="userpro-card-left"><a href="<?php echo $userpro->permalink( $user_id ); ?>" title="<?php _e('View Full Profile','userpro'); ?>"><?php echo userpro_profile_data('display_name', $user_id); ?></a></div>
+			<div class="userpro-card-left">
+                <a href="<?php echo $userpro->permalink( $user_id ); ?>" title="<?php _e('View Full Profile','userpro'); ?>"><?php echo userpro_profile_data('display_name', $user_id); ?></a><br />
+                <!-- @todo: Premium Member status -->
+                <a href="<?php echo $userpro->permalink( $user_id ); ?>" title="<?php _e('View Full Profile','userpro'); ?>">@<?php echo userpro_profile_data('user_login', $user_id); ?></a><br />
+            </div>
 			<div class="userpro-card-right"><?php echo userpro_show_badges( $user_id, true ); ?></div>
 			<div class="userpro-clear"></div>
 		</div>
