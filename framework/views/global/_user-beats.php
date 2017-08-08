@@ -2,8 +2,7 @@
 
 $page_size = 20;
 $user_id = userpro_get_view_user(get_query_var('up_username'));
-#$user_id = 32; #test user
-include_once 'inc/unauthorize.php';
+$user_id = 32; #test user
 
 $paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
 
