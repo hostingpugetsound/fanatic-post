@@ -1,9 +1,9 @@
 <?php
 
 // =============================================================================
-// TEMPLATE NAME: My Profile
+// TEMPLATE NAME: User Profile
 // -----------------------------------------------------------------------------
-// My profile page
+// User profile page
 // =============================================================================
 
 
@@ -17,6 +17,8 @@ get_header();
         <div class="x-column x-sm x-1-2 content">
             <h2 class="red-header"></h2>
             <?php echo do_shortcode( '[userpro template=card]' ); ?>
+            <hr />
+            <?php x_get_view( 'global', '_user-beats' ); ?>
         </div>
 
         <div class="x-column x-sm x-1-2 last">
