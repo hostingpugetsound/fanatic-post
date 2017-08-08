@@ -73,7 +73,7 @@
                     </div>
                 </div>
             <?php else: ?>
-                <a class="profilenav_link" href="<?php echo get_site_url(); ?>/profile/" style="margin-right:8px;">Log In</a>
+                <a class="profilenav_link" href="<?php echo get_site_url(); ?>/#login">Log In</a>
             <?php endif; ?>
         </li>
         </ul>

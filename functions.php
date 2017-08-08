@@ -1029,8 +1029,10 @@ function fsu_get_acronym( $string ) {
 }
 
 
+/*
+ * Filters userpro login form field names
+ */
 add_filter( 'userpro_shortcode_args', 'fsu_userpro_settings_filter', 10, 1 );
-
 function fsu_userpro_settings_filter( $args ) {
     $args['login_heading'] = __('Sign In','userpro');
     $args['login_button_primary'] = __('Sign In','userpro');
