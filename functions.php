@@ -650,7 +650,7 @@ function fsu_repair_games_connections()
 {
     global $wpdb;
     
-    $games = $wpdb->get_results("SELECT * FROM wp_posts LEFT JOIN wp_p2p ON wp_posts.ID=wp_p2p.p2p_from WHERE wp_posts.post_type = 'game' AND wp_posts.post_status = 'publish' AND wp_p2p.p2p_from is null", OBJECT);
+    $games = $wpdb->get_results("SELECT * FROM " . $wpdb->prefix . "posts LEFT JOIN " . $wpdb->prefix . "p2p ON " . $wpdb->prefix . "posts.ID=" . $wpdb->prefix . "p2p.p2p_from WHERE " . $wpdb->prefix . "posts.post_type = 'game' AND " . $wpdb->prefix . "posts.post_status = 'publish' AND " . $wpdb->prefix . "p2p.p2p_from is null", OBJECT);
 
     echo "<br />Total Games Found: " . sizeof($games);
     $fixed_count = 0;
@@ -660,16 +660,16 @@ function fsu_repair_games_connections()
         $home_team_slug = get_post_meta($game->ID, 'wpcf-home-team', true);
         $away_team_slug = get_post_meta($game->ID, 'wpcf-away-team', true);
         
-        $home_team_id = $wpdb->get_var("SELECT ID FROM wp_posts WHERE post_name LIKE '".$home_team_slug."' AND post_type='team'");
-        $away_team_id = $wpdb->get_var("SELECT ID FROM wp_posts WHERE post_name LIKE '".$away_team_slug."' AND post_type='team'");
+        $home_team_id = $wpdb->get_var("SELECT ID FROM " . $wpdb->prefix . "posts WHERE post_name LIKE '".$home_team_slug."' AND post_type='team'");
+        $away_team_id = $wpdb->get_var("SELECT ID FROM " . $wpdb->prefix . "posts WHERE post_name LIKE '".$away_team_slug."' AND post_type='team'");
 
         if(!$home_team_id || !$away_team_id)
         {
             $home_team_name = get_post_meta($game->ID, 'wpcf-home-team-name', true);
             $away_team_name = get_post_meta($game->ID, 'wpcf-away-team-name', true);
             
-            $home_team_id = $wpdb->get_var("SELECT ID FROM wp_posts WHERE post_title LIKE '".$home_team_name."' AND post_type='team'");
-            $away_team_id = $wpdb->get_var("SELECT ID FROM wp_posts WHERE post_title LIKE '".$away_team_name."' AND post_type='team'");
+            $home_team_id = $wpdb->get_var("SELECT ID FROM " . $wpdb->prefix . "posts WHERE post_title LIKE '".$home_team_name."' AND post_type='team'");
+            $away_team_id = $wpdb->get_var("SELECT ID FROM " . $wpdb->prefix . "posts WHERE post_title LIKE '".$away_team_name."' AND post_type='team'");
         }
         
         if($home_team_id && $away_team_id)
