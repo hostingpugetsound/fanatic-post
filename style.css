@@ -43,20 +43,31 @@ Template: x
 
 
 /* @todo: remove later */
-.ads { background-color: #868d93; color: #ebf1f5; font-size: 30px; font-weight: 600; display: inline-block; height: 100px; width: 100%; text-transform: uppercase; }
+/*.ads { background-color: #868d93; color: #ebf1f5; font-size: 30px; font-weight: 600; display: inline-block; height: 100px; width: 100%; text-transform: uppercase; }*/
+
+.ads {display: inline-block; width: 100%;}
 
 /* headers */
-h1, h2 { font-family: freight-sans-pro, sans-serif !important; font-weight: 900; text-transform: uppercase; }
+h1, h2 { font-family: "freight-sans-pro", sans-serif !important; font-weight: 900; text-transform: uppercase; }
 
+.x-main.full {
+    background-color: #d6dce0;
+    box-shadow: none;
+}
 
 /* Desktop */
 
-.x-nav-wrap.desktop { min-height: 100px; }
-.desktop-secondary { min-height: 215px; }
-.x-brand img { width: 270px; }
+.x-nav-wrap.desktop { min-height: 80px; }
+.desktop-secondary { /*min-height: 215px; */}
+.x-brand img { width: 350px!important; }
 
 .x-navbar-inner > div {
 	position: relative;
+}
+
+i.fa.fa-search.fa-lg {
+    color: #a2acb5;
+    font-size: 1em;
 }
 
 .desktop-menus {
@@ -79,9 +90,10 @@ h1, h2 { font-family: freight-sans-pro, sans-serif !important; font-weight: 900;
 }
 
 .desktop-menus .header-menu {
-	/*float: left;*/
-	display: inline-block;
-	margin-bottom: 0;
+	float: left;
+  display: inline-block;
+  margin-bottom: 0;
+  text-align: left;
 }
 
 .desktop-menus .header-menu > li {
@@ -90,6 +102,7 @@ h1, h2 { font-family: freight-sans-pro, sans-serif !important; font-weight: 900;
 
 .desktop-menus .header-menu > li > a {
 	position: relative;
+	letter-spacing: 1px;
 	display: inline-block;
 }
 
@@ -109,11 +122,20 @@ h1, h2 { font-family: freight-sans-pro, sans-serif !important; font-weight: 900;
 	visibility: visible;
 }
 
+.desktop-menus ul.header-menu {
+    width: 11%;
+}
+
+ul#menu-1045 {
+    width: 15px;
+}
+
 .desktop-menus .header-menu a {
-	font-style: normal;
-	font-weight: 700;
-	color: #a2acb5;
-	font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    color: #a2acb5;
+    font-size: 18px;
+    font-family: "open-sans", sans-serif;
 }
 
 .main-dropdown-menu {
@@ -220,11 +242,34 @@ h1, h2 { font-family: freight-sans-pro, sans-serif !important; font-weight: 900;
 /* The secondary nav menu */
 
 .desktop-secondary { background-color: #eaedf0; }
-.desktop-secondary > .column { display: inline-block; padding: 80px 0; width: 33.33%; }
-.desktop-secondary > .column a { color: #4d5357; font-size: 24px; text-transform: uppercase; }
+.desktop-secondary > .column {
+		display: inline-block;
+		padding: 50px 0;
+		width: 33.33%;
+}
+.desktop-secondary > .column a {
+		color: #4d5357;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
 .desktop-secondary .left { float: left; }
-.desktop-secondary .center { color: #1f3a71; padding: 60px 0; text-align: center; margin: 0 auto; }
-.desktop-secondary .right { float: right; text-align: right; }
+
+.desktop-secondary .center {
+	color: #1f3a71;
+	padding: 30px 0;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.desktop-secondary .right {
+	float: right;
+	text-align: right;
+}
+
+.desktop-secondary .column li {
+    margin-top: 6px;
+}
 
 .burger {
 	width: 50px;
@@ -508,6 +553,11 @@ h1, h2 { font-family: freight-sans-pro, sans-serif !important; font-weight: 900;
 		-ms-transition: left .5s linear 0s;
 		-o-transition: left .5s linear 0s;
 		transition: left .5s linear 0s;
+		font-family: "open-sans", sans-serif!important;
+		color: #4d5357!important;
+		background: none!important;
+		background-image: none!important
+		background-color: #d6dce0!important;
 	}
 	body.show-nav {
 		left: 220px;
@@ -599,8 +649,10 @@ article.comment {
 }
 
 .home .x-main {
-	max-width: 1200px;
-	margin: 0 auto;
+		max-width: 1200px;
+		margin: 0 auto;
+    padding: 0;
+    margin-top: 5px;
 }
 
 .submit.foe_toggle,
@@ -1027,6 +1079,7 @@ div.userpro {
 .homeSlider {
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0465ce+0,6d0019+100 */
 	background: black;
+	background: #0b090a;
 	/* Old browsers */
 	/*background: -moz-linear-gradient(-45deg, #11274c 20%, #4f0b0b 80%);*/
 	/* FF3.6+ */
@@ -1043,16 +1096,16 @@ div.userpro {
 	/*filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#11274c', endColorstr='#4f0b0b', GradientType=1);*/
 	/* IE6-9 fallback on horizontal gradient */
 	/*height: 200px;*/
-	border-bottom: 2px black solid;
+	/*border-bottom: 2px black solid;*/
 	margin-bottom: 10px;
-	padding-bottom: 40px;
+	/*padding-bottom: 40px;*/
 	-webkit-animation: AnimationName 30s ease infinite;
 	-moz-animation: AnimationName 30s ease infinite;
 	animation: AnimationName 30s ease infinite;
-	border-bottom: 8px solid #000;
-	-webkit-box-shadow: 0px 7px 20px -7px rgba(0, 0, 0, 0.85);
+	/*border-bottom: 8px solid #000;*/
+/*	-webkit-box-shadow: 0px 7px 20px -7px rgba(0, 0, 0, 0.85);
 	-moz-box-shadow: 0px 7px 20px -7px rgba(0, 0, 0, 0.85);
-	box-shadow: 0px 7px 20px -7px rgba(0, 0, 0, 0.85);
+	box-shadow: 0px 7px 20px -7px rgba(0, 0, 0, 0.85);*/
 	overflow: hidden;
 }
 
@@ -1124,8 +1177,8 @@ body {
 }
 
 .sliderText h1 {
-	font-size: 38px;
-    margin-top:80px;
+	font-size: 60px;
+  margin-top: 50px;
 	margin-bottom: 20px !important;
 	-webkit-animation: fadein 2s;
 	/* Safari, Chrome and Opera > 12.1 */
@@ -1136,10 +1189,14 @@ body {
 	-o-animation: fadein 2s;
 	/* Opera < 12.1 */
 	animation: fadein 2s;
+   letter-spacing: 3px;
 }
 
 .sliderText h2 {
-	font-size: 24px;
+  font-family: "open-sans", sans-serif!important;
+  font-weight: 400;
+  letter-spacing: 1px;
+  font-size: 20px;
 	margin-bottom: 20px !important;
 	-webkit-animation: fadein 4s;
 	/* Safari, Chrome and Opera > 12.1 */
@@ -1649,24 +1706,48 @@ ul.tabs li.current {
 
 footer { color: white; }
 footer a { color: white; }
-footer.x-colophon.bottom { background-color: #4d5357 !important; color: white; font-size: 18px; padding: 80px 0; }
+footer.x-colophon.bottom { background-color: #4d5357 !important; color: white; font-size: 18px; padding: 50px 0; }
 footer .footer-links { font-size: 24px; margin: 40px 0; }
+
+footer .x-colophon-content {
+    font-size: 12px;
+    font-weight: 400;
+    font-family: "open-sans", sans-serif;
+    letter-spacing: 0!important;
+}
+
+footer a {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-family: "open-sans", sans-serif!important;
+    letter-spacing: 1px;
+    font-size: 18px;
+}
+
+footer a:hover{
+		color: #f93919;
+}
 
 .x-navbar .x-brand {
 	margin-right: 20px;
 }
 
 .x-navbar-inner {
-	min-height: 50px !important;
+	min-height: 50px;
+	max-height: 80px !important;
+}
+.x-navbar-inner.whitebg {
+ 	max-height: none!important;
 }
 
 a.x-brand.img {
-	height: 20px;
-	margin-top: 12px;
+	height: 60px;
+	margin-top: 3px;
+	width: 100%;
 }
 
 .x-nav-wrap.desktop {
-	margin-top: 0px;
+	margin-top: 4px;
 }
 
 .userpro-field.userpro-submit.userpro-column {
@@ -2168,3 +2249,445 @@ footer.x-colophon {
 textarea {
   font-size: 16px !important;
 }
+
+
+
+/* ==========================================================================
+	# Home Page
+========================================================================== */
+
+body {
+    background-color: #d6dce0!important;
+}
+
+.x-column.x-sm.x-1-3.sliderText a {
+    display: table;
+    margin: 0 auto;
+    /* position: relative; */
+}
+
+a.btn.btn-primary {
+    background-color: #ffffff;
+    display: inline-block;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-family: "open-sans", sans-serif;
+    padding: 5px 25px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.x-container.max.width {
+    width: 98%;
+}
+
+ul.x-nav.news-widget {
+    background-color: #ebf1f5;
+    padding: 0;
+}
+
+ul.x-nav.news-widget li.news-single {
+    padding: 12px;
+    display: inline-block!important;
+}
+
+li.news-single a {
+    margin: 0;
+    display: block!important;
+    position: relative;
+    float: none;
+}
+
+li.news-single h3 {
+    font-family: "open-sans", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    color: #4d5357;
+    line-height: 1.2;
+    padding-top: 7px!important;
+}
+
+li.news-single .author {
+    font-family: "open-sans", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #868d93;
+    line-height: 1.2;
+    padding: 5px 0px;
+}
+
+li.news-single .author .source {
+    font-weight: 600;
+    color: #1f3a71;
+}
+
+.news-widget{
+  margin-top: 40px;
+  position: relative;
+}
+
+.news-sidebar {
+    position: relative;
+    display: inline-block;
+}
+
+.news-sidebar h2.red-header, .x-column.x-sm.x-2-4.content h2.red-header, .beats-sidebar h2.red-header {
+    font-family: "open-sans", sans-serif!important;
+    font-size: 22px;
+    color: #4d5357;
+    font-weight: 600!important;
+    letter-spacing: 1px;
+    margin-bottom: 15px!important;
+    background-color: #d6dce0;
+    z-index: 9;
+    /* display: inline-block; */
+    position: absolute;
+    padding-right: 10px!important;
+    top: 0;
+}
+
+.news-sidebar::after, .x-column.x-sm.x-2-4.content::after, .beats-sidebar::after {
+    content: " ";
+    height: 18px;
+    background-color: #f93919;
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.x-column.x-sm.x-2-4.content article:nth-of-type(1){
+		margin-top: 40px;
+}
+
+.x-nav.beat-widget {
+    background-color: #ebf1f5;
+    padding: 0;
+    margin-top: 40px;
+}
+
+.x-nav.beat-widget .game {
+		padding: 8px 12px;
+    display: inline-block!important;
+    color: #1f3a71;
+    font-family: "open-sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    border-bottom: 2px solid #dde5eb;
+}
+
+.x-nav.beat-widget .game time, .x-nav.beat-widget .game a{
+    color: #1f3a71;
+}
+
+.x-nav.beat-widget h3 {
+    color: #4d5357;
+    font-family: "open-sans", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    line-height: 1.2;
+    padding: 12px!important;
+    border-bottom: 2px solid #f93919;
+}
+
+.x-column.content .game {
+    margin-top: 0;
+    background-color: #ebf1f5;
+    padding: 12px;
+    margin-bottom: 15px;
+    box-shadow: none;
+}
+.x-column.content .game .entry-featured{
+    box-shadow: none;
+}
+
+
+.x-column.content .game h3 {
+    font-family: "freight-sans-pro", sans-serif;
+    color: #ffffff;
+    text-align: center;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.x-column.content .game .entry-wrap {
+		background-color: transparent;
+}
+
+
+.x-column.content .game .entry-wrap div {
+    font-family: "open-sans", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #868d93;
+    line-height: 1.2;
+    padding: 10px 0px;
+}
+
+
+.x-column.content .game .entry-wrap div a{
+    font-weight: 600;
+    color: #1f3a71;
+}
+
+.x-column.content .game .entry-wrap .entry-content.content {
+    margin: 0;
+    padding-top: 0!important;
+}
+
+.x-column.content .game .entry-wrap .entry-content.content p{
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    color: #848484;
+}
+
+
+
+/* ==========================================================================
+	# League Page
+========================================================================== */
+
+.x-main.full.banner {
+    background-color: #1f3a71;
+}
+
+.x-main.full.banner-teams {
+    background-color: #ffffff;
+}
+
+.standings-sidebar {
+    position: relative;
+    display: block;
+}
+
+.standings-sidebar h2.red-header {
+    font-family: "open-sans", sans-serif!important;
+    font-size: 22px;
+    color: #4d5357;
+    font-weight: 600!important;
+    letter-spacing: 1px;
+    margin-bottom: 15px!important;
+    background-color: #d6dce0;
+    z-index: 9;
+    /* display: inline-block; */
+    position: absolute;
+    padding-right: 10px!important;
+    top: 0;
+}
+
+.standings-sidebar::after {
+    content: " ";
+    height: 18px;
+    background-color: #f93919;
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+ul.x-nav.standings-nav {
+    margin-top: 40px;
+    padding: 12px;
+    background-color: #ebf1f5;
+    margin-bottom: 0;
+}
+
+ul.x-nav.standings-nav a {
+    text-transform: uppercase;
+    font-family: "open-sans", sans-serif!important;
+    font-size: 15px!important;
+    color: #1f3a71;
+    border-bottom: 2px solid #dde5eb;
+    margin: 0;
+    padding-right: 20px;
+}
+
+.standings-sidebar table thead tr th {
+    font-size: 20px;
+    font-family: "open-sans", sans-serif;
+    color: #4d5357;
+    font-weight: 600;
+}
+
+.standings-sidebar table tbody tr td {
+    font-size: 20px;
+    font-family: "open-sans", sans-serif;
+    color: #868d93;
+    font-weight: 600;
+    border: 0;
+}
+
+.standings-sidebar table {
+    display: inline-block;
+    background-color: #ebf1f5;
+}
+
+
+
+/* ==========================================================================
+	# Comments
+========================================================================== */
+
+div#fanStatusFilter a {
+    color: #4d5357;
+    text-transform: uppercase;
+    margin-right: 20px;
+    font-size: 13px;
+    letter-spacing: .2px;
+    padding-bottom: 2px;
+}
+
+div#fanStatusFilter a.active, div#fanStatusFilter a:hover {
+    border-bottom: 2px solid #4d5357;
+}
+
+.wc-post-fan {
+    background-color: #ebf1f5;
+    position: relative;
+}
+
+#wpcomm .wc-comment .wc-comment-right {
+    background: transparent!important;
+}
+
+#wpcomm .wc-comment-author {
+    width: inherit;
+    padding-right: 3px;
+}
+
+.wc-comment-author a {
+    color: #1f3a71 !important;
+}
+
+.wc-comment-author::after {
+    content: " - ";
+    color: #868d93;
+    padding-left: 1px;
+}
+
+#wpcomm .wc-comment-date {
+    float: left;
+    text-align: left;
+}
+
+#wpcomm .wc-comment-footer .wc-vote-img-up, #wpcomm .wc-comment-footer .wc-vote-img-down {
+    opacity: .7;
+}
+
+/* ==========================================================================
+	# Team Page
+========================================================================== */
+
+.content .team-banner {
+    background-color: #070604;
+    margin-top: 40px;
+    position: relative;
+    display: block;
+    text-align: center;
+}
+
+.content .team-banner h2, .content .team-banner h3{
+    color: #ffffff;
+}
+
+.content .team-banner h2 {
+    font-size: 60px;
+    margin-top: 50px;
+    margin-bottom: 20px !important;
+    letter-spacing: 3px;
+}
+
+.content .team-banner h3 {
+    font-family: "open-sans", sans-serif!important;
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-size: 20px;
+    margin-bottom: 20px !important;
+}
+
+/* ==========================================================================
+	# About
+========================================================================== */
+.game-template-default .x-column.x-sm.x-1-2.content h2.red-header, .game-template-default .x-column.x-sm.x-1-2.last.comments h2.red-header{ 
+    font-family: "open-sans", sans-serif!important;
+    font-size: 22px;
+    color: #4d5357;
+    font-weight: 600!important;
+    letter-spacing: 1px;
+    margin-bottom: 15px!important;
+    background-color: #d6dce0;
+    z-index: 9;
+    /* display: inline-block; */
+    position: absolute;
+    padding-right: 10px!important;
+    top: 0;
+}
+
+.game-template-default .x-column.x-sm.x-1-2.content::after, .game-template-default .x-column.x-sm.x-1-2.last.comments::after {
+    content: " ";
+    height: 18px;
+    background-color: #f93919;
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.x-column.x-sm.x-1-2.content header, .x-column.x-sm.x-1-2.last.comments .comments-area  {
+    margin-top: 40px;
+    background-color: #ebf1f5;
+    padding: 12px;
+}
+
+
+
+
+
+
+/* ==========================================================================
+	# About
+========================================================================== */
+
+.entry-wrap {
+    background: transparent;
+    border-radius: 0;
+}
+
+.page-template-default .page-sidebar{
+		margin-left: 10px;
+}
+
+.page-template-default .entry-wrap {
+    border-left: 3px solid #1f3a71;
+    padding: 30px!important;
+}
+
+
+.page-template-default .entry-wrap h2.entry-title {
+    color: #4d5357;
+    font-weight: 600;
+    font-family: "open-sans", sans-serif!important;
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+.page-template-default .page-sidebar a {
+		font-weight: 400!important;
+    font-family: "open-sans", sans-serif;
+    text-transform: uppercase;
+    font-size: 25px;
+}
+
+
+
+
