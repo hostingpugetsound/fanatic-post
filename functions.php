@@ -1000,6 +1000,23 @@ if(isset($_REQUEST['direction'], $_REQUEST['p2p_type'], $_REQUEST['action'], $_R
 
 
 /*
+ * little function to return commonly used variables
+ */
+function fsu_get( $name ) {
+
+    switch( $name ) {
+        case 'user_id':
+            return userpro_get_view_user(get_query_var('up_username'));
+        case 'paged':
+            return (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
+        case 'page_size':
+            return 20;
+        default:
+            return null;
+    }
+}
+
+/*
  * Gets the first letter of each word to create an acronym
  */
 // http://stackoverflow.com/a/16165234/889949
