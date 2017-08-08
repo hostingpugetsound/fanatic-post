@@ -1,6 +1,6 @@
 <div class="my-teams">
-    <h2 class="red-header">My Teams</h2>
-    <div class="light-bg my-teams-container">
+    <h2 class="red-header">Teams</h2>
+    <div class="light-bg teams-container">
         <?php
         foreach ($favorites as $favorite) {
             $perma = get_permalink($favorite);
