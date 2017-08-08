@@ -1,3 +1,8 @@
+<?php
+$user_id = fsu_get( 'user_id' );
+$user = get_user_by( 'id', $user_id );
+?>
+
 <div class="userpro userpro-nostyle userpro-<?php echo $i; ?> userpro-<?php echo $layout; ?>" <?php userpro_args_to_data( $args ); ?>>
 
 	<!--<a href="#" class="userpro-close-popup"><?php /*_e('Close','userpro'); */?></a>-->
