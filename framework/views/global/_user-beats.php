@@ -1,10 +1,10 @@
 <?php
 
-$page_size = 20;
-$user_id = userpro_get_view_user(get_query_var('up_username'));
-$user_id = 32; #test user
 
-$paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
+$user_id = fsu_get( 'user_id' );
+$user = get_user_by( 'id', $user_id );
+$paged = fsu_get( 'paged' );
+$page_size = fsu_get( 'page_size' );
 
 
 $query_args = array(
@@ -17,7 +17,6 @@ $query_args = array(
 );
 
 $post_query = new WP_Query($query_args);
-#vard($post_query);
 
 if ($post_query->have_posts() ) {
     $base_URL = get_stylesheet_directory_uri();
@@ -32,7 +31,20 @@ if ($post_query->have_posts() ) {
                 $beat_type = get_post_meta($post->ID, 'beat-type', true);
                 ?>
                 <div class="mes-article">
-
+                    <?php if (!empty($team_id)){ ?>
+                    <h3>
+                        <a href="<?php echo get_permalink($post->ID) . '?ref=' .$team_id; ?>">
+                        <?php echo sprintf( '%s <span class=type">%s</span>', get_the_title($team_id), ucfirst($beat_type) ); ?>
+                        </a>
+                    </h3>
+                    <?php } ?>
+                    <div class="author">
+                        <?php echo sprintf( 'Posted by <a href="%s">@%s</a> - %s',
+                            home_url() . '/profile/' . $user->user_login,
+                            $user->user_login,
+                            '6/21/17' );
+                        ?>
+                    </div>
                     <div class="mes-article-img">
                         <a href="<?php echo get_permalink($post->ID) . '?ref=' .$team_id; ?>"><?php the_post_thumbnail('medium'); ?></a>
                     </div>
@@ -41,13 +53,6 @@ if ($post_query->have_posts() ) {
                             <?php echo get_the_excerpt(); ?>
                         </div>
 
-                        <div class="mes-team-name">
-                            <?php
-                            if (!empty($team_id)){
-                                ?><a href="<?php echo get_permalink($post->ID) . '?ref=' .$team_id; ?>"><?php echo ucfirst($beat_type) . ' ' . get_the_title($team_id); ?></a><?php
-                            }
-                            ?>
-                        </div>
                     </div>
                     <div class="userpro-clear"></div>
                 </div>

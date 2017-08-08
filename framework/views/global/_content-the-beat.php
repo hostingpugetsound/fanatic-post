@@ -51,8 +51,15 @@ if ( isset($query) && $query->have_posts() ) :
                 <h3 class="entry-title"><?php the_title(); ?></h3>
             </div>
             <div class="entry-wrap">
-                <div>
-                    Posted by <a href="#">@username</a> - 6/21/17
+                <div class="author">
+                    <?php
+                    $user_id = get_the_author_meta( 'ID' );
+                    $user = get_user_by( 'id', $user_id );
+                    echo sprintf( 'Posted by <a href="%s">@%s</a> - %s',
+                        home_url() . '/profile/' . $user->user_login,
+                        $user->user_login,
+                        '6/21/17' );
+                    ?>
                 </div>
                 <?php if ( is_singular() ) : ?>
                     <?php if ( $disable_page_title != 'on' ) { ?>
