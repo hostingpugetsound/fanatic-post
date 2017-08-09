@@ -1,3 +1,33 @@
+<?php
+$default_rss = 'https://sports.yahoo.com/top/rss.xml';
+if( is_singular( 'league' ) )
+    $rss_url = get_post_meta( $post->ID, 'wpcf-league-rss-feed', true );
+elseif( is_singular( 'team' ) )
+    $rss_url = get_post_meta( $post->ID, 'wpcf-team-rss-feed', true );
+else
+    $rss_url = $default_rss;
+
+if( empty($rss_url) )
+    $rss_url = $default_rss;
+
+
+include_once( ABSPATH . WPINC . '/feed.php' );
+
+// Get a SimplePie feed object from the specified feed source.
+$rss = fetch_feed( $rss_url );
+
+$maxitems = 0;
+
+if ( ! is_wp_error( $rss ) ) : // Checks that the object is created correctly
+
+    // Figure out how many total items there are, but limit it to 5. 
+    $maxitems = $rss->get_item_quantity( 5 );
+
+    // Build an array of all the items, starting with element 0 (first element).
+    $rss_items = $rss->get_items( 0, $maxitems );
+
+endif;
+?>
 
 
 
@@ -6,31 +36,20 @@
     <div class="news-sidebar">
         <h2 class="red-header">News</h2>
         <ul class="x-nav news-widget">
+
+        <?php if( $rss_items) : foreach ( $rss_items as $item ) : #vard($item); ?>
             <li class="news-single">
-                <a href="<?php echo home_url(); ?>/about-us/"><img src="//lorempixel.com/293/293" /></a>
-                <h3>Lorem Ipsum dolor Sit Amet, Consectetur</h3>
+                <a href="<?php echo esc_url( $item->get_permalink() ); ?>">
+                    <!--<img src="//lorempixel.com/293/293" />-->
+                    <!--<img src="<?php #echo esc_attr( $item->get_image_url( )); ?>" />-->
+                </a>
+                <h3><?php echo sprintf( '<a href="%s">%s</a>', esc_url( $item->get_permalink() ), esc_html( $item->get_title() ) ); ?></h3>
                 <div class="author">
-                    From <span class="source">Yahoo! News</span> - <time>6/21/17</time>
+                    From <span class="source">Yahoo! News</span> - <time><?php echo $item->get_date('n/j/Y'); ?></time>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit... </p>
+                <p><?php echo $item->get_description(); ?></p>
             </li>
-            <li class="news-single">
-                <a href="<?php echo home_url(); ?>/about-us/"><img src="//lorempixel.com/293/293" /></a>
-                <h3>Lorem Ipsum dolor Sit Amet, Consectetur</h3>
-                <div class="author">
-                    From <span class="source">Yahoo! News</span> - <time>6/21/17</time>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit... </p>
-                <?php x_get_view( 'global', '_ad' ); ?>
-            </li>
-            <li class="news-single">
-                <a href="<?php echo home_url(); ?>/about-us/"><img src="//lorempixel.com/293/293" /></a>
-                <h3>Lorem Ipsum dolor Sit Amet, Consectetur</h3>
-                <div class="author">
-                    From <span class="source">Yahoo! News</span> - <time>6/21/17</time>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit... </p>
-            </li>
+        <?php endforeach; endif; ?>
         </ul>
     </div>
 
