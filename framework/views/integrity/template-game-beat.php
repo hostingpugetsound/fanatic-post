@@ -22,16 +22,6 @@ $gameType = get_post_meta($gameID, 'wpcf-game-type', 1);
 
 global $current_user;
 
-function get_team_beat($team_beats, $team_id, $type)
-{
-    if(isset($team_beats[$team_id][$type]))
-    {
-        return $team_beats[$team_id][$type];
-    }
-
-    return false;
-}
-
 $connectedBeats = new WP_Query(
         array(
                 'connected_type' => 'game_beat_to_game',
@@ -66,37 +56,6 @@ $connectedTeams = new WP_Query(
                 'nopaging' => true
         )
 );
-
-function get_team_link($id){
-
-    if($id && !empty($id))
-    {
-        return get_permalink($id);;
-    }
-
-    return "javascript:void(0)";
-}
-
-function get_team_beat_page_link($id)
-{
-    return get_site_url() . '/game/?t=' . get_post($id)->post_name . '&tid=' . $id;
-}
-
-function get_team_id($teamName, $teamSlug, $connectedTeams){
-
-    foreach($connectedTeams->posts as $team)
-    {
-        if(strtolower(trim($teamSlug)) == strtolower(trim($team->post_name)))
-        {
-            return $team->ID;
-        } else if(strtolower(trim($teamName)) == strtolower(trim($team->post_title)))
-        {
-            return $team->ID;
-        }
-    }
-
-    return false;
-}
 
 //Class added to populate content to gravity form for updating beat
 class Gform_Post_Body {
@@ -308,7 +267,7 @@ function get_active_class($ref_id, $vtype)
 {
     global $ref_team_id;
     global $team_view_type;
-    
+
     if($team_view_type == $vtype && $ref_id == $ref_team_id)
     {
         return ' active current';

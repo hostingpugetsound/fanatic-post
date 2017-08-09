@@ -1088,3 +1088,8 @@ function vard( $d ) {
     var_dump($d);
     echo '</pre>';
 }
+
+
+
+
+require dirname(__FILE__) . '/includes/beats.php';
