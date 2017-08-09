@@ -26,7 +26,7 @@ global $current_user;
 $connectedBeats = new WP_Query(
         array(
                 'connected_type' => 'game_beat_to_game',
-                'connected_items' => get_post(),
+                'connected_items' => get_post($gameID),
                 'nopaging' => true,
                 'post_type' => 'game_beat',
                 'orderby' => 'date',
@@ -53,11 +53,10 @@ if($connectedBeats->post_count > 0)
 $connectedTeams = new WP_Query(
         array(
                 'connected_type' => 'games_to_teams',
-                'connected_items' => get_post(),
+                'connected_items' => get_post($gameID),
                 'nopaging' => true
         )
 );
-
 
 //Class added to populate content to gravity form for updating beat
 class Gform_Post_Body {
