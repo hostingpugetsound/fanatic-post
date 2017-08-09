@@ -6,11 +6,31 @@
 // Page for outputting "The Beat"
 // =============================================================================
 
+
 $args = array(
-    'post_type' => 'game',
-    'posts_per_page' => 6
+    #'connected_type' => 'game_beat_to_game',
+    #'connected_items' => get_post($game_id),
+    #'nopaging' => true,
+    'post_type' => 'game_beat',
+    'post_status' => 'publish',
+    'posts_per_page' => 6,
+    /*
+    'meta_query' => array(
+        array(
+            'key'     => 'team-id',
+            'value'   => $this_team_id,
+            'compare' => '=',
+        ),
+        array(
+            'key'     => 'beat-type',
+            'value'   => 'preview',
+            'compare' => '=',
+        ),
+
+    ),
+    */
 );
-$teams = fagf_get_teams(get_the_ID());
+
 
 
 if( is_front_page() ) {
@@ -72,7 +92,10 @@ if ( isset($query) && $query->have_posts() ) :
                         </h2>
                     </header>
                 <?php endif; ?>
-                <?php x_get_view( 'global', '_content' ); ?>
+                <div class="entry-content content">
+                    <?php the_excerpt(); ?>
+                </div>
+                <?php #x_get_view( 'global', '_content' ); ?>
             </div>
         </article>
 
