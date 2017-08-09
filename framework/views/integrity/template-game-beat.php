@@ -97,10 +97,6 @@ $ref_team_id    = get_post_meta($beatID, 'team-id', 1);
 $team_view_type = get_post_meta($beatID, 'beat-type', 1);
 
 
-function bt_class_postfix($team_id, $beat_type)
-{
-    return $beat_type . '_' . $team_id;
-}
 
 function tab_content($tab_id, $tab_v_type, $game_beat, $beat_team_name, $beat_team_id, $game_id, $ref_team_id, $ref_view_type, $beatwriter_authorised, $is_mobile=FALSE)
 {
@@ -216,64 +212,6 @@ function tab_content($tab_id, $tab_v_type, $game_beat, $beat_team_name, $beat_te
                 ?>
   	</div>
     <?php
-}
-
-function get_sns_url($user_id, $snsname)
-{
-    $sns_url = false;
-
-    $sns_meta_value = get_user_meta($user_id, $snsname, 1);
-
-    if($sns_meta_value)
-    {
-        //check if it is already a url
-        if(strpos($sns_meta_value, 'http') || strpos($sns_meta_value, 'wwww.'))
-        {
-            $sns_url = $sns_meta_value;
-        } elseif($snsname == 'facebook')
-        {
-            $sns_url = "http://facebook.com/" . $sns_meta_value;
-        } elseif($snsname == 'twitter')
-        {
-            $sns_url = "http://twitter.com/" . $sns_meta_value;
-        } elseif($snsname == 'google_plus')
-        {
-            $sns_url = "http://plus.google.com/+" . $sns_meta_value;
-        }
-    }
-    return $sns_url;
-
-}
-
-function get_beat_distinct_url($game_id, $beat, $ref_id, $vtype)
-{
-    if($beat)
-    {
-        $link = get_permalink($beat->ID);
-        
-        if(isset($_GET['ref']) && !empty($_GET['ref']))
-        {
-            $link .= '?ref='. $_GET['ref'];
-        }
-        
-        return $link;
-    } else
-    {
-        return get_site_url() . '/game/' . $game_id . '/?ref='. $_GET['ref'] .'&tid=' . $ref_id . '&vtype=' . $vtype;
-    }
-}
-
-function get_active_class($ref_id, $vtype)
-{
-    global $ref_team_id;
-    global $team_view_type;
-
-    if($team_view_type == $vtype && $ref_id == $ref_team_id)
-    {
-        return ' active current';
-    }
-
-    return false;
 }
 
 $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";

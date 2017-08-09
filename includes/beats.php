@@ -78,3 +78,68 @@ function get_team_id($teamName, $teamSlug, $connectedTeams){
 
     return false;
 }
+
+
+function bt_class_postfix($team_id, $beat_type)
+{
+    return $beat_type . '_' . $team_id;
+}
+
+
+function get_sns_url($user_id, $snsname)
+{
+    $sns_url = false;
+
+    $sns_meta_value = get_user_meta($user_id, $snsname, 1);
+
+    if($sns_meta_value)
+    {
+        //check if it is already a url
+        if(strpos($sns_meta_value, 'http') || strpos($sns_meta_value, 'wwww.'))
+        {
+            $sns_url = $sns_meta_value;
+        } elseif($snsname == 'facebook')
+        {
+            $sns_url = "http://facebook.com/" . $sns_meta_value;
+        } elseif($snsname == 'twitter')
+        {
+            $sns_url = "http://twitter.com/" . $sns_meta_value;
+        } elseif($snsname == 'google_plus')
+        {
+            $sns_url = "http://plus.google.com/+" . $sns_meta_value;
+        }
+    }
+    return $sns_url;
+
+}
+
+function get_beat_distinct_url($game_id, $beat, $ref_id, $vtype)
+{
+    if($beat)
+    {
+        $link = get_permalink($beat->ID);
+
+        if(isset($_GET['ref']) && !empty($_GET['ref']))
+        {
+            $link .= '?ref='. $_GET['ref'];
+        }
+
+        return $link;
+    } else
+    {
+        return get_site_url() . '/game/' . $game_id . '/?ref='. $_GET['ref'] .'&tid=' . $ref_id . '&vtype=' . $vtype;
+    }
+}
+
+function get_active_class($ref_id, $vtype)
+{
+    global $ref_team_id;
+    global $team_view_type;
+
+    if($team_view_type == $vtype && $ref_id == $ref_team_id)
+    {
+        return ' active current';
+    }
+
+    return false;
+}
