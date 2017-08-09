@@ -1029,6 +1029,29 @@ function fsu_get_acronym( $string ) {
 }
 
 
+function fsu_team_circle( $team_id, $big = false ) {
+
+    $short_name = get_post_meta( $team_id, 'wpcf-team-short-name', true );
+    $bg_color = get_post_meta( $team_id, 'wpcf-team-background-color', true );
+    $font_color = get_post_meta( $team_id, 'wpcf-team-font-color', true );
+
+    $style = '';
+    if( empty($short_name) )
+        $short_name = fsu_get_acronym( get_the_title( $team_id ) );
+    if( !empty($bg_color) )
+        $style .= 'background-color: ' . $bg_color;
+    if( !empty($font_color) )
+        $style .= 'color: ' . $font_color;
+
+    return sprintf( '<a href="%s" class="circle" style="%s" data-id="%s">%s</a> ',
+        get_the_permalink( $team_id ),
+        $style,
+        $team_id,
+        $short_name
+    );
+}
+
+
 /*
  * Filters userpro login form field names
  */
