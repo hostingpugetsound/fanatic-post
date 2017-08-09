@@ -1,3 +1,6 @@
+
+jQuery(document).ready(function($) {
+
 jQuery('#favThis').click(function() {
 
     var post_id = jQuery(this).data('id');
@@ -81,5 +84,8 @@ jQuery(function() {
       "hideEasing": "linear",
       "showMethod": "fadeIn",
       "hideMethod": "fadeOut"
-    }
-    
+    };
+
+
+
+});

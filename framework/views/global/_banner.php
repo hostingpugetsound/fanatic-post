@@ -70,7 +70,7 @@ if ( is_singular('league') ) {
         <div class="x-content-band man">
             <div class="x-container max width">
                 <?php if( is_singular('team') ) : ?>
-                    <a class="pull-right" id="favThis" data-id="<?php the_ID(); ?>"><i class="fa fa-plus"></i> Add to Favorites</a>
+                    <span class="teamHeading"><a class="pull-right" id="favThis" data-id="<?php the_ID(); ?>"><i class="fa fa-plus"></i> Add to Favorites</a></span>
                 <?php endif; ?>
                 <h1><?php the_title(); ?></h1>
             </div>
