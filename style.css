@@ -2298,10 +2298,15 @@ ul.x-nav.news-widget li.news-single {
 }
 
 li.news-single a {
+    color: #4d5357;
     margin: 0;
     display: block!important;
     position: relative;
     float: none;
+}
+
+li.news-single a img {
+	width: 100%;
 }
 
 li.news-single h3 {

@@ -47,7 +47,7 @@ endif;
                 <div class="author">
                     From <span class="source">Yahoo! News</span> - <time><?php echo $item->get_date('n/j/Y'); ?></time>
                 </div>
-                <p><?php echo $item->get_description(); ?></p>
+                <div class="description"><?php echo $item->get_description(); ?></div>
             </li>
         <?php endforeach; endif; ?>
         </ul>
