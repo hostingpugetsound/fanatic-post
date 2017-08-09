@@ -36,12 +36,37 @@ $args = array(
 if( is_front_page() ) {
     $query = new WP_Query( $args );
 } elseif( is_singular('league') ) {
-    $args['connected_type'] = 'games_to_teams';
-    $args['connected_items'] = get_the_ID();
-    $args['nopaging'] = true;
+    #$args['connected_type'] = 'games_to_teams';
+    #$args['connected_items'] = get_the_ID();
+    #$args['nopaging'] = true;
+
+
+    $team_ids = [];
+    $teams = fsu_get_teams_from_league( get_the_ID() );
+    foreach( $teams as $team )
+        $team_ids[] = $team->ID;
+
+    $args['meta_query'] = array(
+        array(
+            'key'     => 'team-id',
+            'value'   => $team_ids,
+            'compare' => 'IN',
+        ),
+    );
+
     $query = new WP_Query( $args );
 } elseif( is_singular('team') ) {
+    /*
+    $args['meta_query'] = array(
+        array(
+            'key'     => 'team-id',
+            'value'   => get_the_ID(),
+            'compare' => 'IN',
+        ),
+    );
 
+    $query = new WP_Query( $args );
+    */
 } else {
     $query = $wp_query;
 }
@@ -93,7 +118,7 @@ if ( isset($query) && $query->have_posts() ) :
                     </header>
                 <?php endif; ?>
                 <div class="entry-content content">
-                    <?php the_excerpt(); ?>
+                    <?php echo get_the_excerpt(); ?>
                 </div>
                 <?php #x_get_view( 'global', '_content' ); ?>
             </div>
