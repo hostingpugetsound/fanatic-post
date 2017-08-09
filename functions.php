@@ -1036,6 +1036,8 @@ function fsu_team_circle( $team_id, $big = false ) {
     $font_color = get_post_meta( $team_id, 'wpcf-team-font-color', true );
 
     $style = '';
+    $class = $big ? 'circle big' : 'circle';
+
     if( empty($short_name) )
         $short_name = fsu_get_acronym( get_the_title( $team_id ) );
     if( !empty($bg_color) )
@@ -1043,8 +1045,9 @@ function fsu_team_circle( $team_id, $big = false ) {
     if( !empty($font_color) )
         $style .= 'color: ' . $font_color;
 
-    return sprintf( '<a href="%s" class="circle" style="%s" data-id="%s">%s</a> ',
+    return sprintf( '<a href="%s" class="%s" style="%s" data-id="%s">%s</a> ',
         get_the_permalink( $team_id ),
+        $class,
         $style,
         $team_id,
         $short_name
