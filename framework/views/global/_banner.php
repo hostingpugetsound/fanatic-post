@@ -22,7 +22,7 @@ if ( is_singular('league') ) {
         <div class="x-container max width">
         <?php
 
-        /*
+
         $teams = new WP_Query( array(
             'connected_type' => 'team_to_league',
             'connected_items' => get_the_ID(),
@@ -31,10 +31,10 @@ if ( is_singular('league') ) {
             #'post_type' => 'team',
             'nopaging' => true,
         ) );
-        */
+        $teams = $teams->get_posts();
 
 
-        $teams = fagf_get_teams(get_the_ID());
+        #$teams = fagf_get_teams(get_the_ID());
 
         foreach( $teams as $team )
             echo fsu_team_circle( $team->ID, false );
