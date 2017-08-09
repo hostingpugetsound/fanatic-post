@@ -124,6 +124,7 @@ i.fa.fa-search.fa-lg {
 
 .desktop-menus ul.header-menu {
     width: 11%;
+    width: 12%;
 }
 
 ul#menu-1045 {
@@ -140,15 +141,15 @@ ul#menu-1045 {
 
 .main-dropdown-menu {
 	position: absolute;
-	top: 95%;
+	top: 85%;
 	left: 0;
 	overflow: hidden;
 	visibility: hidden;
 	display: table;
 	table-layout: fixed;
 	height: 100%;
-	border-radius: 5px;
-	background: #2f2f2f;
+	border-radius: 0px;
+	background: #4d5357;
 	box-shadow: 0 0 13px rgba(0, 0, 0, .59);
 	z-index: 100;
 }
@@ -184,16 +185,16 @@ ul#menu-1045 {
 
 .main-dropdown-menu > .dropdown-menu li:hover a,
 .main-dropdown-menu > .dropdown-menu .current a {
-	background: #1a1a1a;
+	background: #f93919;
 }
 
 .main-dropdown-menu > .dropdown-menu-body {
 	padding: 2px 0;
 	border-width: 2px;
 	border-style: solid;
-	border-color: #000;
+	border-color: #ffffff;
 	border-left-color: #646464;
-	border-radius: 0 5px 5px 0;
+	border-radius: 0;
 	background: #fff;
 }
 
@@ -1783,17 +1784,21 @@ a.active {
 }
 
 #wpcomm .wc-comment .wc-comment-left {
-	text-align: left;
+	text-align: right;
 }
 
 #wpcomm .wc-post-fan .wc-comment-left {
 	width: 85px;
 	margin-left: -10px;
+	margin-top: 9px;
+	background: none;
 }
 
 #wpcomm .wc-post-foe .wc-comment-left {
 	width: 85px;
 	margin-right: -10px;
+	margin-top: 9px;
+	background: none;
 }
 
 .wc-post-fan .avatar {
@@ -2447,6 +2452,130 @@ li.news-single .author .source {
     color: #848484;
 }
 
+/* ==========================================================================
+	# Login
+========================================================================== */
+
+#login {
+/*    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    position: absolute;
+    display: none;
+    z-index: 99999999;
+    top: 30%;
+    left: 0;
+    right: 0;*/
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.88);
+    width: 100%;
+    z-index: 99999;
+}
+
+#login.show-login{
+	display: block;
+}
+
+#login .userpro {
+    background-color: #d6dce0;
+    border-radius: 0;
+    width: 100%;
+    max-width: 800px!important;
+    margin: 0 auto;
+    position: absolute;
+    display: none;
+    z-index: 99999999;
+    top: 30%;
+    left: 0;
+    right: 0;
+}
+
+#login.show-login .userpro{
+	display: block;
+}
+
+#login .userpro.userpro-float, #login .userpro.userpro-head {
+    background-color: #d6dce0;
+    border-radius: 0;
+}
+
+#login .userpro .userpro-head {
+    background: #d6dce0 !important;
+    border-bottom: 0;
+}
+
+#login .userpro.userpro-float .userpro-head .userpro-left {
+    font-family: "open-sans", sans-serif!important;
+    font-size: 22px!important;
+    color: #4d5357;
+    font-weight: 600!important;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+
+#login .userpro.userpro-float .userpro-field.userpro-submit.userpro-column {
+    border: 0;
+}
+
+#login input.userpro-button {
+    background: #1f3a71!important;
+    border-radius: 0!important;
+    border: 0!important;
+    padding: 1px 25px!important;
+    text-transform: uppercase;
+    font-family: "open-sans", sans-serif!important;
+    font-size: 17px!important;
+    color: #ffffff!important;
+    max-width: 120px;
+    float: left;
+}
+
+
+#login div.userpro-float div.userpro-input {
+    float: none;
+    width: 100%;
+}
+
+#login div.userpro-float div.userpro-label {
+    float: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#login span.userpro-field-icon {
+    display: none;
+}
+
+#login div.userpro-label label {
+    font-family: "open-sans", sans-serif!important;
+    font-size: 14px!important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/*
+		$('.profilenav_link').click(function(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			$('body').toggleClass('show-login');
+			$('#login').toggleClass('show-login');
+			console.log('show me');
+		});
+
+		$('body.show-login #login').click(function(e) {
+			$('body').toggleClass('show-login');
+			$('#login').toggleClass('show-login');
+			console.log('hide me');
+		});
+*/
+
 
 
 /* ==========================================================================
@@ -2455,10 +2584,30 @@ li.news-single .author .source {
 
 .x-main.full.banner {
     background-color: #1f3a71;
+    border-radius: 0;
 }
 
 .x-main.full.banner-teams {
     background-color: #ffffff;
+    padding: 0;
+    border-radius: 0;
+}
+
+
+.circle {
+    background-color: #1f3a71;
+    display: inline-block;
+    height: 37px;
+    width: 37px;
+    width:50px;
+    height:50px;
+    line-height: 50px;
+    font-size: 12px;
+    border-radius:250px;
+    border-radius: 50%;
+    text-align: center;
+    color: #ffffff;
+    margin: 4px 3px;
 }
 
 .standings-sidebar {
@@ -2510,6 +2659,16 @@ ul.x-nav.standings-nav a {
     padding-right: 20px;
 }
 
+.standings-sidebar li:nth-child(1) a, .standings-sidebar li:nth-child(2) a {
+    width: 50%;
+    text-align: center;
+}
+
+.standings-sidebar li:nth-child(3) a, .standings-sidebar li:nth-child(4) a, .standings-sidebar li:nth-child(5) a {
+    width: 33%;
+    text-align: center;
+}
+
 .standings-sidebar table thead tr th {
     font-size: 20px;
     font-family: "open-sans", sans-serif;
@@ -2523,12 +2682,42 @@ ul.x-nav.standings-nav a {
     color: #868d93;
     font-weight: 600;
     border: 0;
+    padding: 10px;
 }
 
 .standings-sidebar table {
     display: inline-block;
     background-color: #ebf1f5;
 }
+
+
+/* ==========================================================================
+	# League Page
+========================================================================== */
+
+ul.tabs {
+    background-color: #ebf1f5;
+}
+
+ul.tabs li, ul.tabs li.current{
+    background-color: transparent!important;
+}
+
+ul.tabs li a, ul.tabs li.current a{
+	color: #4d5357;
+}
+
+ul.tabs li.current a {
+    font-weight: bold;
+}
+
+.tab-content {
+    background: #ebf1f5!important;
+    border: 0;
+}
+
+
+
 
 
 
@@ -2561,10 +2750,32 @@ div#fanStatusFilter a.active, div#fanStatusFilter a:hover {
 #wpcomm .wc-comment-author {
     width: inherit;
     padding-right: 3px;
+    position: relative;
+}
+
+.wc-comment-author:before {
+    content: " ";
+    border-style: solid;
+    position: absolute;
+    left: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 0;
+    border-left: 12px solid green;
+    top: 10px;
+}
+
+.wc-post-fan .wc-comment-author:before {
+border-left-color: #f93919;
+}
+
+.wc-post-foe .wc-comment-author:before {
+border-left-color: #1f3a71;
 }
 
 .wc-comment-author a {
     color: #1f3a71 !important;
+    padding-left: 20px;
 }
 
 .wc-comment-author::after {
@@ -2616,7 +2827,7 @@ div#fanStatusFilter a.active, div#fanStatusFilter a:hover {
 /* ==========================================================================
 	# About
 ========================================================================== */
-.game-template-default .x-column.x-sm.x-1-2.content h2.red-header, .game-template-default .x-column.x-sm.x-1-2.last.comments h2.red-header{ 
+.game-template-default .x-column.x-sm.x-1-2.content h2.red-header, .game-template-default .x-column.x-sm.x-1-2.last.comments h2.red-header{
     font-family: "open-sans", sans-serif!important;
     font-size: 22px;
     color: #4d5357;
@@ -2690,4 +2901,6 @@ div#fanStatusFilter a.active, div#fanStatusFilter a:hover {
 
 
 
-
+#menu-item-13182, #menu-item-15525, #menu-item-14718, #menu-item-15533, #menu-item-14461, #menu-item-15472, #menu-item-14722, #menu-item-14726, #menu-item-15473, #menu-item-14889{
+	display: none;
+}
