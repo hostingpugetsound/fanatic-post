@@ -2,21 +2,24 @@
 
 $disable_page_title = get_post_meta( get_the_ID(), '_x_entry_disable_page_title', true );
 
-$homeTeamName 				= get_post_meta(get_the_ID(), 'wpcf-home-team-name', 1);
-$awayTeamName 				= get_post_meta(get_the_ID(), 'wpcf-away-team-name', 1);
-
-$homeTeamSlug 				= get_post_meta(get_the_ID(), 'wpcf-home-team', 1);
-$awayTeamSlug 				= get_post_meta(get_the_ID(), 'wpcf-away-team', 1);
-
-
-$gamedate             = get_post_meta(get_the_ID(), 'wpcf-game-date', 1);
-  $date = date("D F j, Y", $gamedate);
-
-$homeScore = get_post_meta(get_the_ID(), 'wpcf-home-team-score', 1);
-$awayScore = get_post_meta(get_the_ID(), 'wpcf-away-team-score', 1);
-
-$gameType = get_post_meta(get_the_ID(), 'wpcf-game-type', 1);
+#$beatID = get_the_ID();
+#$gameID = get_post_meta($beatID, 'game-id', 1);
 $gameID   = get_the_ID();
+
+$homeTeamName 				= get_post_meta($gameID, 'wpcf-home-team-name', 1);
+$awayTeamName 				= get_post_meta($gameID, 'wpcf-away-team-name', 1);
+
+$homeTeamSlug 				= get_post_meta($gameID, 'wpcf-home-team', 1);
+$awayTeamSlug 				= get_post_meta($gameID, 'wpcf-away-team', 1);
+
+
+$gamedate             = get_post_meta($gameID, 'wpcf-game-date', 1);
+$date = date("D F j, Y", $gamedate);
+
+$homeScore = get_post_meta($gameID, 'wpcf-home-team-score', 1);
+$awayScore = get_post_meta($gameID, 'wpcf-away-team-score', 1);
+
+$gameType = get_post_meta($gameID, 'wpcf-game-type', 1);
 
 global $current_user;
 
@@ -307,7 +310,7 @@ function get_beat_distinct_url($game_id, $beat, $ref_id, $vtype)
         
         if(isset($_GET['ref']) && !empty($_GET['ref']))
         {
-            $link .= '/?ref='. $_GET['ref'];
+            $link .= '?ref='. $_GET['ref'];
         }
         
         return $link;
@@ -510,13 +513,13 @@ $awayTeamNameLink = '<a href="'.$awayTeamLink.'">'. $awayTeamName .'</a>';
             <?php //echo do_shortcode('[ssba url="'.$actual_link.'" title="'.$homeTeamName . ' vs ' . $awayTeamName.' Beat Article"]'); ?>
             <div class="ssba ssba-wrap">
               <div style="text-align:center">
-                <a class="ssba_facebook_share" data-dm_post_id="17546" href="http://www.facebook.com/sharer.php?u=<?php echo $actual_link; ?>" >
+                  <a class="ssba_facebook_share" data-dm_post_id="<?php echo $beatID; ?>" href="http://www.facebook.com/sharer.php?u=<?php echo $actual_link; ?>" >
                   <img src="http://fanaticpost.com/wp-content/plugins/simple-share-buttons-adder/buttons/simple/facebook.png" title="Facebook" class="ssba ssba-img" alt="Share on Facebook" />
                 </a>
-                <a class="ssba_twitter_share" data-dm_post_id="17546" href="http://twitter.com/share?url=<?php echo $actual_link; ?>&amp;text=<?php echo $homeTeamName . ' vs ' . $awayTeamName ?>" >
+                <a class="ssba_twitter_share" data-dm_post_id="<?php echo $beatID; ?>" href="http://twitter.com/share?url=<?php echo $actual_link; ?>&amp;text=<?php echo $homeTeamName . ' vs ' . $awayTeamName ?>" >
                   <img src="http://fanaticpost.com/wp-content/plugins/simple-share-buttons-adder/buttons/simple/twitter.png" title="Twitter" class="ssba ssba-img" alt="Tweet about this on Twitter" />
                 </a>
-                <a class="ssba_google_share" data-dm_post_id="17546" href="https://plus.google.com/share?url=<?php echo $actual_link; ?>" >
+                <a class="ssba_google_share" data-dm_post_id="<?php echo $beatID; ?>" href="https://plus.google.com/share?url=<?php echo $actual_link; ?>" >
                   <img src="http://fanaticpost.com/wp-content/plugins/simple-share-buttons-adder/buttons/simple/google.png" title="Google+" class="ssba ssba-img" alt="Share on Google+" />
                 </a>
                 <a class="ssba_email_share" href="mailto:?subject=<?php echo urlencode($homeTeamName . ' vs ' . $awayTeamName); ?>&amp;body=%20<?php echo urlencode($actual_link); ?>">
