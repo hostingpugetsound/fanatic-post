@@ -48,9 +48,14 @@ if ( is_singular('league') ) {
                 $style .= 'background-color: ' . $bg_color;
             if( !empty($font_color) )
                 $style .= 'color: ' . $font_color;
-            ?>
-            <span class="circle" style="<?php echo $style; ?>"><a href="<?php echo get_the_permalink( $team->ID ); ?>"><?php echo $short_name; ?></a></span>
-        <?php } ?>
+
+            echo sprintf( '<a href="%s" class="circle" style="%s">%s</a>',
+                get_the_permalink( $team->ID ),
+                $style,
+                $short_name
+            );
+        }
+        ?>
         </div>
     </div>
 </section>
