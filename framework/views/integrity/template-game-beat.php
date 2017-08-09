@@ -323,87 +323,9 @@ $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 <?php get_header(); ?>
 <script type="text/javascript">
-
-var pageType = '<?php echo "beat_" . $gameID;?>';
-
-  </script>
-  <style>
-  .container{
-  width:100%;
-  margin: 0 auto;
-}
-
-
-
-ul.tabs{
-  margin: 0px;
-  padding: 0px;
-  list-style: none;
-}
-ul.tabs li{
-  background: none;
-  color: #222;
-  display: inline-block;
-  padding: 10px 15px;
-  cursor: pointer;
-}
-
-ul.tabs li {
-  background: #ededed;
-  color: #222;
-}
-
-ul.tabs li.current{
-  background: #FFF;
-  color: #000;
-}
-
-.tab-content{
-  display: none;
-background:#FFF;
-  padding: 15px;
-  width:100%;
-  border-top:2px solid #ededed;
-}
-
-.tab-content.current{
-  display: inherit;
-}
-
-.beat_fan_icon_parent {
-    border-top: medium none;
-    margin: 15px 11px 20px;
-    padding: 1px 0px 0px;
-}
-.beat_fan_icon_parent .beat_fan_icon {
-    margin-left: -10px;
-    width: 85px;
-    background: rgba(0, 0, 0, 0) url("<?php echo get_stylesheet_directory_uri(); ?>/framework/img/global/fan-avatar-flag.png") no-repeat scroll right top;
-    float:left;
-}
-
-.beat_fan_icon_parent .avatar {
-
-    border-radius: 3px;
-    padding: 0;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    display: inline;
-    float: none;
-    height: auto;
-    margin: 0 auto;
-    width: 48px;
-}
-
-.beat_author_link
-{
-    color:#3b5998;
-}
-
-.gfield_label
-{
-    display:none !important;
-}
-
+    var pageType = '<?php echo "beat_" . $gameID;?>';
+</script>
+<style>
 <?php
 if(isset($_GET['update']) && $_GET['update'])
 {
@@ -420,32 +342,6 @@ if(isset($_GET['update']) && $_GET['update'])
     <?php
 }
 ?>
-
-.no_beat_message, h1.gameHeading, h2.gameHeading {
-    text-align: center;
-}
-
-.beatwriter-bio-div {background:#F7F7F7; margin:20px 0px 0px 0px; padding:10px 10px 10px 0; border:1px solid #E6E6E6;}
-.beatwriter-bio-div h4 {margin:0 0 4px 90px; padding:0;}
-.beatwriter-bio-div p {margin:0 0 0 81px; padding:0;}
-.beatwriter-bio-div img {background: #FFF; float:left; margin:0 10px 0 10px; padding:3px; border:1px solid #CCC;}
-.beatwriter-bio-div ul {overflow:hidden; margin:0 0 0 81px; padding:0;}
-.beatwriter-bio-div ul li {list-style-type:none; float:left; margin:8px 6px 0 0; padding:0 0 0 6px; line-height:120%; border-left:1px solid #ccc;}
-.beatwriter-bio-div ul li.first {border:none; padding:0;}
-
-@media (max-width: 768px) {
-    h2.gameHeading {
-        letter-spacing: 1px;
-    }
-
-    ul.tabs li{
-        padding: 10px;
-    }
-
-    .x-main {
-        padding:10px;
-    }
-}
 </style>
 <?php
 $homeTeamNameLink = '<a href="'.$homeTeamLink.'">'. $homeTeamName .'</a>';
