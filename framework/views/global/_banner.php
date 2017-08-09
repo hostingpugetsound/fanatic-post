@@ -36,25 +36,8 @@ if ( is_singular('league') ) {
 
         $teams = fagf_get_teams(get_the_ID());
 
-        foreach( $teams as $team ) {
-            $short_name = get_post_meta($game_id, 'wpcf-team-short-name', true);
-            $bg_color = get_post_meta($game_id, 'wpcf-team-background-color', true);
-            $font_color = get_post_meta($game_id, 'wpcf-team-font-color', true);
-
-            $style = '';
-            if( empty($short_name) )
-                $short_name = fsu_get_acronym( get_the_title( $team->ID ) );
-            if( !empty($bg_color) )
-                $style .= 'background-color: ' . $bg_color;
-            if( !empty($font_color) )
-                $style .= 'color: ' . $font_color;
-
-            echo sprintf( '<a href="%s" class="circle" style="%s">%s</a>',
-                get_the_permalink( $team->ID ),
-                $style,
-                $short_name
-            );
-        }
+        foreach( $teams as $team )
+            echo fsu_team_circle( $team->ID, false );
         ?>
         </div>
     </div>
