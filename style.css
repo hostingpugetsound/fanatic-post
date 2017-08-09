@@ -39,6 +39,7 @@ Template: x
 .x-main.banner { background-color: #1f3a71; color: white; }
 
 .x-main.banner { background-color: #1f3a71; min-height: 215px; padding: 35px 0; }
+.x-main.banner.blank { min-height: 0; height: 5px; padding: 0; }
 .x-main.banner h1 { color: white; font-size: 90px; text-align: center; margin: 0; }
 
 

@@ -64,6 +64,8 @@ if ( is_singular('league') ) {
     </section>
 
 
+<?php } elseif ( is_page( 'profile' ) || is_page( 'my-teams' ) || is_page( 'write-a-beat' ) ) { ?>
+    <section class="x-main full banner blank"></section>
 <?php } else if ( is_page() || is_archive() || is_singular('league') || is_singular('team') ) { ?>
     <section class="x-main full banner">
         <div class="x-content-band man">
@@ -76,7 +78,6 @@ if ( is_singular('league') ) {
         </div>
     </section>
 
-<?php } elseif ( ! is_front_page() && ! is_page( 'home' ) && ! is_page( 'profile' ) && ! is_page( 'search' ) && ! is_search() && ! is_404() ) { ?>
-<?php } else if ( ! is_front_page() ) {
-    echo '<div style="display: block; height: 90px;"></div>';
-} ?>
+<?php } else { ?>
+    <section class="x-main full banner blank"></section>
+<?php } ?>

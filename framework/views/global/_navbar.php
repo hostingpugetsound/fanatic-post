@@ -70,6 +70,4 @@ $sidebarAdSlot = "9635782928";
 
         </div>
     </div>
-<?php } else if ( ! is_front_page() ) {
-    echo '<div style="display: block; height: 90px;"></div>';
-} ?>
+<?php } ?>
