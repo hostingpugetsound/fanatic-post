@@ -6,6 +6,18 @@
 	var clicks = 0;
 	
 	$doc.ready(function() {
+		
+		$('.profilenav_link').click(function(e) {
+			e.stopPropagation();
+			e.preventDefault();
+			$('body').toggleClass('show-login');
+			$('#login').toggleClass('show-login');
+		});
+
+		$('#login').click(function(e) {
+			$('body').toggleClass('show-login');
+			$('#login').toggleClass('show-login');
+		});
 
 		var $mobileMenus = $('.mobile-menus');
 
