@@ -33,8 +33,8 @@
         <li>
             <?php
             if ( is_user_logged_in() ):
-                $first_name = get_user_meta( $current_user->ID, 'first_name', true );
-                $last_name  = get_user_meta( $current_user->ID, 'last_name', true );
+                #$first_name = get_user_meta( $current_user->ID, 'first_name', true );
+                #$last_name  = get_user_meta( $current_user->ID, 'last_name', true );
                 ?>
                 <a class="profilenav_link" href="#">
                     <span class="profilenav_dname">My Account</span>

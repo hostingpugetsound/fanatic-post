@@ -1,4 +1,8 @@
+<?php
 
+global $gameID, $ref_team_id, $team_view_type, $homeTeamNameLink, $homeTeamName, $awayTeamNameLink, $awayTeamLink, $awayTeamName;
+global $gameType, $reverse_teams, $awayTeamID, $homeTeamID;
+?>
 <script type="text/javascript">
     var pageType = '<?php echo "beat_" . $gameID;?>';
 </script>

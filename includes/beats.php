@@ -147,3 +147,137 @@ function get_active_class($ref_id, $vtype)
 
     return false;
 }
+
+
+
+
+if ( !function_exists('tab_content') ) :
+
+function tab_content($tab_id, $tab_v_type, $game_beat, $beat_team_name, $beat_team_id, $game_id, $ref_team_id, $ref_view_type, $beatwriter_authorised, $is_mobile=FALSE)
+{
+    $current_class = (($beat_team_id == $ref_team_id) && ($tab_v_type == $ref_view_type))? 'current' : '';
+    $beatwriter_user_id = get_post_meta($game_id, 'beatwriter_user_team'.$beat_team_id, 1);
+
+    if($beatwriter_user_id)
+    {
+        $author_data = get_userdata($beatwriter_user_id);
+    }
+    ?>
+    <script>
+        document.title = '<?php echo htmlspecialchars($beat_team_name . ' ' . ucfirst($tab_v_type)); ?> ' + document.title;
+    </script>
+    <div id="<?php echo $tab_id; ?>" class="tab-content <?php echo $current_class;?>">
+
+        <?php if($game_beat): ?>
+            <div class="beat_content_<?php echo bt_class_postfix($beat_team_id, $tab_v_type)?>">
+                <?php echo format_beat_content($game_beat->post_content, $game_beat->post_title);?>
+                <?php if($beatwriter_authorised):?>
+                    <a href="javascript:void(0)" class="btn update_link" >Update</a>
+                <?php endif;?>
+                <style>
+                    .gform_container_<?php echo bt_class_postfix($beat_team_id, $tab_v_type)?>
+                    {
+                        display: none;
+                    }
+                </style>
+            </div>
+        <?php elseif(!$beatwriter_authorised):?>
+            <div class="no_beat_message no_beat_message_<?php echo bt_class_postfix($beat_team_id, $tab_v_type)?>">No <?php echo $beat_team_name . ' ' . $tab_v_type;?> content yet available.
+                <?php if($beatwriter_user_id):?>
+                    Beat coming soon by <?php echo $author_data->user_login;?>
+                <?php else:?>
+                    Come back soon.
+                <?php endif;?>
+            </div>
+        <?php endif;?>
+        <div class="gform_container_<?php echo bt_class_postfix($beat_team_id, $tab_v_type)?>">
+            <?php
+            if($beatwriter_authorised):
+                ?>
+                <h4><?php echo $beat_team_name . ' ' . ucfirst($tab_v_type);?> Beat</h4>
+                <?php
+                if(isset($game_beat->post_content)) {
+                    Gform_Post_Body::set_content($game_beat->post_content);
+                    add_filter( 'gform_field_value_pbody', array( 'Gform_Post_Body', 'get_content' ) );
+                }
+
+                gravity_form( 3, false, false, false, array('tid' => $beat_team_id, 'gid' => $game_id, 'btype' => $tab_v_type, 'ref' => $_GET['ref']), true);
+                remove_filter( 'gform_field_value_pbody', array( 'Gform_Post_Body', 'get_content' ) );
+            endif;
+            ?>
+        </div>
+
+        <?php
+        if($beatwriter_user_id):
+
+            $beat_author_default_avatar = '<img width="60" height="60" class="modified avatar avatar-default" src="' . plugins_url(WC_Core::$PLUGIN_DIRECTORY . '/files/img/avatar_default.png') . '" alt=""/>';
+
+            $author_data->profilepicture = get_user_meta($author_data->ID, 'profilepicture', 1);
+            $author_data->description = get_user_meta($author_data->ID, 'description', 1);
+            $author_data->facebook = get_sns_url($author_data->ID, 'facebook');
+            $author_data->twitter = get_sns_url($author_data->ID, 'twitter');
+            $author_data->google_plus = get_sns_url($author_data->ID, 'google_plus');
+            $author_data->website_url = get_user_meta($author_data->ID, 'user_url', 1);
+
+            ?>
+
+            <!--
+                <div class="beatwriter-bio-div">
+                    <div class="beatwriter-bio-div-info">
+
+                        <?php
+            if ($author_data->profilepicture) {
+                echo get_avatar($author_data->ID, 60, '', '', array('class' => 'avatar avatar-60 photo'));
+            } else {
+                echo $beat_author_default_avatar;
+            }
+            ?>
+
+                        <h4>About <?php echo $author_data->display_name;?></h4>
+                        <p class="beatwriter-bio-div-text">FANATICPOST Beat Writer</p>
+                        <p class="beatwriter-bio-div-text"><?php echo $author_data->display_name;?> has written <?php echo number_format_i18n(count_user_posts($author_data->ID,'game_beat'));?> beat(s) on this website.</p>
+                        <p class="beatwriter-bio-div-meta"><?php echo $author_data->description;?></p>
+                        <ul>
+                            <li class="first">
+                                <a href="<?php echo get_site_url() . '/beats/' . $author_data->user_login;?>">
+                                    View all beats by <?php echo $author_data->display_name;?> <span class="meta-nav">→</span>
+                                </a>
+                            </li>
+                            <li><a title="View <?php echo $author_data->display_name;?>'s profile" href="<?php echo get_site_url() . '/profile/' . $author_data->user_login;?>">Profile</a></li>
+                            <?php if($author_data->twitter):?>
+                            <li><a rel="external" title="Follow <?php echo $author_data->display_name;?> on Twitter" href="<?php echo $author_data->twitter;?>">Twitter</a></li>
+                            <?php endif;?>
+                            <?php if($author_data->facebook):?>
+                            <li><a rel="external" title="Be <?php echo $author_data->display_name;?>'s friend on Facebook" href="<?php echo $author_data->facebook;?>">Facebook</a></li>
+                            <?php endif;?>
+                            <?php if($author_data->google_plus):?>
+                            <li><a title="Add <?php echo $author_data->display_name;?> in your circle" rel="me" href="<?php echo $author_data->google_plus;?>">Google+</a></li>
+                            <?php endif;?>
+                            <?php if($author_data->website_url):?>
+                            <li><a title="Visit <?php echo $author_data->display_name;?>'s website" rel="me" href="<?php echo $author_data->website_url;?>">Website</a></li>
+                            <?php endif;?>
+                        </ul>
+                    </div>
+                </div>
+                -->
+
+        <?php endif;?>
+
+        <?php
+
+        if($game_beat)
+        {
+            #global $post;
+
+            $post = get_post($game_beat->ID);
+
+            setup_postdata( $post );
+
+            #x_get_view( 'global', '_comments-template' );
+        }
+        ?>
+    </div>
+    <?php
+}
+
+endif;
