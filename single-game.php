@@ -90,9 +90,11 @@ if( isset( $_GET['tid'] ) && $_GET['tid'] ) {
 $team_view_type = (isset( $_GET['vtype'] ) && $_GET['vtype'] == 'recap') ? 'recap' : 'preview';
 
 
-?>
+$homeTeamNameLink = '<a href="'.$homeTeamLink.'">'. $homeTeamName .'</a>';
+$awayTeamNameLink = '<a href="'.$awayTeamLink.'">'. $awayTeamName .'</a>';
+get_header();
 
-<?php get_header(); ?>
+?>
 <script>
     var pageType = 'team';
 </script>

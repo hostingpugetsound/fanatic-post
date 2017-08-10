@@ -62,7 +62,20 @@ if ( is_singular('league') ) {
             </div>
         </div>
     </section>
+<?php
+} elseif( is_singular( 'game' ) ) {
 
+    global $reverse_teams, $awayTeamNameLink, $awayTeamName, $awayTeamLink, $homeTeamNameLink, $homeTeamName, $homeTeamLink, $date, $gameType;
+    ?>
+
+    <section class="x-main full banner">
+        <div class="x-content-band man">
+            <div class="x-container max width">
+                <h1><?php echo ($reverse_teams)? $awayTeamNameLink . ' at ' . $homeTeamNameLink : $homeTeamNameLink . ' vs ' . $awayTeamNameLink; ?></h1>
+                <h2><?php echo $date; echo !empty($gameType)? " - " . $gameType : ""; ?></h2>
+            </div>
+        </div>
+    </section>
 
 <?php } elseif ( is_page( 'profile' ) || is_page( 'my-teams' ) || is_page( 'write-a-beat' ) ) { ?>
     <section class="x-main full banner blank"></section>
