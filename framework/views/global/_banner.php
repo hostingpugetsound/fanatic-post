@@ -65,13 +65,22 @@ if ( is_singular('league') ) {
 <?php
 } elseif( is_singular( 'game' ) ) {
 
-    global $reverse_teams, $awayTeamNameLink, $awayTeamName, $awayTeamLink, $homeTeamNameLink, $homeTeamName, $homeTeamLink, $date, $gameType;
+    global $reverse_teams, $awayTeamNameLink, $awayTeamName, $awayTeamLink, $awayScore,
+           $homeTeamNameLink, $homeTeamName, $homeTeamLink, $homeScore, $date, $gameType;
     ?>
 
     <section class="x-main full banner">
         <div class="x-content-band man">
             <div class="x-container max width">
-                <h1><?php echo ($reverse_teams)? $awayTeamNameLink . ' at ' . $homeTeamNameLink : $homeTeamNameLink . ' vs ' . $awayTeamNameLink; ?></h1>
+                <h1><?php
+                    $awayScore2 = maybe_echo_score($awayScore) ? ' (' . maybe_echo_score($awayScore) . ') ' : '';
+                    $homeScore2 = maybe_echo_score($homeScore) ? ' (' . maybe_echo_score($homeScore) . ') ' : '';
+                    if(($reverse_teams) ) {
+                        echo $awayTeamNameLink . $awayScore2 . ' at ' . $homeTeamNameLink . $homeScore2;
+                    } else {
+                        echo $homeTeamNameLink . $homeScore2 . ' vs ' . $awayTeamNameLink . $awayScore2;
+                    }
+                ?></h1>
                 <h2><?php echo $date; echo !empty($gameType)? " - " . $gameType : ""; ?></h2>
             </div>
         </div>

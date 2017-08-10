@@ -1,7 +1,7 @@
 <?php
 
-global $gameID, $ref_team_id, $team_view_type, $homeTeamNameLink, $homeTeamName, $homeTeamLink, $awayTeamNameLink, $awayTeamLink, $awayTeamName;
-global $gameType, $reverse_teams, $awayTeamID, $homeTeamID;
+global $gameID, $ref_team_id, $team_view_type, $homeTeamNameLink, $homeTeamName, $homeTeamLink, $homeScore, $awayTeamNameLink, $awayTeamLink, $awayTeamName, $awayScore;
+global $gameType, $reverse_teams, $awayTeamID, $homeTeamID, $date;
 ?>
 <script type="text/javascript">
     var pageType = '<?php echo "beat_" . $gameID;?>';
@@ -24,17 +24,19 @@ global $gameType, $reverse_teams, $awayTeamID, $homeTeamID;
 <meta property="og:description" content="Read the beat writers take on the <?php echo $homeTeamName . ' vs ' . $awayTeamName; ?> game on <?php echo $date; ?>" />
 <header class="entry-header">
 
+    <!--
     <h1 class="gameHeading"><?php echo ($reverse_teams)? $awayTeamNameLink . ' at ' . $homeTeamNameLink : $homeTeamNameLink . ' vs ' . $awayTeamNameLink; ?></h1>
     <h2 class="gameHeading"><?php echo $date; echo !empty($gameType)? " - " . $gameType : ""; ?></h2>
+    -->
 
     <br />
 
-    <?php if($reverse_teams):?>
-        <h2 class="gameHeading" style="float:left"><a href="<?= get_team_beat_page_link($awayTeamID); ?>"><?= $awayTeamName; ?></a><?php echo (is_numeric($awayScore))? ': ' . $awayScore:''?></h2>
-        <h2 class="gameHeading" style="float:right"><a href="<?= get_team_beat_page_link($homeTeamID)?>"><?php echo $homeTeamName; ?></a><?php echo (is_numeric($homeScore))? ': ' . $homeScore:''?></h2>
+    <?php if($reverse_teams): ?>
+        <h3 style="float:left"><?php echo $awayTeamName; echo maybe_echo_score($awayScore) ? ': ' . maybe_echo_score($awayScore) : ''; ?></h3>
+        <h3 style="float:right"><?php echo $homeTeamName; echo maybe_echo_score($homeScore) ? ': ' . maybe_echo_score($homeScore) : ''; ?></h3>
     <?php else:?>
-        <h2 class="gameHeading" style="float:left"><a href="<?= get_team_beat_page_link($homeTeamID)?>"><?php echo $homeTeamName; ?></a><?php echo (is_numeric($homeScore))? ': ' . $homeScore:''?></h2>
-        <h2 class="gameHeading" style="float:right"><a href="<?= get_team_beat_page_link($awayTeamID); ?>"><?= $awayTeamName; ?></a><?php echo (is_numeric($awayScore))? ': ' . $awayScore:''?></h2>
+        <h3 style="float:right"><?php echo $homeTeamName; echo maybe_echo_score($homeScore) ? ': ' . maybe_echo_score($homeScore) : ''; ?></h3>
+        <h3 style="float:left"><?php echo $awayTeamName; echo maybe_echo_score($awayScore) ? ': ' . maybe_echo_score($awayScore) : ''; ?></h3>
     <?php endif;?>
 
 

@@ -1,5 +1,5 @@
 <?php
-global $current_user, $gameID, $homeTeamID, $homeTeamName, $awayTeamID, $awayTeamName;
+global $current_user, $gameID, $homeTeamID, $homeTeamName, $awayTeamID, $awayTeamName, $ref_team_id, $team_view_type;
 
 //Class added to populate content to gravity form for updating beat
 class Gform_Post_Body
@@ -33,7 +33,6 @@ include dirname(__FILE__) . '/beat-title.php';
         $awaywriter_authorised = (!empty($current_user->ID) && $awaywriter_user_id == $current_user->ID);
         ?>
 
-        <div style="clear:both;"></div>
         <!--
         <div class="share_custom_class">
             <?php //echo do_shortcode('[ssba url="'.$actual_link.'" title="'.$homeTeamName . ' vs ' . $awayTeamName.' Beat Article"]'); ?>

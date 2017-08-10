@@ -281,3 +281,13 @@ function tab_content($tab_id, $tab_v_type, $game_beat, $beat_team_name, $beat_te
 }
 
 endif;
+
+
+
+function maybe_echo_score( $score ) {
+    if( is_numeric($score) && isset($_GET['vtype']) ) {
+        if( $_GET['vtype'] == 'recap' )
+            return $score;
+    }
+    return '';
+}
