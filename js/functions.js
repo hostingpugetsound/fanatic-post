@@ -14,7 +14,7 @@
 			$('#login').toggleClass('show-login');
 		});
 
-		$('#login').click(function(e) {
+		$('.userpro-close-popup').click(function(e) {
 			$('body').toggleClass('show-login');
 			$('#login').toggleClass('show-login');
 		});
