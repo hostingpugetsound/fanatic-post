@@ -984,7 +984,7 @@ div.userpro {
 }
 
 .adWrapper {
-	padding: 0 20px;
+	padding: 0px;
 }
 
 .adContainer {
@@ -2513,6 +2513,20 @@ li.news-single .author .source {
 #login .userpro .userpro-head {
     background: #d6dce0 !important;
     border-bottom: 0;
+  	padding-top: 40px;
+}
+
+.show-login .userpro-close-popup {
+    display: block!important;
+    top: 31%;
+    position: absolute;
+    color: #f93919;
+    width: 100%;
+    max-width: 800px!important;
+    margin: 0 auto;
+    left: 30px;
+    right: 0;
+    z-index: 9999999999999;
 }
 
 #login .userpro.userpro-float .userpro-head .userpro-left {
@@ -2614,6 +2628,12 @@ li.news-single .author .source {
     text-align: center;
     color: #ffffff;
     margin: 4px 3px;
+}
+
+.circle.big{
+    width:80px;
+    height:80px;
+    line-height: 80px;
 }
 
 .standings-sidebar {
@@ -2721,10 +2741,6 @@ ul.tabs li.current a {
     background: #ebf1f5!important;
     border: 0;
 }
-
-
-
-
 
 
 /* ==========================================================================
@@ -2910,3 +2926,56 @@ border-left-color: #1f3a71;
 #menu-item-13182, #menu-item-15525, #menu-item-14718, #menu-item-15533, #menu-item-14461, #menu-item-15472, #menu-item-14722, #menu-item-14726, #menu-item-15473, #menu-item-14889{
 	display: none;
 }
+
+
+
+/* ==========================================================================
+	# Profile Page
+========================================================================== */
+
+.page-template-template-user-profile .userpro.userpro-float {
+    background: transparent;
+}
+
+.page-template-template-user-profile .mes-article h3 a {
+    font-family: "open-sans", sans-serif!important;
+    font-size: 19px;
+    color: #4d5357!important;
+    font-weight: 600!important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.page-template-template-user-profile #mes-articles-wrap .mes-article {
+    background-color: #ebf1f5!important;
+    margin: 30px 0;
+    padding: 0 15px!important;
+}
+
+.page-template-template-user-profile #mes-articles-wrap .mes-article .author {
+    font-family: "open-sans", sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #868d93;
+    line-height: 1.2;
+    padding: 5px 0px;
+}
+
+.page-template-template-user-profile #mes-articles-wrap .mes-article .author a {
+    font-weight: 600;
+}
+
+.page-template-template-user-profile #mes-articles-wrap .mes-article-content {
+    font-weight: 500!important;
+    padding: 10px 0!important;
+}
+
+.page-template-template-user-profile #mes-articles-wrap .mes-article-title {
+    padding-bottom: 10px;
+    font-weight: normal;
+}
+
+
+
+
+
