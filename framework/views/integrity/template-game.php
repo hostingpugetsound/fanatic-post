@@ -173,6 +173,7 @@ function tab_content($tab_id, $tab_v_type, $game_beat, $beat_team_name, $beat_te
 
                 ?>
 
+                <!--
                 <div class="beatwriter-bio-div">
                     <div class="beatwriter-bio-div-info">
 
@@ -210,6 +211,7 @@ function tab_content($tab_id, $tab_v_type, $game_beat, $beat_team_name, $beat_te
                         </ul>
                     </div>
                 </div>
+                -->
 
                 <?php endif;?>
 
@@ -217,13 +219,13 @@ function tab_content($tab_id, $tab_v_type, $game_beat, $beat_team_name, $beat_te
 
                 if($game_beat)
                 {
-                    global $post;
+                    #global $post;
 
                     $post = get_post($game_beat->ID);
 
                     setup_postdata( $post );
 
-                    x_get_view( 'global', '_comments-template' );
+                    #x_get_view( 'global', '_comments-template' );
                 }
                 ?>
   	</div>
@@ -272,21 +274,8 @@ include dirname(__FILE__) . '/beat-title.php';
         </div>
         -->
 
-  	<ul class="tabs">
-                <li class="tab-link <?php echo get_active_class(($reverse_teams)? $awayTeamID : $homeTeamID, 'preview'); ?>" data-tab="<?php echo ($reverse_teams)? 'awaypregame':'homepregame';?>">
-                    <a href="<?php echo get_beat_distinct_url($gameID, ($reverse_teams)? $awayTeamPreview : $homeTeamPreview, ($reverse_teams)? $awayTeamID : $homeTeamID, 'preview'); ?>">Preview</a>
-                </li>
-  		<li class="tab-link <?php echo get_active_class(($reverse_teams)? $awayTeamID : $homeTeamID, 'recap'); ?>" data-tab="<?php echo ($reverse_teams)? 'awaypostgame':'homepostgame'?>">
-                    <a href="<?php echo get_beat_distinct_url($gameID, ($reverse_teams)? $awayTeamRecap : $homeTeamRecap, ($reverse_teams)? $awayTeamID : $homeTeamID, 'recap'); ?>">Recap</a>
-                </li>
 
-                <li class="tab-link <?php echo get_active_class(($reverse_teams)? $homeTeamID : $awayTeamID, 'recap'); ?>" data-tab="<?php echo ($reverse_teams)? 'homepostgame':'awaypostgame'?>" style="float:right">
-                    <a href="<?php echo get_beat_distinct_url($gameID, ($reverse_teams)? $homeTeamRecap : $awayTeamRecap, ($reverse_teams)? $homeTeamID : $awayTeamID, 'recap'); ?>">Recap</a>
-                </li>
-                <li class="tab-link <?php echo get_active_class(($reverse_teams)? $homeTeamID : $awayTeamID, 'preview'); ?>" data-tab="<?php echo ($reverse_teams)? 'homepregame':'awaypregame'?>" style="float:right">
-                    <a href="<?php echo get_beat_distinct_url($gameID, ($reverse_teams)? $homeTeamPreview : $awayTeamPreview, ($reverse_teams)? $homeTeamID : $awayTeamID, 'preview'); ?>">Preview</a>
-                </li>
-  	</ul>
+    <?php include dirname(__FILE__) . '/beat-tabs.php'; ?>
         <div>
         <?php
 
