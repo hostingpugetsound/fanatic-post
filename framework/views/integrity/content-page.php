@@ -17,9 +17,9 @@ $disable_page_title = get_post_meta( get_the_ID(), '_x_entry_disable_page_title'
   <div class="entry-wrap">
     <?php if ( is_singular() ) : ?>
       <?php if ( $disable_page_title != 'on' ) { ?>
-      <header class="entry-header">
-        <h2 class="entry-title"><?php the_title(); ?></h2>
-      </header>
+      <!--<header class="entry-header">
+        <h2 class="entry-title"><?php /*the_title(); */?></h2>
+      </header>-->
       <?php } ?>
     <?php else : ?>
     <header class="entry-header">
