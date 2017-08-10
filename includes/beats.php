@@ -291,3 +291,50 @@ function maybe_echo_score( $score ) {
     }
     return '';
 }
+
+
+function create_beat( $beat_type, $game_id, $team_id, $ref_team_id = null ) {
+    // @todo check for existing beat w/ same beat type, game id, team id
+    // @todo: also check for total pts
+    if( $ref_team_id == null )
+        $ref_team_id = $team_id;
+
+
+    $exists = false;
+    if( !$exists ) {
+        $insert = wp_insert_post( array(
+            'post_content' => $_POST['body'],
+            'post_status' => 'publish', #'draft',
+            'post_type' => 'game_beat',
+            'meta_input' => [
+                'beat-type' => $beat_type,
+                'game-id' => $game_id,
+                'team-id' => $team_id,
+                'ref-team-id' => $ref_team_id,
+            ]
+        ) );
+
+        if( $insert ) {
+
+            p2p_create_connection( 'game_beat_to_game',
+                array(
+                    'from' => $insert,
+                    'to' => $game_id,
+                    'meta' => array(
+                        'date' => current_time('mysql')
+                    )
+                )
+            );
+        }
+
+        return $insert;
+
+    }
+
+
+    return false;
+
+
+    # todo: subtract points from user
+
+}

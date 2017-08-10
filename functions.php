@@ -1070,6 +1070,22 @@ function fsu_get_teams_from_league( $league_id ) {
 
 }
 
+function fsu_get_teams_from_game( $game_id ) {
+
+
+    $teams = new WP_Query( array(
+        'connected_type' => 'games_to_teams',
+        'connected_items' => $game_id,
+        'order' => 'DESC',
+        'orderby' => 'post_title',
+        'nopaging' => true,
+    ) );
+
+    return $teams->get_posts();
+
+}
+
+
 /*
  * Filters userpro login form field names
  */
