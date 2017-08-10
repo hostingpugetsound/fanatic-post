@@ -115,6 +115,9 @@ function get_sns_url($user_id, $snsname)
 
 function get_beat_distinct_url($game_id, $beat, $ref_id, $vtype)
 {
+    return get_site_url() . '/game/' . $game_id . '/?ref='. $_GET['ref'] .'&tid=' . $ref_id . '&vtype=' . $vtype;
+
+    /*
     if($beat)
     {
         $link = get_permalink($beat->ID);
@@ -129,6 +132,7 @@ function get_beat_distinct_url($game_id, $beat, $ref_id, $vtype)
     {
         return get_site_url() . '/game/' . $game_id . '/?ref='. $_GET['ref'] .'&tid=' . $ref_id . '&vtype=' . $vtype;
     }
+    */
 }
 
 function get_active_class($ref_id, $vtype)
