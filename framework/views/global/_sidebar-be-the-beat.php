@@ -1,18 +1,16 @@
 <?php
 $date_format = 'Y-m-d';
-$game_date_key = 'wpcf-game-date';
-$game_time_key = 'wpcf-game-type';
 
 $args = array(
     'post_type' => 'game',
     'posts_per_page' => 20,
     'order'      => 'ASC',
     'orderby' => 'meta_value_num',
-    'meta_key' => $game_date_key,
+    'meta_key' => 'wpcf-game-date',
     'meta_type' => 'DATE',
     'meta_query' => array(
         array(
-            'key'     => $game_date_key,
+            'key'     => 'wpcf-game-date',
             'value'   => strtotime( date($date_format) ),
             'compare' => '>=',
         ),
@@ -70,8 +68,8 @@ if( is_front_page() ) {
         $current_date = 0;
         if ( $query->have_posts() ) : while ( $query->have_posts() ) : $query->the_post();
             $i = 0;
-            $game_date = get_post_meta( get_the_ID(), $game_date_key, true );
-            $game_time = get_post_meta( get_the_ID(), $game_time_key, true );
+            $game_date = get_post_meta( get_the_ID(), 'wpcf-game-date', true );
+            $game_time = get_post_meta( get_the_ID(), 'wpcf-game-type', true );
 
             if( $current_date != $game_date ) {
                 $current_date = $game_date;

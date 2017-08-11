@@ -112,6 +112,10 @@
 		}
 
 		return this.height(maxHeight);
-	}
+	};
+
+
+
+    $( "#tabs" ).tabs();
 
 })(jQuery, window, document);
