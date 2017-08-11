@@ -1041,9 +1041,9 @@ function fsu_team_circle( $team_id, $big = false ) {
     if( empty($short_name) )
         $short_name = fsu_get_acronym( get_the_title( $team_id ) );
     if( !empty($bg_color) )
-        $style .= 'background-color: ' . $bg_color;
+        $style .= 'background-color: ' . $bg_color . ';';
     if( !empty($font_color) )
-        $style .= 'color: ' . $font_color;
+        $style .= 'color: ' . $font_color . ';';
 
     return sprintf( '<a href="%s" class="%s" style="%s" data-id="%s">%s</a> ',
         get_the_permalink( $team_id ),
