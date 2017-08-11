@@ -837,7 +837,7 @@ border-bottom-right-radius: 100%30%;    */
 
 .x-nav li a {
 	color: white;
-	font-family: "Roboto" !important;
+	/*font-family: "Roboto" !important;*/
 	font-size: 12pt !important;
 	font-weight: bold;
 	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.66);
@@ -2268,7 +2268,7 @@ body {
 
 .x-column.x-sm.x-1-3.sliderText a {
     display: table;
-    margin: 0 auto;
+    margin: 10 auto;
     /* position: relative; */
 }
 
@@ -2309,7 +2309,7 @@ li.news-single a img {
 	width: 100%;
 }
 
-li.news-single h3 {
+li.news-single h3 a {
     font-family: "open-sans", sans-serif;
     font-size: 18px;
     font-weight: 600;
@@ -2462,6 +2462,15 @@ li.news-single .author .source {
 	# Login
 ========================================================================== */
 
+ .desktop-secondary .right ul.inline.hidden-sm-down li:nth-child(1){
+ 	display: none;
+ }
+
+ .logged-in .desktop-secondary .right ul.inline.hidden-sm-down li:nth-child(1){
+ 	display: inline-block;
+ }
+
+
 #login {
 /*    width: 100%;
     max-width: 800px;
@@ -2473,7 +2482,7 @@ li.news-single .author .source {
     left: 0;
     right: 0;*/
     display: none;
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
@@ -2596,7 +2605,14 @@ li.news-single .author .source {
 		});
 */
 
+.page-id-7216 .entry-content #login, .page-id-7216 .entry-content #login .userpro {
+	display: block!important;
+	position: relative;
+}
 
+.page-id-7216 .entry-content #login .userpro-close-popup{
+	display: none!important;
+}
 
 /* ==========================================================================
 	# League Page
@@ -2717,8 +2733,10 @@ ul.x-nav.standings-nav a {
 }
 
 
+
+
 /* ==========================================================================
-	# League Page
+	# Game Page
 ========================================================================== */
 
 ul.tabs {
@@ -2742,6 +2760,28 @@ ul.tabs li.current a {
     border: 0;
 }
 
+.single-game .full.banner{
+	text-align: center;
+}
+
+.single-game .full.banner h1 a, .single-game .full.banner h1, .single-game .full.banner h2 {
+    font-family: "freight-sans-pro", sans-serif;
+    color: #ffffff;
+    text-align: center;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 37px;
+}
+
+.single-game header.entry-header h3 {
+    font-family: "open-sans", sans-serif!important;
+    font-size: 22px;
+    color: #4d5357;
+    font-weight: 600!important;
+    text-transform: uppercase;
+    letter-spacing: .2px;
+}
 
 /* ==========================================================================
 	# Comments
@@ -2813,6 +2853,12 @@ border-left-color: #1f3a71;
 
 #wpcomm .wc-comment-footer .wc-vote-img-up, #wpcomm .wc-comment-footer .wc-vote-img-down {
     opacity: .7;
+}
+
+#wpcomm .wc-form-wrapper {
+    background: #ebf1f5!important;
+    padding: 10px!important;
+    margin-bottom: 10px;
 }
 
 /* ==========================================================================
