@@ -29,7 +29,9 @@
           <div class="x-colophon-content">
             <?php echo x_get_option( 'x_footer_content' ); ?>
 
-
+              <a href="<?php echo home_url(); ?>/how-it-works">How FP Works</a> | <a href="<?php echo home_url(); ?>/terms">Terms & Conditions</a> | <a href="<?php echo home_url(); ?>/privacy">Privacy Policy</a> | <a href="<?php echo home_url(); ?>/contact">Contact</a>
+              <br /><br />
+              Copyright <?php echo date('Y'); ?> FanaticPost
           </div>
         <?php endif; ?>
 
