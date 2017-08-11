@@ -2462,14 +2462,6 @@ li.news-single .author .source {
 	# Login
 ========================================================================== */
 
- .desktop-secondary .right ul.inline.hidden-sm-down li:nth-child(1){
- 	display: none;
- }
-
- .logged-in .desktop-secondary .right ul.inline.hidden-sm-down li:nth-child(1){
- 	display: inline-block;
- }
-
 
 #login {
 /*    width: 100%;

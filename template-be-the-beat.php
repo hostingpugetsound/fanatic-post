@@ -88,7 +88,7 @@ function games_list_view( WP_Query $query ) {
                 if( is_user_logged_in() )
                     $button = '<a class="btn btn-primary right" href="' . home_url() . '/write-a-beat/?game=' . get_the_ID() . '">Be The Beat</a>';
                 else
-                    $button = '<a class="btn btn-primary right" href="' . home_url() . '/create-a-account">Sign Up</a>';
+                    $button = '<a class="btn btn-primary right" href="' . home_url() . '/create-account">Sign Up</a>';
 
                 echo sprintf(
                     '<div class="game"><a href="%s">%s @ %s</a> <time>%s</time> (500 pts) %s</div>',

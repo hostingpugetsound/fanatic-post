@@ -29,7 +29,11 @@
     </div>
     <div class="column right">
         <ul class="inline hidden-sm-down">
-        <li><a href="<?php echo home_url(); ?>/my-teams/">My Teams</a></li>
+        <?php if ( is_user_logged_in() ) { ?>
+            <li><a href="<?php echo home_url(); ?>/my-teams/">My Teams</a></li>
+        <?php } else { ?>
+            <li><a href="<?php echo home_url(); ?>/create-account/">Sign Up</a></li>
+        <?php } ?>
         <li>
             <?php
             if ( is_user_logged_in() ):
