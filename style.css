@@ -2374,15 +2374,15 @@ li.news-single .author .source {
 		margin-top: 40px;
 }
 
-.x-nav.beat-widget {
+.beat-widget {
     background-color: #ebf1f5;
     padding: 0;
     margin-top: 40px;
 }
 
-.x-nav.beat-widget .game {
+.beat-widget .game {
 		padding: 8px 12px;
-    display: inline-block!important;
+    /*display: inline-block!important;*/
     color: #1f3a71;
     font-family: "open-sans", sans-serif;
     font-size: 14px;
@@ -2390,11 +2390,11 @@ li.news-single .author .source {
     border-bottom: 2px solid #dde5eb;
 }
 
-.x-nav.beat-widget .game time, .x-nav.beat-widget .game a{
+.beat-widget .game time, .beat-widget .game a{
     color: #1f3a71;
 }
 
-.x-nav.beat-widget h3 {
+.beat-widget h3 {
     color: #4d5357;
     font-family: "open-sans", sans-serif;
     font-size: 18px;
