@@ -114,9 +114,10 @@ function games_list_view( WP_Query $query ) {
 <script>
     jQuery(document).ready(function ($) {
         $("#tab-links a").click(function (e) {
+            $("#tab-links a").removeClass('active');
+            $(this).addClass('active');
             e.preventDefault();
             var tab = $(this).data('tab');
-            console.log(tab);
             $('#tabs > div.tab:visible').fadeOut();
             $('#tabs #' + tab).fadeIn();
         });
@@ -125,7 +126,7 @@ function games_list_view( WP_Query $query ) {
     <div class="<?php x_main_content_class(); ?>" role="main">
         <div class="x-container max width">
             <div class="x-column x-sm x-1-1 content be-the-beat">
-                <ul id="tab-links">
+                <ul id="tab-links" class="inline">
                     <li><a href="#" data-tab="tabs-1">All</a></li>
                     <li><a href="#" data-tab="tabs-2">Recommended</a></li>
                     <li><a href="#" data-tab="tabs-3">Trending</a></li>
