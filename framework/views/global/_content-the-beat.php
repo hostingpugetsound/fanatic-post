@@ -13,7 +13,7 @@ $args = array(
     #'nopaging' => true,
     'post_type' => 'game_beat',
     'post_status' => 'publish',
-    'posts_per_page' => 6,
+    'posts_per_page' => 7,
     /*
     'meta_query' => array(
         array(
@@ -125,15 +125,20 @@ if ( isset($query) && $query->have_posts() ) :
         </article>
 
     <?php
+
+        # horizontal ad
         if( $i == 3 )
             x_get_view( 'global', '_ad' );
 
+        # vertical ad
+        /*
         if( $i == 4 ) {
             echo '<article class="x-column x-sm x-1-2 last">';
             x_get_view( 'global', '_ad' );
             echo '</article>';
             $i++;
         }
+        */
     endwhile;
     ?>
     <?php wp_reset_postdata(); ?>
