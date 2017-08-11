@@ -116,6 +116,6 @@
 
 
 
-    $( "#tabs" ).tabs();
+    //$( "#tabs" ).tabs();
 
 })(jQuery, window, document);

@@ -111,18 +111,29 @@ function games_list_view( WP_Query $query ) {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.theme.min.css" />
 
+<script>
+    jQuery(document).ready(function ($) {
+        $("#tab-links a").click(function (e) {
+            e.preventDefault();
+            var tab = $(this).data('tab');
+            console.log(tab);
+            $('#tabs > div.tab:visible').fadeOut();
+            $('#tabs #' + tab).fadeIn();
+        });
+    });
+</script>
     <div class="<?php x_main_content_class(); ?>" role="main">
         <div class="x-container max width">
             <div class="x-column x-sm x-1-1 content be-the-beat">
+                <ul id="tab-links">
+                    <li><a href="#" data-tab="tabs-1">All</a></li>
+                    <li><a href="#" data-tab="tabs-2">Recommended</a></li>
+                    <li><a href="#" data-tab="tabs-3">Trending</a></li>
+                </ul>
                 <div id="tabs">
-                    <ul>
-                        <li><a href="#tabs-1">All</a></li>
-                        <li><a href="#tabs-2">Recommended</a></li>
-                        <li><a href="#tabs-3">Trending</a></li>
-                    </ul>
-                    <div id="tabs-1"><?php games_list_view( $games ); ?></div>
-                    <div id="tabs-2"><?php games_list_view( $games_recommended); ?></div>
-                    <div id="tabs-3"><?php games_list_view( $games_trending ); ?></div>
+                    <div id="tabs-1" class="tab"><?php games_list_view( $games ); ?></div>
+                    <div id="tabs-2" class="tab" style="display: none;"><?php games_list_view( $games_recommended); ?></div>
+                    <div id="tabs-3" class="tab" style="display: none;"><?php games_list_view( $games_trending ); ?></div>
 
                 </div>
             </div>
