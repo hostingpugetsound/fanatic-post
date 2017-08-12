@@ -18,7 +18,7 @@ class ImportTeam extends Importer {
 
     public static function init() {
 
-        $file = dirname(__FILE__) . '/teams-mlb.csv';
+        $file = dirname(__FILE__) . '/teams-by-title.csv';
         self::setTableKeys();
         $data = static::parseFile( $file );
         self::importData( $data );
@@ -42,9 +42,12 @@ class ImportTeam extends Importer {
             foreach( $rows as $row ) :
 
                 $team = fsu_get_post_by_name( $row['team name'], 'team' );
-                vard($team);
-                #vard($row);
-                #echo $row['team name'];
+                if( !$team )
+                    echo sprintf('not found: %s<br />', $row['team name'] );
+                else
+                    echo sprintf('success: %s - id: %s<br />', $row['team name'], $team->ID );
+
+                #vard($team);
 
                 if( $team ) {
                     # team name,short name,background color,font color
