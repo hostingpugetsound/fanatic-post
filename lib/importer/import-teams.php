@@ -16,9 +16,15 @@ require dirname(__FILE__) . '/../phpexcel/PHPExcel.php';
 
 class ImportTeam extends Importer {
 
+    /**
+     * @var string  title|slug
+     */
+    public static $type = 'slug';
+
     public static function init() {
 
-        $file = dirname(__FILE__) . '/teams-by-title.csv';
+        $file = dirname(__FILE__) . '/teams-by-slug.csv';
+        #$file = dirname(__FILE__) . '/teams-slug-test.csv';
         self::setTableKeys();
         $data = static::parseFile( $file );
         self::importData( $data );
@@ -39,13 +45,33 @@ class ImportTeam extends Importer {
     }
     public static function importData( $rows = [] ) {
         if( $rows ) {
-            foreach( $rows as $row ) :
+            foreach( $rows as $row ) {
 
-                $team = fsu_get_post_by_name( $row['team name'], 'team' );
-                if( !$team )
+                if( self::$type == 'slug' ) {
+
+                    $args = array(
+                        'pagename' => $row['team name'],
+                        'post_type' => 'team',
+                        #'post_status' => 'publish',
+                        'posts_per_page' => 1
+                    );
+
+                    $query = new \WP_Query($args);
+                    $posts = $query->get_posts();
+
+                    if (!empty($posts))
+                        $team = $posts[0];
+                    else
+                        $team = false;
+
+                } else {
+                    $team = fsu_get_post_by_name( $row['team name'], 'team' );
+                }
+                if( !$team ) {
                     echo sprintf('not found: %s<br />', $row['team name'] );
-                else
+                } else {
                     echo sprintf('success: %s - id: %s<br />', $row['team name'], $team->ID );
+                }
 
                 #vard($team);
 
@@ -56,7 +82,7 @@ class ImportTeam extends Importer {
                     update_post_meta( $team->ID, 'wpcf-team-font-color', $row['font color'] );
                 }
 
-            endforeach;
+            }
         }
     }
 }
