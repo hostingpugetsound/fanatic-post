@@ -30,7 +30,7 @@ Template: x
 ========================================================================== */
 
 /* Shared styles */
-
+.content a.read-more { display: none; }
 .x-column.x-2-4 { width: 48%; }
 .x-navbar-inner { background-color: #4d5357; }
 .x-navbar-inner.whitebg { background-color: #eaedf0; }
