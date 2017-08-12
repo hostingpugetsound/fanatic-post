@@ -1109,3 +1109,5 @@ function vard( $d ) {
 
 
 require dirname(__FILE__) . '/includes/beats.php';
+require dirname(__FILE__) . '/includes/custom-functions.php';
+require dirname(__FILE__) . '/includes/filters-hooks.php';
