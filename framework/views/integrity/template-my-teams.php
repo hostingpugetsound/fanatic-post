@@ -16,7 +16,8 @@ get_header();
             <div class="x-column x-sm x-1-2 suggested-teams">
                 <div class="avatar-container">
                     <?php
-                    echo do_shortcode( '[userpro template=view header_only=true]' );
+                    echo do_shortcode( '[userpro template=card]' );
+                    #echo do_shortcode( '[userpro template=view header_only=true]' );
 
                     #require dirname(__FILE__) . '/../../../userpro/view.php';
 
