@@ -2283,6 +2283,18 @@ a.btn.btn-primary {
     letter-spacing: 1px;
 }
 
+a.btn.btn-blue {
+    background-color: #1f3a71;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-family: "open-sans", sans-serif;
+    padding: 15px 40px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
 .x-container.max.width {
     width: 98%;
 }
@@ -3013,7 +3025,155 @@ border-left-color: #1f3a71;
     font-weight: normal;
 }
 
+/* ==========================================================================
+	# Be The Beat Page
+========================================================================== */
+.page-template-template-be-the-beat .x-column.x-sm.x-1-1.content.be-the-beat #tab-links li a {
+    color: #4d5357;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 500;
+		padding-bottom: 3px;
+}
+
+.page-template-template-be-the-beat .x-column.x-sm.x-1-1.content.be-the-beat #tab-links li a.active {
+    border-bottom: 2px solid #f93919!important;
+}
+
+.page-template-template-be-the-beat .x-column.x-sm.x-1-1.content.be-the-beat .beat-widget h3 {
+	font-size: 15px;
+	text-transform: uppercase;
+}
 
 
+.page-template-template-be-the-beat .x-column.x-sm.x-1-1.content.be-the-beat .beat-widget .game {
+    font-size: 18px;
+    position: relative;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.page-template-template-be-the-beat .x-column.x-sm.x-1-1.content.be-the-beat a.btn.btn-primary.right {
+    margin: 0;
+    padding: 4px 50px;
+    font-size: 16px;
+    margin-top: -3px;
+}
+
+/* ==========================================================================
+	# Join Page
+========================================================================== */
+
+.x-column.x-sm.x-1-3.join h2.red-header {
+    font-family: "open-sans", sans-serif!important;
+    font-size: 22px;
+    color: #4d5357;
+    font-weight: 600!important;
+    letter-spacing: 1px;
+    margin-bottom: 15px!important;
+    background-color: #d6dce0;
+    z-index: 9;
+    /* display: inline-block; */
+    position: absolute;
+    padding-right: 10px!important;
+    top: 0;
+}
+
+.x-column.x-sm.x-1-3.join:after {
+    content: " ";
+    height: 18px;
+    background-color: #f93919;
+    display: inline-block;
+    position: absolute;
+    top: 5px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.x-column.x-sm.x-1-3.join .light-bg.join-container {
+		background-color: #ebf1f5;
+    text-align: center;
+    padding: 40px 10px;
+    margin-top: 40px;
+    min-height: 705px;
+}
+
+.x-column.x-sm.x-1-3.join .light-bg.join-container ul.list-unstyled {
+    margin: 0 auto;
+    max-width: 90%;
+}
+
+.x-column.x-sm.x-1-3.join .light-bg.join-container li {
+    font-size: 26px;
+    font-weight: 400;
+    color: #4d5357;
+    line-height: 1.2;
+    padding-bottom: 40px;
+    letter-spacing: 1px;
+}
+
+
+.x-column.x-sm.x-1-1.pricing {
+    background-color: #ebf1f5;
+    padding: 40px 10px;
+}
+
+
+.x-column.x-sm.x-1-3.join .light-bg.join-container h3 .price {
+    font-size: 115px;
+    line-height: 1;
+    font-weight: 100;
+    color: #4d5357;
+}
+
+.x-column.x-sm.x-1-3.join .light-bg.join-container h3 {
+    font-size: 20px;
+    color: #4d5357;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-bottom: 40px!important;
+}
+
+.x-column.x-sm.x-1-3.join.join-fan li:nth-child(4), .x-column.x-sm.x-1-3.join.join-fanatic li:nth-child(4) {
+    font-weight: 600;
+}
+
+
+.x-column.x-sm.x-1-3.join a.btn.btn-blue {
+    position: absolute;
+    bottom: 50px;
+    left: 15%;
+    right: 0;
+    width: 100%;
+    max-width: 70%;
+}
+
+.light-bg.pricing-container h2 {
+    text-align: center;
+    color: #4d5357;
+    font-weight: 600;
+    font-family: "open-sans", sans-serif!important;
+    letter-spacing: 3px;
+    margin-bottom: 40px!important;
+}
+
+
+.light-bg.pricing-container h3 {
+    color: #4d5357;
+    font-weight: 600;
+    font-family: "open-sans", sans-serif!important;
+    letter-spacing: 2px;
+    font-size: 26px;
+}
+
+.light-bg.pricing-container p {
+		color: #4d5357;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: "open-sans", sans-serif;
+    line-height: 1.5;
+    margin-bottom: 35px;
+}
 
 
