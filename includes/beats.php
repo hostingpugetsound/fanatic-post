@@ -13,6 +13,7 @@ function get_team_beat($team_beats, $team_id, $type)
     return false;
 }
 
+/*
 $connectedBeats = new WP_Query(
     array(
         'connected_type' => 'game_beat_to_game',
@@ -47,7 +48,7 @@ $connectedTeams = new WP_Query(
         'nopaging' => true
     )
 );
-
+*/
 function get_team_link($id){
 
     if($id && !empty($id))
@@ -293,6 +294,91 @@ function maybe_echo_score( $score ) {
 }
 
 
+
+function get_connected_beats( $game_id = null ) {
+
+    if( !$game_id )
+        $game_id = get_post();
+
+
+    $connectedBeats = new WP_Query(
+        array(
+            'connected_type' => 'game_beat_to_game',
+            'connected_items' => $game_id,
+            'nopaging' => true,
+            'post_type' => 'game_beat',
+            'orderby' => 'date',
+            'order' => 'asc',
+            'post_status' => 'publish'
+        )
+    );
+
+    return $connectedBeats;
+
+
+    /*
+    $game_beats_parsed = array();
+
+    if($connectedBeats->post_count > 0)
+    {
+        foreach($connectedBeats->posts as $beat)
+        {
+            $beat->team_id   = get_post_meta($beat->ID, 'team-id', 1);
+            $beat->beat_type = get_post_meta($beat->ID, 'beat-type', 1);
+
+            $game_beats_parsed[$beat->team_id][$beat->beat_type] = $beat;
+        }
+    }
+
+    return $game_beats_parsed;
+    */
+}
+
+function beat_exists( $beat_type, $game_id, $team_id, $ref_team_id ) {
+
+    $beats = get_connected_beats( $game_id );
+    foreach( $beats->get_posts() as $beat ) {
+        $bt = get_post_meta( $beat->ID, 'beat-type', true );
+        $tid = get_post_meta( $beat->ID, 'team-id', true );
+
+        if( $bt == $beat_type ) {
+            if( $tid == $team_id )
+                return true;
+        }
+        #return true;
+
+    }
+
+    return false;
+}
+
+
+function can_user_create_beat( $beat_type, $game_id, $team_id, $ref_team_id ) {
+
+    $beats = get_connected_beats( $game_id );
+
+    foreach( $beats->get_posts() as $beat ) {
+        # if beat exists, return false
+        if( get_post_meta( $beat->ID, 'team-id', true ) == $team_id ) {
+            #echo $beat->ID . ' - author: ' . $beat->post_author;
+            if( get_post_meta( $beat->ID, 'beat-type', true ) == $beat_type ) {
+                return new WP_Error( 'error', 'Beat already exists!' );
+            } else {
+                # check if author = current user
+                if( $beat->post_author != get_current_user_id() )
+                    return new WP_Error( 'error', 'This team\'s beat is owned by another user!' );
+
+            }
+        }
+
+    }
+
+    return true;
+
+
+}
+
+
 function create_beat( $beat_type, $game_id, $team_id, $ref_team_id = null ) {
     // @todo check for existing beat w/ same beat type, game id, team id
     // @todo: also check for total pts
@@ -300,39 +386,53 @@ function create_beat( $beat_type, $game_id, $team_id, $ref_team_id = null ) {
         $ref_team_id = $team_id;
 
 
-    $exists = false;
-    if( !$exists ) {
-        $insert = wp_insert_post( array(
-            'post_content' => $_POST['body'],
-            'post_status' => 'publish', #'draft',
-            'post_type' => 'game_beat',
-            'meta_input' => [
-                'beat-type' => $beat_type,
-                'game-id' => $game_id,
-                'team-id' => $team_id,
-                'ref-team-id' => $ref_team_id,
-            ]
-        ) );
+    $can_create = can_user_create_beat( $beat_type, $game_id, $team_id, $ref_team_id );
 
-        if( $insert ) {
+    if( is_wp_error($can_create) ) {
+        return $can_create;
+    } else {
 
-            p2p_create_connection( 'game_beat_to_game',
-                array(
-                    'from' => $insert,
-                    'to' => $game_id,
-                    'meta' => array(
-                        'date' => current_time('mysql')
+        $user_id = get_current_user_id();
+        $points = fb_get_user_points( $user_id );
+        $required_points = 50; # todo: pull from post meta later
+
+        # if user has enough points
+        if( $points >= $required_points ) {
+            $insert = wp_insert_post( array(
+                'post_content' => $_POST['body'],
+                'post_status' => 'publish', #'draft',
+                'post_type' => 'game_beat',
+                'meta_input' => [
+                    'beat-type' => $beat_type,
+                    'game-id' => $game_id,
+                    'team-id' => $team_id,
+                    'ref-team-id' => $ref_team_id,
+                ]
+            ) );
+
+            if( $insert ) {
+                p2p_create_connection( 'game_beat_to_game',
+                    array(
+                        'from' => $insert,
+                        'to' => $game_id,
+                        'meta' => array(
+                            'date' => current_time( 'mysql' )
+                        )
                     )
-                )
-            );
-        }
+                );
 
-        return $insert;
+                $new_points = $points - $required_points;
+                update_user_meta( $user_id, '_points', $new_points );
+            }
+
+            return $insert;
+        } else {
+            return new WP_Error( 'error', sprintf('Your account does not have enough points to write this beat! %d points needed', $required_points) );
+        }
 
     }
 
 
-    return false;
 
 
     # todo: subtract points from user

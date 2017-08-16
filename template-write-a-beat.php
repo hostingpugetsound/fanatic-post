@@ -24,6 +24,8 @@ $beat_types = [ 'preview', 'recap' ];
 $game = $query->get_posts();
 $game = $game[0];
 
+
+# get teams so we can make sure the ID is correct
 $teams = fsu_get_teams_from_game( $game->ID );
 
 $team_ids = [];
@@ -56,9 +58,11 @@ if( isset($_POST['submit']) && $query->have_posts() ) {
 
                     <?php
 
-                    if( isset($create_beat) && $create_beat ) {
+                    if( isset($create_beat) && !is_wp_error($create_beat) ) {
                         echo 'Beat created!';
                     } else {
+                        if( isset($create_beat) && is_wp_error($create_beat) )
+                            echo $create_beat->get_error_message();
                     ?>
 
 
