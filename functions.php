@@ -1110,5 +1110,5 @@ function vard( $d ) {
 
 require_once dirname(__FILE__) . '/includes/custom-functions.php';
 require_once dirname(__FILE__) . '/includes/filters-hooks.php';
-
 require_once dirname(__FILE__) . '/includes/beats.php';
+require_once dirname(__FILE__) . '/includes/user.php';
