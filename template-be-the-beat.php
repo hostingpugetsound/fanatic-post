@@ -86,12 +86,12 @@ function games_list_view( WP_Query $query ) {
 
 
                 if( is_user_logged_in() )
-                    $button = '<a class="btn btn-primary right" href="' . home_url() . '/write-a-beat/?game=' . get_the_ID() . '">Be The Beat</a>';
+                    $button = '<div class="beatholder"><a class="btn btn-primary right" href="' . home_url() . '/write-a-beat/?game=' . get_the_ID() . '">Be The Beat</a></div>';
                 else
-                    $button = '<a class="btn btn-primary right" href="' . home_url() . '/create-account">Sign Up</a>';
+                    $button = '<div class="beatholder"><a class="btn btn-primary right" href="' . home_url() . '/create-account">Sign Up</a></div>';
 
                 echo sprintf(
-                    '<div class="game"><a href="%s">%s @ %s</a> <time>%s</time> (500 pts) %s</div>',
+                    '<div class="game"><div class="innergame"><a href="%s">%s @ %s</a> <time>%s</time> (500 pts)</div> %s</div>',
                     get_the_permalink(),
                     $away_team,
                     $home_team,
@@ -127,7 +127,7 @@ function games_list_view( WP_Query $query ) {
         <div class="x-container max width">
             <div class="x-column x-sm x-1-1 content be-the-beat">
                 <ul id="tab-links" class="inline">
-                    <li><a href="#" data-tab="tabs-1">All</a></li>
+                    <li><a href="#" data-tab="tabs-1" class="active">All</a></li>
                     <li><a href="#" data-tab="tabs-2">Recommended</a></li>
                     <li><a href="#" data-tab="tabs-3">Trending</a></li>
                 </ul>
