@@ -92,12 +92,15 @@ if( isset($_POST['submit']) && $query->have_posts() ) {
                         </label>
 
 
+                        <!--
                         <div class="x-column x-sm x-1-2">
                             <label for="body">
                                 Image<br />
                                 <input type="file" name="image" />
                             </label>
                         </div>
+                        -->
+
                         <div class="x-column x-sm x-1-2">
                             <input type="submit" name="submit" value="POST" />
                         </div>
