@@ -113,9 +113,15 @@ get_header();
 
         <div class="x-column x-sm x-1-2 last comments">
             <h2 class="red-header">The Arena</h2>
-            <?php while ( have_posts() ) : the_post(); ?>
-                <?php x_get_view( 'global', '_comments-template' ); ?>
-            <?php endwhile; ?>
+            <?php
+            if( is_user_logged_in() ) {
+                while ( have_posts() ) : the_post();
+                    x_get_view( 'global', '_comments-template' );
+                endwhile;
+            } else {
+                echo '<div id="comments" class="comments-area"><a href="/join/">SIGN UP TO POST</a></div>';
+            }
+            ?>
         </div>
 
     </div>
