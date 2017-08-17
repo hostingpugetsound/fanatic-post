@@ -182,7 +182,7 @@ function tab_content($tab_id, $tab_v_type, $game_beat, $beat_team_name, $beat_te
                             <div class="close-lbox-fp">X</div>
 
                             <h1><?php echo get_the_title( $game_id ) ?></h1>
-                            <h2>Edit <?php echo $_GET['vtype']; ?></h2>
+                            <h2>Edit <?php echo $ref_view_type; ?></h2>
 
                             <form action="" method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="beat_type" value="<?php echo get_post_meta( $game_beat->ID, 'beat-type', true); ?>" />
@@ -211,15 +211,43 @@ function tab_content($tab_id, $tab_v_type, $game_beat, $beat_team_name, $beat_te
                 </div>
                 <?php echo format_beat_content($game_beat->post_content, $game_beat->post_title);?>
             </div>
-        <?php elseif(!$beatwriter_authorised):?>
-            <div class="no_beat_message no_beat_message_<?php echo bt_class_postfix($beat_team_id, $tab_v_type)?>">No <?php echo $beat_team_name . ' ' . $tab_v_type;?> content yet available.
-                <?php if($beatwriter_user_id):?>
-                    Beat coming soon by <?php echo $author_data->user_login;?>
-                <?php else:?>
-                    Come back soon.
-                <?php endif;?>
+        <?php else : ?>
+            <a href="javascript:void(0)" class="btn lboxtrigger" >Write a beat</a>
+
+            <div class="lboxbg-fp">
+                <div class="lbox-fp">
+                    <div class="box-fp clearfix">
+                        <div class="close-lbox-fp">X</div>
+
+                        <h1><?php echo get_the_title( $game_id ) ?></h1>
+                        <h2>Write a <?php echo $ref_view_type; ?></h2>
+
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="beat_type" value="<?php echo $ref_view_type; ?>" />
+                            <input type="hidden" name="team_id" value="<?php echo $beat_team_id; ?>" />
+                            <label for="body">
+                                Body<br />
+                                <textarea name="body"></textarea>
+                            </label>
+
+                            <!--
+                            <div class="x-column x-sm x-1-2">
+                                <label for="body">
+                                    Image<br />
+                                    <input type="file" name="image" />
+                                </label>
+                            </div>
+                            -->
+
+                            <div class="x-column x-sm x-1-2">
+                                <input type="submit" name="submit" value="POST" />
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
             </div>
-        <?php endif;?>
+        <?php endif; ?>
 
         <?php
         if($beatwriter_user_id):
