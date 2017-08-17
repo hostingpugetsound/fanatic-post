@@ -56,6 +56,7 @@ endif;
 
 
     <?php if( !is_front_page() ) : ?>
+    <!--
     <div class="standings-sidebar">
         <h2 class="red-header">Standings</h2>
         <ul class="x-nav standings-nav">
@@ -87,6 +88,7 @@ endif;
             </tbody>
         </table>
     </div>
+    -->
 
     <?php x_get_view( 'global', '_ad' ); ?>
 
