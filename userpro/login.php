@@ -9,8 +9,8 @@ $pid = get_the_ID();
 $current_page_uri = get_permalink($pid);
 $_SESSION['current_page_uri']= $current_page_uri;
 ?>
-<div id="login">
-<a href="#" class="userpro-close-popup"><?php _e('Close','userpro'); ?></a>	
+<?php if( !is_page('login' )) { ?>
+<?php } ?>
 <div class="userpro userpro-<?php echo $i; ?> userpro-<?php echo $layout; ?>" <?php userpro_args_to_data( $args ); ?>>
 
 
@@ -93,4 +93,6 @@ $_SESSION['current_page_uri']= $current_page_uri;
 
 </div>
 
+<?php if( !is_page('login' )) { ?>
 </div>
+<?php } ?>
