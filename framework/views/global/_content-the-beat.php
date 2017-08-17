@@ -90,10 +90,25 @@ if ( isset($query) && $query->have_posts() ) :
         }
     ?>
         <article id="post-<?php the_ID(); ?>" <?php post_class( $class ); ?>>
-            <div class="entry-featured">
-
-                <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to: "%s"', '__x__' ), the_title_attribute( 'echo=0' ) ) ); ?>"><?php x_featured_image(); ?></a>
-                <h3 class="entry-title"><?php the_title(); ?></h3>
+            <?php
+            #x_featured_image();
+            $image_size = $i == 1 ? 'home-long' : 'home-short';
+            if ( has_post_thumbnail( $post->ID ) ) {
+                $style = sprintf( ' style="background-image: url(%s);"', get_the_post_thumbnail_url( $post->ID, $image_size ) );
+            } else {
+                $style = '';
+                $image_size .= ' no-image';
+            }
+            ?>
+            <div class="entry-featured <?php echo $image_size; ?>" <?php echo $style; ?>>
+                <h3 class="entry-title">
+                    <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to: "%s"', '__x__' ), the_title_attribute( 'echo=0' ) ) ); ?>">
+                        <?php
+                        echo 'Game Title';
+                        ?>
+                    </a>
+                    <time>6/21/17 7:05PM</time>
+                </h3>
             </div>
             <div class="entry-wrap">
                 <div class="author">
@@ -103,7 +118,8 @@ if ( isset($query) && $query->have_posts() ) :
                     echo sprintf( 'Posted by <a href="%s">@%s</a> - %s',
                         home_url() . '/profile/' . $user->user_login,
                         $user->user_login,
-                        '6/21/17' );
+                        date( 'm/d/Y', $post->post_date )
+                    );
                     ?>
                 </div>
                 <?php if ( is_singular() ) : ?>
