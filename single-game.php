@@ -121,4 +121,34 @@ get_header();
     </div>
 </div>
 
+
+
+<div class="lboxtrigger">Pop Me</div>
+
+<div class="lboxbg-fp">
+    <div class="lbox-fp">
+        <div class="box-fp clearfix">
+            <div class="close-lbox-fp">X</div>
+            <h1>Team @ Home Team 1/22/17 </h1>
+            <h2>Beat</h2>
+            <textarea rows="10" cols="20"></textarea>
+            <input type="submit" value="Post">
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    jQuery('.lboxtrigger').on('click', function() {
+        jQuery('body').toggleClass('popped');
+        jQuery('.lboxbg-fp').toggleClass('popped');
+    });
+
+    jQuery('.close-lbox-fp').on('click', function() {
+        jQuery('body').toggleClass('popped');
+        jQuery('.lboxbg-fp').toggleClass('popped');
+    });
+
+</script>
+
+
 <?php get_footer(); ?>
