@@ -67,9 +67,15 @@ if ( is_singular('league') ) {
 
     global $reverse_teams, $awayTeamNameLink, $awayTeamName, $awayTeamLink, $awayScore,
            $homeTeamNameLink, $homeTeamName, $homeTeamLink, $homeScore, $date, $gameType;
-    ?>
 
-    <section class="x-main full banner">
+    if ( has_post_thumbnail( $post->ID ) ) {
+        $style = sprintf( ' style="background-image: url(%s);"', get_the_post_thumbnail_url( $post->ID, 'banner-long' ) );
+    } else {
+        $style = '';
+    }
+
+    ?>
+    <section class="x-main full banner game-banner" <?php echo $style; ?>>
         <div class="x-content-band man">
             <div class="x-container max width">
                 <h1><?php
