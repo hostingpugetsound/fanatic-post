@@ -29,20 +29,24 @@ if ($post_query->have_posts() ) {
                 $team_id = get_post_meta($post->ID, 'team-id', true);
                 $game_id = get_post_meta($post->ID, 'game-id', true);
                 $beat_type = get_post_meta($post->ID, 'beat-type', true);
+
+                $game = get_post( $game_id );
                 ?>
                 <div class="mes-article">
                     <?php if (!empty($team_id)){ ?>
                     <h3>
-                        <a href="<?php echo get_permalink($post->ID) . '?ref=' .$team_id; ?>">
+                        <a href="<?php echo get_permalink($game->ID); ?>">
                         <?php echo sprintf( '%s <span class=type">%s</span>', get_the_title($team_id), ucfirst($beat_type) ); ?>
                         </a>
                     </h3>
                     <?php } ?>
                     <div class="author">
-                        <?php echo sprintf( 'Posted by <a href="%s">@%s</a> - %s',
+                        <?php
+                        echo sprintf( 'Posted by <a href="%s">@%s</a> - %s',
                             home_url() . '/profile/' . $user->user_login,
                             $user->user_login,
-                            '6/21/17' );
+                            date( 'm/d/Y', strtotime($post->post_date))
+                        );
                         ?>
                     </div>
                     <div class="mes-article-img">

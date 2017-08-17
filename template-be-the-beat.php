@@ -86,7 +86,7 @@ function games_list_view( WP_Query $query ) {
 
 
                 if( is_user_logged_in() )
-                    $button = '<div class="beatholder"><a class="btn btn-primary right" href="' . home_url() . '/write-a-beat/?game=' . get_the_ID() . '">Be The Beat</a></div>';
+                    $button = '<div class="beatholder"><a class="btn btn-primary right" href="' . get_the_permalink() . '">Be The Beat</a></div>';
                 else
                     $button = '<div class="beatholder"><a class="btn btn-primary right" href="' . home_url() . '/join/">Sign Up</a></div>';
 
