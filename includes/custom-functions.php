@@ -8,3 +8,8 @@ function fp_add_custom_roles() {
 }
 
 #fp_add_custom_roles();
+
+
+add_image_size( 'home-long', 1100, 550, true );
+add_image_size( 'home-short', 550, 550, true );
+add_image_size( 'banner-long', 9999, 550, true );
