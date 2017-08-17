@@ -104,3 +104,11 @@ ul.tabs li.current{
         padding:10px;
     }
 }
+
+
+
+
+
+/* hide the paypal button on checkout */
+
+form#paypalform { display: none; }
