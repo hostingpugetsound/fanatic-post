@@ -454,10 +454,13 @@ function create_beat( $beat_type, $game_id, $team_id, $ref_team_id = null ) {
                 ]
             );
             #update existing post if an ID was returned
-            if( is_int($can_create) )
+            if( is_int($can_create) ) {
                 $args['ID'] = $can_create;
+                $insert = wp_update_post( $args );
+            } else {
+                $insert = wp_insert_post( $args );
+            }
 
-            $insert = wp_insert_post( $args );
 
             if( $insert ) {
                 p2p_create_connection( 'game_beat_to_game',
