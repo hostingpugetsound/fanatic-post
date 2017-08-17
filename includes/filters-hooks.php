@@ -21,7 +21,9 @@ function fp_userpro_after_new_registration( $user_id ) {
 /**
  * Redirects to login page after registration
  */
+/*
 add_filter('userpro_register_redirect', 'fp_userpro_register_redirect', 10);
 function fp_userpro_register_redirect($arg){
     return home_url() . '/login';
 }
+*/
