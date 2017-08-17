@@ -1,0 +1,28 @@
+/* Global Login: Remove extraneous "Close" button from "Reset Password" form */
+.show-login .userpro-float .userpro-close-popup {
+	display: none !important; 
+}
+
+/* 
+	Global Login: Extend button length on "Reset Password" form 
+	This covers buttons here as well: http://fanaticpost.flywheelsites.com/create-account/ 
+*/
+form input.userpro-button {
+	max-width: 265px; 
+}
+
+/* 	
+	http://fanaticpost.flywheelsites.com/create-account/ 
+	.required div interfering with info icon: 
+*/
+.userpro form .required {
+	float: left;
+	margin-right: 8px; 
+}
+
+/* Weird background shadow issue on "No voting" error module */
+#wc_openModalFormAction > div#wc_response_info .close {
+	background-color: transparent !important;
+	opacity: 1 !important; 
+	box-shadow: none; 
+}

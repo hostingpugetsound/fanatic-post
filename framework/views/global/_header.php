@@ -28,6 +28,7 @@
 
 			<?php wp_head(); ?>
             <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/style-andy.css" />
+            <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/style-adam.css" />
             <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
             <link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri(); ?>/css/tooltipster.css" />
 
