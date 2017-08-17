@@ -32,7 +32,7 @@
         <?php if ( is_user_logged_in() ) { ?>
             <li><a href="<?php echo home_url(); ?>/my-teams/">My Teams</a></li>
         <?php } else { ?>
-            <li><a href="<?php echo home_url(); ?>/create-account/">Sign Up</a></li>
+            <li><a href="<?php echo home_url(); ?>/join/">Sign Up</a></li>
         <?php } ?>
         <li>
             <?php
