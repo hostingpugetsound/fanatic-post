@@ -167,20 +167,49 @@ function tab_content($tab_id, $tab_v_type, $game_beat, $beat_team_name, $beat_te
     <script>
         document.title = '<?php echo htmlspecialchars($beat_team_name . ' ' . ucfirst($tab_v_type)); ?> ' + document.title;
     </script>
-    <div id="<?php echo $tab_id; ?>" class="tab-content <?php echo $current_class;?>">
+    <div id="<?php echo $tab_id; ?>" class="tab-content <?php echo 'current'; #echo $current_class;?>">
 
         <?php if($game_beat): ?>
             <div class="beat_content_<?php echo bt_class_postfix($beat_team_id, $tab_v_type)?>">
-                <?php echo format_beat_content($game_beat->post_content, $game_beat->post_title);?>
                 <?php if($beatwriter_authorised):?>
-                    <a href="javascript:void(0)" class="btn update_link" >Update</a>
+                    <a href="javascript:void(0)" class="btn lboxtrigger" >Update</a>
                 <?php endif;?>
-                <style>
-                    .gform_container_<?php echo bt_class_postfix($beat_team_id, $tab_v_type)?>
-                    {
-                        display: none;
-                    }
-                </style>
+
+                <?php #include dirname(__FILE__) . '/../framework/views/global/_write-beat.php'; ?>
+                <div class="lboxbg-fp">
+                    <div class="lbox-fp">
+                        <div class="box-fp clearfix">
+                            <div class="close-lbox-fp">X</div>
+
+                            <h1><?php echo get_the_title( $game_id ) ?></h1>
+                            <h2>Edit <?php echo $_GET['vtype']; ?></h2>
+
+                            <form action="" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="beat_type" value="<?php echo get_post_meta( $game_beat->ID, 'beat-type', true); ?>" />
+                                <input type="hidden" name="team_id" value="<?php echo get_post_meta( $game_beat->ID, 'team-id', true); ?>" />
+                                <label for="body">
+                                    Body<br />
+                                    <textarea name="body"><?php echo $game_beat->post_content; ?></textarea>
+                                </label>
+
+                                <!--
+                                <div class="x-column x-sm x-1-2">
+                                    <label for="body">
+                                        Image<br />
+                                        <input type="file" name="image" />
+                                    </label>
+                                </div>
+                                -->
+
+                                <div class="x-column x-sm x-1-2">
+                                    <input type="submit" name="submit" value="POST" />
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+                <?php echo format_beat_content($game_beat->post_content, $game_beat->post_title);?>
             </div>
         <?php elseif(!$beatwriter_authorised):?>
             <div class="no_beat_message no_beat_message_<?php echo bt_class_postfix($beat_team_id, $tab_v_type)?>">No <?php echo $beat_team_name . ' ' . $tab_v_type;?> content yet available.
@@ -191,22 +220,6 @@ function tab_content($tab_id, $tab_v_type, $game_beat, $beat_team_name, $beat_te
                 <?php endif;?>
             </div>
         <?php endif;?>
-        <div class="gform_container_<?php echo bt_class_postfix($beat_team_id, $tab_v_type)?>">
-            <?php
-            if($beatwriter_authorised):
-                ?>
-                <h4><?php echo $beat_team_name . ' ' . ucfirst($tab_v_type);?> Beat</h4>
-                <?php
-                if(isset($game_beat->post_content)) {
-                    Gform_Post_Body::set_content($game_beat->post_content);
-                    add_filter( 'gform_field_value_pbody', array( 'Gform_Post_Body', 'get_content' ) );
-                }
-
-                gravity_form( 3, false, false, false, array('tid' => $beat_team_id, 'gid' => $game_id, 'btype' => $tab_v_type, 'ref' => $_GET['ref']), true);
-                remove_filter( 'gform_field_value_pbody', array( 'Gform_Post_Body', 'get_content' ) );
-            endif;
-            ?>
-        </div>
 
         <?php
         if($beatwriter_user_id):
@@ -362,7 +375,10 @@ function can_user_create_beat( $beat_type, $game_id, $team_id, $ref_team_id ) {
         if( get_post_meta( $beat->ID, 'team-id', true ) == $team_id ) {
             #echo $beat->ID . ' - author: ' . $beat->post_author;
             if( get_post_meta( $beat->ID, 'beat-type', true ) == $beat_type ) {
-                return new WP_Error( 'error', 'Beat already exists!' );
+                if( $beat->post_author != get_current_user_id() )
+                    return new WP_Error( 'error', 'Beat already exists!' );
+                else
+                    return $beat->ID;
             } else {
                 # check if author = current user
                 if( $beat->post_author != get_current_user_id() )
@@ -398,7 +414,7 @@ function create_beat( $beat_type, $game_id, $team_id, $ref_team_id = null ) {
 
         # if user has enough points
         if( $points >= $required_points ) {
-            $insert = wp_insert_post( array(
+            $args = array(
                 'post_content' => $_POST['body'],
                 'post_status' => 'publish', #'draft',
                 'post_type' => 'game_beat',
@@ -408,7 +424,12 @@ function create_beat( $beat_type, $game_id, $team_id, $ref_team_id = null ) {
                     'team-id' => $team_id,
                     'ref-team-id' => $ref_team_id,
                 ]
-            ) );
+            );
+            #update existing post if an ID was returned
+            if( is_int($can_create) )
+                $args['ID'] = $can_create;
+
+            $insert = wp_insert_post( $args );
 
             if( $insert ) {
                 p2p_create_connection( 'game_beat_to_game',
@@ -423,6 +444,8 @@ function create_beat( $beat_type, $game_id, $team_id, $ref_team_id = null ) {
 
                 $new_points = $points - $required_points;
                 update_user_meta( $user_id, '_points', $new_points );
+
+                update_post_meta( $game_id, 'beatwriter_user_team' . $team_id, $user_id );
             }
 
             return $insert;
@@ -431,10 +454,5 @@ function create_beat( $beat_type, $game_id, $team_id, $ref_team_id = null ) {
         }
 
     }
-
-
-
-
-    # todo: subtract points from user
 
 }

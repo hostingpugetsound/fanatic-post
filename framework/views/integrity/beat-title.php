@@ -18,7 +18,7 @@ global $gameType, $reverse_teams, $awayTeamID, $homeTeamID, $date;
 </style>
 <meta property="og:title" content="<?php echo $homeTeamName . ' vs ' . $awayTeamName ?>" />
 <meta property="og:type" content="game" />
-<meta property="og:url" content="<?php echo $actual_link; ?>" />
+<meta property="og:url" content="<?php echo "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>" />
 <meta property="og:image" content="http://fanaticpost.com/wp-content/themes/x-child/framework/img/global/fanaticPostLogo.png" />
 <meta property="og:site_name" content="FanaticPost" />
 <meta property="og:description" content="Read the beat writers take on the <?php echo $homeTeamName . ' vs ' . $awayTeamName; ?> game on <?php echo $date; ?>" />

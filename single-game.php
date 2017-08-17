@@ -123,8 +123,8 @@ get_header();
 
 
 
-<div class="lboxtrigger">Pop Me</div>
-
+<!--<div class="lboxtrigger">Pop Me</div>-->
+<!--
 <div class="lboxbg-fp">
     <div class="lbox-fp">
         <div class="box-fp clearfix">
@@ -136,8 +136,9 @@ get_header();
         </div>
     </div>
 </div>
-
+-->
 <script type="text/javascript">
+    /*
     jQuery('.lboxtrigger').on('click', function() {
         jQuery('body').toggleClass('popped');
         jQuery('.lboxbg-fp').toggleClass('popped');
@@ -147,6 +148,7 @@ get_header();
         jQuery('body').toggleClass('popped');
         jQuery('.lboxbg-fp').toggleClass('popped');
     });
+    */
 
 </script>
 

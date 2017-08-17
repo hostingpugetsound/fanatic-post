@@ -1,23 +1,21 @@
 <?php
 global $current_user, $gameID, $homeTeamID, $homeTeamName, $awayTeamID, $awayTeamName, $ref_team_id, $team_view_type;
 
-//Class added to populate content to gravity form for updating beat
-class Gform_Post_Body
-{
 
-    public static $content = false;
+$beat_types = [ 'preview', 'recap' ];
 
-    public static function set_content( $content ) {
-        self::$content = $content;
-    }
 
-    public static function get_content() {
-        return self::$content;
-    }
+
+
+if( isset($_POST['submit']) ) {
+
+    $beat_type = in_array( $_POST['beat_type'], $beat_types ) ? $_POST['beat_type'] : '';
+    #$team_id = in_array( $_POST['team_id'], $team_ids ) ? $_POST['team_id'] : '';
+    #$ref_team_id = null;
+
+
+    $create_beat = create_beat( $beat_type, get_the_ID(), $_POST['team_id'], $ref_team_id );
 }
-$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-
-
 
 include dirname(__FILE__) . '/beat-title.php';
 ?>
@@ -33,30 +31,20 @@ include dirname(__FILE__) . '/beat-title.php';
         $awaywriter_authorised = (!empty($current_user->ID) && $awaywriter_user_id == $current_user->ID);
         ?>
 
-        <!--
-        <div class="share_custom_class">
-            <?php //echo do_shortcode('[ssba url="'.$actual_link.'" title="'.$homeTeamName . ' vs ' . $awayTeamName.' Beat Article"]'); ?>
-            <div class="ssba ssba-wrap">
-              <div style="text-align:center">
-                  <a class="ssba_facebook_share" data-dm_post_id="<?php echo $beatID; ?>" href="http://www.facebook.com/sharer.php?u=<?php echo $actual_link; ?>" >
-                  <img src="http://fanaticpost.com/wp-content/plugins/simple-share-buttons-adder/buttons/simple/facebook.png" title="Facebook" class="ssba ssba-img" alt="Share on Facebook" />
-                </a>
-                <a class="ssba_twitter_share" data-dm_post_id="<?php echo $beatID; ?>" href="http://twitter.com/share?url=<?php echo $actual_link; ?>&amp;text=<?php echo $homeTeamName . ' vs ' . $awayTeamName ?>" >
-                  <img src="http://fanaticpost.com/wp-content/plugins/simple-share-buttons-adder/buttons/simple/twitter.png" title="Twitter" class="ssba ssba-img" alt="Tweet about this on Twitter" />
-                </a>
-                <a class="ssba_google_share" data-dm_post_id="<?php echo $beatID; ?>" href="https://plus.google.com/share?url=<?php echo $actual_link; ?>" >
-                  <img src="http://fanaticpost.com/wp-content/plugins/simple-share-buttons-adder/buttons/simple/google.png" title="Google+" class="ssba ssba-img" alt="Share on Google+" />
-                </a>
-                <a class="ssba_email_share" href="mailto:?subject=<?php echo urlencode($homeTeamName . ' vs ' . $awayTeamName); ?>&amp;body=%20<?php echo urlencode($actual_link); ?>">
-                  <img src="http://fanaticpost.com/wp-content/plugins/simple-share-buttons-adder/buttons/simple/email.png" title="Email" class="ssba ssba-img" alt="Email this to someone" />
-                </a>
-              </div>
-            </div>
-        </div>
-        -->
+
+        <?php
+        include dirname(__FILE__) . '/beat-tabs.php';
 
 
-    <?php include dirname(__FILE__) . '/beat-tabs.php'; ?>
+        # print success/error messages
+        if( isset($create_beat) && !is_wp_error($create_beat) ) {
+            #echo 'Beat created!';
+        } else {
+            if( isset( $create_beat ) && is_wp_error( $create_beat ) )
+                echo $create_beat->get_error_message();
+        }
+
+        ?>
         <div>
         <?php
 
@@ -90,16 +78,18 @@ include dirname(__FILE__) . '/beat-title.php';
 
         </div>
     </div>
-    <script type="text/javascript">
-        jQuery(document).ready(function(){
-            jQuery(document).bind('gform_confirmation_loaded', function(event, formId){
-                jQuery('#gforms_confirmation_message_' + formId).prev().hide()
-            });
 
-            jQuery('.update_link').click(function(){
-                jQuery(this).parent().next().show();
-                jQuery(this).parent().hide();
-            });
 
-        })
-    </script>
+<script type="text/javascript">
+    jQuery('.lboxtrigger').on('click', function() {
+        jQuery('body').toggleClass('popped');
+        jQuery('.lboxbg-fp').toggleClass('popped');
+    });
+
+    jQuery('.close-lbox-fp').on('click', function() {
+        jQuery('body').toggleClass('popped');
+        jQuery('.lboxbg-fp').toggleClass('popped');
+    });
+
+</script>
+
