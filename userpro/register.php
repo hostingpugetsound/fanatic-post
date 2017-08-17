@@ -1,4 +1,4 @@
-<a href="#" class="userpro-close-popup"><?php _e('Close','userpro'); ?></a>
+<a href="#" class="userpro-close-popup"><?php _e('X','userpro'); ?></a>
 <div class="userpro userpro-<?php echo $i; ?> userpro-<?php echo $layout; ?>" <?php userpro_args_to_data( $args ); ?>>
 	
 	<div class="userpro-head">
