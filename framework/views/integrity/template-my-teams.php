@@ -36,16 +36,18 @@ get_header();
                     #userpro_get_view_user();
                     ?>
                 </div>
-                <h2 class="red-header">Suggested Teams</h2>
-                <div class="light-bg suggested-teams-container">
-                    <?php
-                    # @todo: pull suggested
-                    foreach( $favorites as $team_id ) {
-                        $title = get_the_title( $team_id );
-                        if( $title != 'Favorites' )
-                            echo fsu_team_circle( $team_id, true );
-                    }
-                    ?>
+                <div class="actualsuggested">
+                    <h2 class="red-header">Suggested Teams</h2>
+                    <div class="light-bg suggested-teams-container">
+                        <?php
+                        # @todo: pull suggested
+                        foreach( $favorites as $team_id ) {
+                            $title = get_the_title( $team_id );
+                            if( $title != 'Favorites' )
+                                echo fsu_team_circle( $team_id, true );
+                        }
+                        ?>
+                    </div>
                 </div>
             </div>
 
