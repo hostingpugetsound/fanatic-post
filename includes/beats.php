@@ -437,7 +437,7 @@ function create_beat( $beat_type, $game_id, $team_id, $ref_team_id = null ) {
     } else {
 
         $user_id = get_current_user_id();
-        $points = fb_get_user_points( $user_id );
+        $points = fp_get_user_points( $user_id );
         $required_points = 50; # todo: pull from post meta later
 
         # if user has enough points
