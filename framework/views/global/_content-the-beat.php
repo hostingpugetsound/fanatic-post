@@ -14,6 +14,7 @@ $args = array(
     'post_type' => 'game_beat',
     'post_status' => 'publish',
     'posts_per_page' => 7,
+    'orderby' => 'date',
     /*
     'meta_query' => array(
         array(
@@ -79,6 +80,8 @@ if ( isset($query) && $query->have_posts() ) :
     $i = 0;
     while ( $query->have_posts() ) :
         $query->the_post();
+
+        $game = get_post( get_post_meta( $post->ID, 'game-id', true) );
         $i++;
         # adds the 1/2 columns and 'last' class
         if( $i > 1 ) {
@@ -102,12 +105,10 @@ if ( isset($query) && $query->have_posts() ) :
             ?>
             <div class="entry-featured <?php echo $image_size; ?>" <?php echo $style; ?>>
                 <h3 class="entry-title">
-                    <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to: "%s"', '__x__' ), the_title_attribute( 'echo=0' ) ) ); ?>">
-                        <?php
-                        echo 'Game Title';
-                        ?>
+                    <a href="<?php get_the_permalink( $game->ID ); ?>" title="<?php echo esc_attr( get_the_title( $game->ID ) ); ?>">
+                        <?php echo esc_html( get_the_title( $game->ID ) ); ?>   
                     </a>
-                    <time>6/21/17 7:05PM</time>
+                    <time><?php echo get_post_meta( $game->ID, 'wpcf-game-info', true ); ?></time>
                 </h3>
             </div>
             <div class="entry-wrap">
@@ -118,7 +119,7 @@ if ( isset($query) && $query->have_posts() ) :
                     echo sprintf( 'Posted by <a href="%s">@%s</a> - %s',
                         home_url() . '/profile/' . $user->user_login,
                         $user->user_login,
-                        date( 'm/d/Y', $post->post_date )
+                        date( 'm/d/Y', strtotime($post->post_date) )
                     );
                     ?>
                 </div>
