@@ -105,7 +105,7 @@ if ( isset($query) && $query->have_posts() ) :
             ?>
             <div class="entry-featured <?php echo $image_size; ?>" <?php echo $style; ?>>
                 <h3 class="entry-title">
-                    <a href="<?php get_the_permalink( $game->ID ); ?>" title="<?php echo esc_attr( get_the_title( $game->ID ) ); ?>">
+                    <a href="<?php echo get_the_permalink( $game->ID ); ?>" title="<?php echo esc_attr( get_the_title( $game->ID ) ); ?>">
                         <?php echo esc_html( get_the_title( $game->ID ) ); ?>   
                     </a>
                     <time><?php echo get_post_meta( $game->ID, 'wpcf-game-info', true ); ?></time>
