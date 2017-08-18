@@ -16,8 +16,9 @@
             <ul class="x-column x-sm x-1-3 page-sidebar">
                 <li><a href="<?php echo home_url(); ?>/about-us/">About</a></li>
                 <li><a href="<?php echo home_url(); ?>/how-it-works">How It Works</a></li>
-                <li><a href="<?php echo home_url(); ?>/faq">FAQ</a></li>
-                <li><a href="<?php echo home_url(); ?>/terms-conditions">Terms & Conditions</a></li>
+                <!-- <li><a href="<?php echo home_url(); ?>/faq">FAQ</a></li> -->
+                <!-- <li><a href="<?php echo home_url(); ?>/terms-conditions">Terms & Conditions</a></li> -->
+                <li><a href="<?php echo home_url(); ?>/terms">Terms & Conditions</a></li>
                 <li><a href="<?php echo home_url(); ?>/privacy">Privacy Policy</a></li>
                 <li><a href="<?php echo home_url(); ?>/contact">Contact</a></li>
             </ul>

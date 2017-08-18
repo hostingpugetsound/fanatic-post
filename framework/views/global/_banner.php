@@ -54,7 +54,7 @@ if ( is_singular('league') ) {
             <div class="x-column x-sm x-1-3 sliderText">
                 <h1>BE THE BEAT</h1>
                 <h2>RAISE YOUR VOICE, report on the game, <br />represent your team.</h2>
-                <a href="#" class="btn btn-primary">Find Games Now</a>
+                <a href="/be-the-beat/" class="btn btn-primary">Find Games Now</a>
 
             </div>
             <div class="x-column x-sm x-1-3 foeBox animated fadeInRight">
