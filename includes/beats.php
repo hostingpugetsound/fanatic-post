@@ -154,8 +154,9 @@ function get_active_class($ref_id, $vtype)
 
 if ( !function_exists('tab_content') ) :
 
-function tab_content($tab_id, $tab_v_type, $game_beat, $beat_team_name, $beat_team_id, $game_id, $ref_team_id, $ref_view_type, $beatwriter_authorised, $is_mobile=FALSE)
-{
+function tab_content($tab_id, $tab_v_type, $game_beat, $beat_team_name, $beat_team_id, $game_id, $ref_team_id, $ref_view_type, $beatwriter_authorised, $is_mobile=FALSE) {
+    global $current_user;
+
     $current_class = (($beat_team_id == $ref_team_id) && ($tab_v_type == $ref_view_type))? 'current' : '';
     $beatwriter_user_id = get_post_meta($game_id, 'beatwriter_user_team'.$beat_team_id, 1);
 
@@ -171,6 +172,7 @@ function tab_content($tab_id, $tab_v_type, $game_beat, $beat_team_name, $beat_te
 
         <?php if($game_beat): ?>
             <div class="beat_content_<?php echo bt_class_postfix($beat_team_id, $tab_v_type)?>">
+                <?php if( !in_array( 'subscriber', $current_user->roles ) ) { ?>
                 <?php if($beatwriter_authorised):?>
                     <a href="javascript:void(0)" class="btn lboxtrigger" >Update</a>
                 <?php endif;?>
@@ -209,10 +211,14 @@ function tab_content($tab_id, $tab_v_type, $game_beat, $beat_team_name, $beat_te
                         </div>
                     </div>
                 </div>
+                <?php } ?>
                 <?php echo format_beat_content($game_beat->post_content, $game_beat->post_title);?>
             </div>
-        <?php else : ?>
-            <a href="javascript:void(0)" class="btn lboxtrigger" >Write a beat</a>
+        <?php
+        else :
+            if( !in_array( 'subscriber', $current_user->roles ) ) {
+                ?>
+                <a href="javascript:void(0)" class="btn lboxtrigger">Write a beat</a>
 
             <div class="lboxbg-fp">
                 <div class="lbox-fp">
@@ -247,7 +253,10 @@ function tab_content($tab_id, $tab_v_type, $game_beat, $beat_team_name, $beat_te
                     </div>
                 </div>
             </div>
-        <?php endif; ?>
+            <?php
+            }
+        endif;
+        ?>
 
         <?php
         if($beatwriter_user_id):

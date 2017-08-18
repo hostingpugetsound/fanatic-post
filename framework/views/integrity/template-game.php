@@ -9,12 +9,14 @@ $beat_types = [ 'preview', 'recap' ];
 
 if( isset($_POST['submit']) ) {
 
-    $beat_type = in_array( $_POST['beat_type'], $beat_types ) ? $_POST['beat_type'] : '';
-    #$team_id = in_array( $_POST['team_id'], $team_ids ) ? $_POST['team_id'] : '';
-    #$ref_team_id = null;
+    if( !in_array( 'subscriber', $current_user->roles ) ) {
+        $beat_type = in_array( $_POST['beat_type'], $beat_types ) ? $_POST['beat_type'] : '';
+        #$team_id = in_array( $_POST['team_id'], $team_ids ) ? $_POST['team_id'] : '';
+        #$ref_team_id = null;
 
 
-    $create_beat = create_beat( $beat_type, get_the_ID(), $_POST['team_id'], $ref_team_id );
+        $create_beat = create_beat( $beat_type, get_the_ID(), $_POST['team_id'], $ref_team_id );
+    }
 }
 
 include dirname(__FILE__) . '/beat-title.php';

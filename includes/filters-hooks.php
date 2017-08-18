@@ -15,6 +15,7 @@ function fp_userpro_after_new_registration( $user_id ) {
 
     if( strtolower(get_user_meta( $user_id, 'coupon', true )) == 'fanmeetfoe' ) {
         $user->add_role( 'trial-account' );
+        $user->remove_role( 'subscriber' );
         update_user_meta( $user_id, '_points', 10000 );
         update_user_meta( $user_id, '_trial-start-date', date( 'Y-m-d H:i:s' ) );
     }
