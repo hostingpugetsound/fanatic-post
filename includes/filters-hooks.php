@@ -10,11 +10,24 @@ add_action( 'userpro_after_new_registration', 'fp_userpro_after_new_registration
 function fp_userpro_after_new_registration( $user_id ) {
 
     #$user_id = get_current_user_id();
+    $user = get_user_by( 'ID', $user_id );
+
+
+    if( strtolower(get_user_meta( $user_id, 'coupon', true )) == 'fanmeetfoe' ) {
+        $user->add_role( 'trial-account' );
+        update_user_meta( $user_id, '_points', 10000 );
+        update_user_meta( $user_id, '_trial-start-date', date( 'Y-m-d H:i:s' ) );
+    }
+
+
+    # give points based on account type
+    /*
     $user_meta = get_userdata( $user_id );
     $user_roles = $user_meta->roles;
 
-    $points = in_array( "fanatic-account", $user_roles ) ? 500 : 100;
+    $points = in_array( "trial-account", $user_roles ) ? 500 : 0;
     update_user_meta( $user_id, '_points', $points );
+    */
 
 }
 
